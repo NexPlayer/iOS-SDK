@@ -1,4 +1,4 @@
-<img width="70%" text-align="center" src="./asset/logo.png" alt="logo of docsify-awesome repository" >
+<img width="70%" text-align="center" src="./asset/logo.png" >
 
 # NexPlayer™ SDK for iOS
 

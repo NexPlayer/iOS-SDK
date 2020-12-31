@@ -1,4 +1,4 @@
-## NexPlayer™ SDK for iOS Release Notes
+# NexPlayer™ SDK for iOS Release Notes
 
 ### Version 5.40.1.5139
 - [Update] Updated SW Widevine library(15.2.4)

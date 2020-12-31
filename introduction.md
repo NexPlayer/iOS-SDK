@@ -1,5 +1,5 @@
 # NexPlayer SDK for iOS Documentation
-*Last updated December 2, 2020*
+*Last updated December 31, 2020*
 
 ### 1.1 Legal Notices
 

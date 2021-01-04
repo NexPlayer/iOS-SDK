@@ -1,7 +1,7 @@
 # NexPlayer SDK for iOS Documentation
 *Last updated December 31, 2020*
 
-### 1.1 Legal Notices
+### Legal Notices
 
 **Disclaimer for Intellectual property**
 
@@ -14,7 +14,7 @@ Corp. All or any part of the specification shall not be reproduced nor distribut
 
 © Copyright 2010-2020 NexPlayer Corp. All rights reserved.
 
-### 1.2 Abstract
+### Abstract
 
 This document describes NexPlayer SDK for iOS version 5.40 and how to use the API functions of NexPlayer SDK v5.40.x
 

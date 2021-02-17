@@ -1,5 +1,6 @@
 - [NexPlayer™ SDK for iOS](/introduction.md) 
 - [Getting Started](/getting-started.md)
+- [Widevine Integration](/widevine_quickstart.md)
 - [Properties](/properties.md) 
 - [Advanced Usage](/advanced.md) 
 - [Releases](/releases.md) 

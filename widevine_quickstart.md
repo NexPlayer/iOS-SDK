@@ -185,7 +185,7 @@ extension MainViewUI: NXPlayerDelegate {
 
 ---
 
-### Widevine
+## Widevine
 
 Now it is time to set up the Widevine. The first thing that you have to be aware of Widevine frameworks is that there are three types of Widevine Frameworks (develop, simulator, and release). In this tutorial, `widevine_cdm_secured_ios.framework` (develop) will be used to implement Widevine DRM with NexPlayer.
 
@@ -194,7 +194,7 @@ The device should follow these two requirements.
 1. iOS version 9.0+
 2. arm64 CPU architecture
 
-## 5. Import Widevine Integration
+### Import Widevine Integration
 
 1. Copy `WidevineIntegration.framework` and `widevine_cdm_secured_ios.framework` to your Xcode project folder.
 
@@ -233,7 +233,7 @@ The device should follow these two requirements.
 ```
 
 
-## 6. Setup Widevine
+### Setup Widevine
 
 `WidevineIntegration.start()` should be set just before `open()`
 
@@ -296,7 +296,7 @@ Client information is needed to initialize Widevine object. Before start API of 
 Keep in mind that start API of WidevineIntegration should be called before open API of NexPlayerSDK, and stop API of WidevineIntegration should be called before close API of NexPlayerSDK.
 
 
-## NexPlayer with Widevine project
+### NexPlayer with Widevine project
 
 #### MainViewUI.swift
 

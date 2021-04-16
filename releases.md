@@ -1,8 +1,19 @@
 # NexPlayer™ SDK for iOS Release Notes
 
-### Version 5.40.1.5139
+### Version 5.40.1.5150
+- [Update] Support Widevine Key Renewal
+- [Fix] Fixed an issue for specific type of DRM contents
+- [Update] Introduce a parameter to disable WV logs
+
+### Version 5.40.1.5144
+- [Optimization] Optimization for multiview playback
+
+### Version 5.40.1.5143
+- [Fixed] Fixed a crash when device loses the connection
+- [Optimization] Optimise SPD feature to work with no-audio streams
+
+### Version 5.40.1.5142
 - [Update] Updated SW Widevine library(15.2.4)
-- [Update] Removed deprecated UIWebView usage
 
 ### Version 5.40.1.5137
 - [Update] Updated SW Widevine library(14.4.1)

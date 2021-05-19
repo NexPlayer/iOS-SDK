@@ -35,7 +35,7 @@ Amazon Simple Storage Service S3.
 1. Start by navigating to S3 in your AWS console.
 	- Select your region. Some regions do not support AWS Elemental MediaPackage. You can see the supported regions in this list.
 	
-		<img width="20%" height="40%" text-align="center" src="./assets/aws-image.png" alt="AWS-NexPlayer" >
+		<img width="20%" height="40%" text-align="center" src="./asset/aws-image.png" alt="AWS-NexPlayer" >
 
   
 

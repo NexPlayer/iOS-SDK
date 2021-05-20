@@ -44,16 +44,12 @@ Amazon Simple Storage Service S3.
 
 2. To keep from conflicting with other applications, we recommend that you create a new bucket for this guide. The default settings should suffice, but your bucket will need to have a unique name.
    
-   - When using AWS Elemental MediaConvert to access this bucket
-          you will need to specify an input and output location.
-      
+   - When using AWS Elemental MediaConvert to access this bucket you will need to specify an input and output location.      
 		- Create an inputs folder in your bucket.
 		- Create an outputs folder in your bucket.
 3. Upload one of your videos to the inputs folder within your new S3
     bucket.
-    - (optional) We recommend trimming the video to 1 minute or less
-          for initial testing purposes and then using a longer video at a later
-          time.
+    - (optional) We recommend trimming the video to 1 minute or less for initial testing purposes and then using a longer video at a later time.
 
 ##### AWS Elemental MediaConvert - MPEG-DASH
 
@@ -68,12 +64,9 @@ information can be found [here](https://docs.aws.amazon.com/mediaconvert/latest/
 
  	- For our purposes, we would like to ensure that this file is playable on iOS and Android so we will select DASH ISO.
  		- If you instead would like the file to play on macOS, you will need to encode for HLS.
-   - Set the destination of the target file. We will set this to the
-       “outputs” folder we created previously.
-   - Your AWS Elemental MediaConvert job will need permission to be
-       able to operate.
-		- To configure your IAM role, choose AWS integration from
-             the left navigation panel and then find the section Service access.
+   - Set the destination of the target file. We will set this to the “outputs” folder we created previously.
+   - Your AWS Elemental MediaConvert job will need permission to be able to operate.
+		- To configure your IAM role, choose AWS integration from the left navigation panel and then find the section Service access.
 		-  You will need to specify an Input and Output location.
 			- Use the inputs and outputs folders you created previously.
         - For the purpose of this guide, we have renamed the service role
@@ -103,10 +96,8 @@ There are many configuration options, but let’s get started by making a new Cl
        - Select your S3 bucket
     - Origin Path
        - Input your path “/outputs”
-    - Restrict Bucket Access. We recommend restricting bucket access
-       so that all players connect using the enhanced capabilities of
-       CloudFront.
-          - To do so create a new identity
+    - Restrict Bucket Access. We recommend restricting bucket access so that all players connect using the enhanced capabilities of CloudFront.
+		- To do so create a new identity
 		- Click “ _Yes_ ”
 		- Update Bucket Policy to automatically update the S3 bucket.
     - Price Class
@@ -128,7 +119,7 @@ There are many configuration options, but let’s get started by making a new Cl
 Now that you have a streaming service, you can stream your new video on your target devices. If you have not yet imported NexPlayer into your project, please follow our integration guide for your platform.
 
 Use the following URL format to play your CloudFronthosted file.
-[https://{cloudfronturl}/{videoname}]()
+https://{cloudfronturl}/{videoname}
 
 ### Just In Time Packaging
 
@@ -163,9 +154,11 @@ AWS Elemental MediaPackage requires that we have an HLS stream.
 
 1. Navigate to your AWS Elemental Media Convert console and create a
     new job.
+
 2. You will need to specify an Input location.
     a. Use the video that you uploaded while following the [Static File
     ](https://docs.google.com/document/d/1kINhE2ri1tq8DZ25K8tnH6GGDwwumQlUtRtJyHSxNmA/edit?ts=6093b790#heading=h.wx3xxnk7ir5d) guide.
+
 3. Add an Output Group to the job.
     - For our purposes, we would like to create an HLS stream,so we
        will select Apple HLS.
@@ -173,28 +166,26 @@ AWS Elemental MediaPackage requires that we have an HLS stream.
        - Set the destination of the target file. We will set this to the “outputs” folder we created previously.
     - Within the output you will need to specify parameters for the
        Video encoding type you wish to create.
-          - Your output type and bitrate may be different, buthere are
-             the settings we’ve used for our video.
-             -  Select MPEG_4 AVC (H.264).
-             -  Set the bitrate to 640000 bits / second
-    - If you have used this output group before, you will need to specify a name modifier.
-          - We recommend “_hls”
+		- Your output type and bitrate may be different, but here are the settings we’ve used for our video.
+		-  Select MPEG_4 AVC (H.264).
+		-  Set the bitrate to 640000 bits / second
+	- If you have used this output group before, you will need to specify a name modifier.
+		- We recommend “_hls”
+
 4. Select Job Settings -> AWS Integration
     - Your AWS Elemental MediaConvert job will need permission to be
        able to operate.
     - To configure your IAM role, choose AWS integration from the left
-       navigation pane and then find the section Service access.
-          - If this is your first time, you might need to select Create a new service role, configure permissions.
-             	- Then you will need to select to your S3 input and
-                   output locations
+       navigation pane and then find the section Service access.		- If this is your first time, you might need to select Create a new service role, configure permissions.	
+		- Then you will need to select to your S3 input and output locations
+	
 	- For the purposes of this guide, we have created a new service
     role and named it “MediaConvert_IntegrationGuide_Role_NVirginia”.
 
 5. Now we are ready to create the job. Click _“Create”_.
-    - Depending on the length of your video, it might take some time to
-       complete.
-    - If you missed any of the steps, AWS lets you know which things
-       remain to be specified. Fill in those details and then click Create again.
+    - Depending on the length of your video, it might take some time to complete.
+    - If you missed any of the steps, AWS lets you know which things remain to be specified. Fill in those details and then click Create again.
+
 6. Now look at your job and check that the status is Complete.
     - If there is an error, you can view the job to get details.
 
@@ -218,32 +209,23 @@ Now that we’ve provided a reason to use this flow, let’s check it out!
 1. Navigate to your AWS Elemental MediaPackage console
     - Expand the “Video on demand” group
 2. First you will need to create a Packaging group
-    - All you need to create the group is is an id
-      - Enter an ID
+    - All you need to create the group is is an id		- Enter an ID
 		- Create the group
+
     - Now it’s time to create a Packaging configuration for playback.
-       - ID: JITPackaging
+		- ID: JITPackaging
 		- Package Type: Apple HLS
 		- Save
 
 
-3. In order to grant AWS Elemental MediaPackage permission to access
-    your S3 bucket, you will need to create a new IAM Role. Don’t be
-    intimidated by the json or anything else. These guides from AWS are
-    straightforward. Just follow the steps.
-       - You will need to follow the instructions in this guide from aws to
-          set up the policy.
-         - [https://docs.aws.amazon.com/mediapackage/latest/ug/setti
-                ng-up-create-trust-rel-policy-vod.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
-       - Next, you will need to follow these instructions to create a role
-          with your new policy.
-           - [https://docs.aws.amazon.com/mediapackage/latest/ug/setti
-                ng-up-create-trust-rel-role.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
-       - Finally, you will need to modify the trust relationship as described
-          in this guide.
-           - [https://docs.aws.amazon.com/mediapackage/latest/ug/setti
-                ng-up-create-trust-rel-trust.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
-4. Now switch to Assets and click “ _Ingest Asse_ t”
+3. In order to grant AWS Elemental MediaPackage permission to access your S3 bucket, you will need to create a new IAM Role. Don’t be intimidated by the json or anything else. These guides from AWS are straightforward. Just follow the steps.
+	- You will need to follow the instructions in this guide from aws to set up the policy.
+		- [https://docs.aws.amazon.com/mediapackage/latest/ug/setting-up-create-trust-rel-policy-vod.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
+	- Next, you will need to follow these instructions to create a role with your new policy.
+		- [https://docs.aws.amazon.com/mediapackage/latest/ug/setting-up-create-trust-rel-role.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
+	- Finally, you will need to modify the trust relationship as described in this guide.
+		- [https://docs.aws.amazon.com/mediapackage/latest/ug/setting-up-create-trust-rel-trust.html](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
+4. Now switch to Assets and click “Ingest Asset”
     - S3 bucket name
        - Select the S3 bucket you made earlier.
     - IAM Role
@@ -265,9 +247,7 @@ Now that we’ve provided a reason to use this flow, let’s check it out!
 
 #### CloudFront
 
-Now we need a CDN to host the stream. We will be using Amazon CloudFront
-again. This time we will create a distribution using the domain name of your
-newly created Packaging group.
+Now we need a CDN to host the stream. We will be using Amazon CloudFront again. This time we will create a distribution using the domain name of your newly created Packaging group.
 
 
 1. Navigate to CloudFront
@@ -290,9 +270,8 @@ newly created Packaging group.
     - Copy the portion of the url after the domain name that you set up.
        This is the “video name” or “path” and is the partof the url after
        amazonaws.com
-    - Now, get the CloudFront URL for your new distributionand
-       combine it with the “video name”
-          - [https://{cloudfronturl}/{videoname}](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
+    - Now, get the CloudFront URL for your new distributionand combine it with the “video name”
+		- https://{cloudfronturl}/{videoname}
 
 #### Your Project
 
@@ -301,7 +280,7 @@ your target devices. If you have not yet imported NexPlayer into your project,
 please follow our integration guide for your platform.
 
 Use the following URL format to play your CloudFront hosted file.
-[https://{cloudfronturl}/{videoname}](https://docs.aws.amazon.com/mediapackage/latest/ug/vod-content.html)
+https://{cloudfronturl}/{videoname}
 
 #### Conclusion
 
@@ -373,21 +352,21 @@ video file.
 1. Start by navigating to S3 in your AWS console. To keep from conflicting
     with other applications, we recommend you create a new bucket for this
     guide.
-       - Your bucket will need to have a unique name.
-          - nexplayer-integration-guide-public
-       - Your bucket will need to be public
-          - Uncheck “Block all public access”
+	
+	- Your bucket will need to have a unique name.		- nexplayer-integration-guide-public
+       
+	- Your bucket will need to be public
+		- Uncheck “Block all public access”
+
 2. Upload one of your videos to the inputs folder within your new S3
     bucket.
-       - You are able to specify for the video to loop later in this process,
-          so you don’t need to worry about the video length.
-           - 1 minute or longer should be fine.
-       - Once the video is uploaded, navigate to it and make it public.
-          - Click the checkbox next to the video
-		- Click Actions
-		- Make Public
-       - Now click on the object and retrieve its object url
-
+	- You are able to specify for the video to loop later in this process, so you don’t need to worry about the video length.
+   - 1 minute or longer should be fine.
+- Once the video is uploaded, navigate to it and make it public.
+	- Click the checkbox next to the video
+- Click Actions
+- Make Public
+- Now click on the object and retrieve its object url
 
 #### AWS Elemental MediaLive - MP4 Input
 
@@ -421,13 +400,10 @@ Now, Let’s get started with [AWS Elemental MediaLive](https://console.aws.amaz
 		- Confirm.
     - Create an Output
        - Chose MediaPackage as the output group
-          1. (If you have not already done so) Go to the [AWS
-             Elemental MediaPackage](https://docs.google.com/document/d/1kINhE2ri1tq8DZ25K8tnH6GGDwwumQlUtRtJyHSxNmA/edit?ts=6093b790#heading=h.h2rc56y1fjlk) section in this guide to
-             create a channel.
-          2. Select the AWS Elemental MediaPackage channel ID
-             you created within AWS Elemental MediaPackage
+          1. (If you have not already done so) Go to the AWS Elemental MediaPackage section to create a channel.
+          2. Select the AWS Elemental MediaPackage channel ID you created within AWS Elemental MediaPackage
           3. Confirm
-		- Got to your AWS Elemental MediaPackage group outputs.
+				- Got to your AWS Elemental MediaPackage group outputs.
 			1. Specify width and height as 1920 and 1080.
 			2. Codec settings: H
 			3. Aspect Ratio: Specified
@@ -477,8 +453,7 @@ function every 1 minute.
 7. In the Function dropdown, select your InsertAdMarker function.
 8. Click on the “ _Configure details_ ” button.
 9. Provide a name like “InsertAdMarkerEveryMinute”.
-    - Make sure to leave the State as Enabled. Otherwise, this rule will
-       not run.
+    - Make sure to leave the State as Enabled. Otherwise, this rule will not run.
     - Click on the “ _Create Rule_ ” button.
 
 With the event enabled, you should see a scheduled Scte35 splice insert in
@@ -494,21 +469,18 @@ distribution for that channel.
     - Give it an id: NexPlayerIntegrationGuideLiveStreamMP4Channel
     - Give it a description as well.
        - Live stream with MP4
-    - To enable CloudFront click the radio button to create a
-       CloudFront distribution for this channel.
-2. At this point you can now proceed to the AWS ElementalMediaLive
-    setup.
-       - Create a channel
-       - Specify a new output group in your AWS Elemental MediaLive
-          channel for the AWS Elemental MediaPackage channel you
-          create.
+    - To enable CloudFront click the radio button to create a CloudFront distribution for this channel.
+
+2. At this point you can now proceed to the AWS ElementalMediaLive setup.
+	- Create a channel
+	- Specify a new output group in your AWS Elemental MediaLive channel for the AWS Elemental MediaPackage channel you create.
+
 3. Now you need to create an endpoint.
     - Click “ _Add endpoints_ ”.
     - ID: NexPlayerIntegrationGuideS3MpegDashEndpoint
-    - In this example we will create an MPEG-DASH endpoint,but you
-       should know that Media Tailor also works with HLS.
-          - Packager setting: DASH-ISO
-		- Save
+    - In this example we will create an MPEG-DASH endpoint,but you should know that Media Tailor also works with HLS.
+	- Packager setting: DASH-ISO
+	- Save
 
 
 #### Inserting Ads - Optional
@@ -530,10 +502,9 @@ You can learn more about our Ad Decision Server [here](https://aws.amazon.com/bl
 		- Click Actions -> Make Public
 3. Now you’ll need an xml file which will simulate your ADS.
 
-- Take the sample xml below and replace the CDATA [video] with a
-       link to your video.
+- Take the sample xml below and replace the CDATA [video] with a link to your video.
        
-~~~
+```
 <VAST version="3.0">
 		<Ad>
 		<InLine>
@@ -556,7 +527,7 @@ You can learn more about our Ad Decision Server [here](https://aws.amazon.com/bl
 		</InLine>
 		</Ad>
 </VAST>
-~~~
+```
 
 
 ​	
@@ -575,16 +546,11 @@ ads within the distribution using [AWS Elemental MediaTailor](https://aws.amazon
 
 1. Click Create configuration
     - Name: NexPlayerIntegrationGuideMP4AdCampaign
-    - Content Source: Use the URL from the Endpoint you just created
-       without the {name.mpd} or {name.m3u8} section.
-          - The content source needs to contain ad markers.
-             1. If you have been following this guide then you added
-                a Lambda function and scheduled it with CloudWatch
-                to insert the markers.
-             2. If your video already has ad markers, you can skip
-                that step.
-    - Ad decision server: Use the url for the VAST xml file you
-       uploaded.
+    - Content Source: Use the URL from the Endpoint you just created without the {name.mpd} or {name.m3u8} section.
+	- The content source needs to contain ad markers.
+		1. If you have been following this guide then you added a Lambda function and scheduled it with CloudWatch to insert the markers.
+		2. If your video already has ad markers, you can skip that step.
+    - Ad decision server: Use the url for the VAST xml file you uploaded.
 2. Now you can get your video by taking the MediaTailor url prefix and
     appending index.mpd
 
@@ -595,7 +561,7 @@ your target devices. If you have not yet imported NexPlayer into your project,
 please follow our integration guide for your platform.
 
 Use the following URL format to play your CloudFront hosted file.
-[https://{cloudfronturl}/{videoname}](https://aws.amazon.com/mediatailor/)
+https://{cloudfronturl}/{videoname}
 
 ### Live Stream with OBS
 
@@ -617,15 +583,14 @@ Guide: “OBS Studio to AWS Elemental MediaLive to AWS”.
     - Click “ _Create_ ”
     - Within your new channel is in AWS Elemental Media add a new
        Endpoint.
-          - ID: OBSMediaPackageHLSEndpoint
+		- ID: OBSMediaPackageHLSEndpoint
 		- Specify HLS
 3. Create an input in AWS Elemental MediaLive.
     - Input name: NexPlayerIntegrationGuideLiveInputOBS
     - Input class: SINGLE_INPUT
     - Application name: live
     - Input Security group
-       - Create and use a new security group using your ip address
-          in the format: x.x.x.x/
+		- Create and use a new security group using your ip address in the format: x.x.x.x/
     - Application instance: mystream
 4. Configure the OBS Studio software (“the appliance”).
     - Refer to the steps in the AWS Guide for further details:
@@ -678,7 +643,7 @@ on your target devices. If you have not yet imported NexPlayer into your
 project, please follow our integration guide for your platform.
 
 Use the following URL format to play your CloudFront hosted file.
-[https://{cloudfronturl}/{videoname}](https://aws.amazon.com/mediatailor/)
+https://{cloudfronturl}/{videoname}
 
 #### Conclusion
 

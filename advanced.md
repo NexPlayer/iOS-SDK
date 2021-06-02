@@ -28,40 +28,40 @@ Detailed parameter key for `NexInformativeEventDownloadBegan` and `NexInformativ
        
 - `typedef int(∗NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc) (unsigned char ∗pInBuf, unsigned int dwInBufSize, unsigned char ∗pOutBuf, unsigned int ∗pdwOutBufSize, char ∗pSegmentUrl, long long qByteRangeOffset, long long qByteRangeLength, char ∗pMpdUrl, char ∗pKeyAttr, unsigned int dwSegmentSeq, unsigned char ∗pKey, unsigned int dwKeySize, void ∗pUserData)` Callback function for receiving AES128 encrypted HLS content with byte range.
  
-- `typedef int(∗NEXPLAYERHLSIsSupportKeyCallbackFunc )(char ∗pMpdUrl, char ∗pKeyAttr, void ∗pUserData)` Callback function that verifies whether or not a key attribute is supported by the DRM module.
+- `typedef int(∗NEXPLAYERHLSIsSupportKeyCallbackFunc) (char ∗pMpdUrl, char ∗pKeyAttr, void ∗pUserData)` Callback function that verifies whether or not a key attribute is supported by the DRM module.
  
-- `typedef int(∗NEXPLAYERPiffPlayReadyDescrambleCallbackFunc)(unsigned char∗pInputBuffer, unsigned int dwInputBufferSize, unsigned char∗pOutputBuffer, unsigned int ∗pdwOutputBufferSize, unsigned char ∗pSampleEncBox, unsigned int dwSampleEncBoxLen, unsigned int dwSampleIDX, unsigned int dwTrackID,void ∗pUserData)` Callback function for descrambling PlayReady encrypted content in a PIFF file.
+- `typedef int(∗NEXPLAYERPiffPlayReadyDescrambleCallbackFunc)(unsigned char∗pInputBuffer, unsigned int dwInputBufferSize, unsigned char∗pOutputBuffer, unsigned int ∗pdwOutputBufferSize, unsigned char ∗pSampleEncBox, unsigned int dwSampleEncBoxLen, unsigned int dwSampleIDX, unsigned int dwTrackID, void ∗pUserData)` Callback function for descrambling PlayReady encrypted content in a PIFF file.
  
 - `typedef int(∗NEXPLAYERDashDrmSessionOpenCallbackFunc )(long long ∗pSH, char ∗pDrmInfo, unsigned int dwDrmInfoSize, void ∗pUserData)` Callback function to open DASH DRM Session.
  
 - `typedef int(∗NEXPLAYERDashDrmSessionCloseCallbackFunc)(long long hSH, void ∗pUserData)` Callback function to close DASH DRM Session. This function will only be called when the parameter `pSH` of `NEXPLAYERDashDrmSessionOpenCallbackFunc` is not -1.
 
-- `typedef int(∗NEXPLAYERDashDrmSessionSetCencBoxCallbackFunc )(long long hSH, char ∗pBoxName, char ∗pBoxData, unsigned int dwBoxDataSize, void∗pUserData)` Callback function to transfer CencBox.
+- `typedef int(∗NEXPLAYERDashDrmSessionSetCencBoxCallbackFunc ) (long long hSH, char ∗pBoxName, char ∗pBoxData, unsigned int dwBoxDataSize, void∗pUserData)` Callback function to transfer CencBox.
 
-- `typedef int(∗NEXPLAYERDashDrmSessionDecryptIsobmffFrameCallbackFunc )(long long hSH, char ∗pIV, unsigned int dwIVLen, char ∗pEncFrame, unsigned int dwEncFrameLen, char ∗pDecFrame, unsigned int ∗pdwDecFrameLen, void ∗pUserData)` Callback function to decrypt an encrypted frame.
+- `typedef int(∗NEXPLAYERDashDrmSessionDecryptIsobmffFrameCallbackFunc ) (long long hSH, char ∗pIV, unsigned int dwIVLen, char ∗pEncFrame, unsigned int dwEncFrameLen, char ∗pDecFrame, unsigned int ∗pdwDecFrameLen, void ∗pUserData)` Callback function to decrypt an encrypted frame.
  
-- `typedef int(∗NEXPLAYERGetPDBlockCallbackFunc )(char∗pBlockBuf, long long ulOffset, int uiBlockSize, void ∗pUserData)`
- Callback function for receiving blocks of Progressive Download(PD) content.
+- `typedef int(∗NEXPLAYERGetPDBlockCallbackFunc ) (char∗pBlockBuf, long long ulOffset, int uiBlockSize, void ∗pUserData)`
+ Callback function for receiving blocks of Progressive Download (PD) content.
 
-- `typedef int(∗NEXPLAYERPDEnvelopHeaderParsingCallbackFunc )(char∗pData, long long qOffset, int iDataSize, unsigned int ∗puContentOffset, void ∗pUserData)` Callback function for parsing headers of Progressive Download(PD) content.
+- `typedef int(∗NEXPLAYERPDEnvelopHeaderParsingCallbackFunc ) (char∗pData, long long qOffset, int iDataSize, unsigned int ∗puContentOffset, void ∗pUserData)` Callback function for parsing headers of Progressive Download (PD) content.
 
-- `typedef NEXFileHandle(∗NEXPLAYERRemoteFile_OpenFt )(char ∗pFileName, NEXFileMode iMode, void ∗pUserData)` Remote File I/O callback for opening a file.
+- `typedef NEXFileHandle(∗NEXPLAYERRemoteFile_OpenFt ) (char ∗pFileName, NEXFileMode iMode, void ∗pUserData)` Remote File I/O callback for opening a file.
 
-- `typedef int(∗NEXPLAYERRemoteFile_CloseFt )(NEXFileHandle hFile, void ∗pUserData)` Remote File I/O callback for closing a file.
+- `typedef int(∗NEXPLAYERRemoteFile_CloseFt ) (NEXFileHandle hFile, void ∗pUserData)` Remote File I/O callback for closing a file.
 
-- `typedef ssize_t(∗NEXPLAYERRemoteFile_ReadFt )(NEXFileHandle hFile, void ∗pBuf, unsigned int uiSize, size_t uiCount, void ∗pUserData)` Remote File I/O callback for reading a file.
+- `typedef ssize_t(∗NEXPLAYERRemoteFile_ReadFt ) (NEXFileHandle hFile, void ∗pBuf, unsigned int uiSize, size_t uiCount, void ∗pUserData)` Remote File I/O callback for reading a file.
 
-- `typedef int(∗NEXPLAYERRemoteFile_SeekFt )(NEXFileHandle hFile, int iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)` Remote File I/O callback for seeking a file.
+- `typedef int(∗NEXPLAYERRemoteFile_SeekFt ) (NEXFileHandle hFile, int iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)` Remote File I/O callback for seeking a file.
 
-- `typedef long long(∗NEXPLAYERRemoteFile_Seek64Ft )(NEXFileHandle hFile, long long iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)` Remote File I/O callback for seeking a file.
+- `typedef long long(∗NEXPLAYERRemoteFile_Seek64Ft ) (NEXFileHandle hFile, long long iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)` Remote File I/O callback for seeking a file.
 
-- `typedef ssize_t(∗NEXPLAYERRemoteFile_WriteFt )(NEXFileHandle hFile, char ∗pBuf, size_t dwSize, void ∗pUserData)` Remote File I/O callback for writing to a file.
+- `typedef ssize_t(∗NEXPLAYERRemoteFile_WriteFt ) (NEXFileHandle hFile, char ∗pBuf, size_t dwSize, void ∗pUserData)` Remote File I/O callback for writing to a file.
 
-- `typedef long long(∗NEXPLAYERRemoteFile_SizeFt )(NEXFileHandle hFile, void ∗pUserData)` Remote File I/O callback for getting the size of a file.
+- `typedef long long(∗NEXPLAYERRemoteFile_SizeFt ) (NEXFileHandle hFile, void ∗pUserData)` Remote File I/O callback for getting the size of a file.
 
 ### typedef Documentation
 
-#### typedef int(* NEXPLAYERDashDrmSessionCloseCallbackFunc)(long long hSH, void *pUserData)
+#### typedef int(*NEXPLAYERDashDrmSessionCloseCallbackFunc) (long long hSH, void *pUserData)
 
 Callback function to close DASH DRM Session. This function will only be called when the parameter `pSH` of `NEXPLAYERDashDrmSessionOpenCallbackFunc` is not -1.
 
@@ -72,7 +72,7 @@ Callback function to close DASH DRM Session. This function will only be called w
 |hSH | DRM session handle |
 |pUserData      |   The user data passed when the callback was registered. |
 
-#### typedef int(∗ NEXPLAYERDashDrmSessionCloseCallbackFunc)(long long hSH, void ∗pUserData)
+#### typedef int(∗NEXPLAYERDashDrmSessionCloseCallbackFunc) (long long hSH, void ∗pUserData)
 
 Callback function to decrypt an encrypted frame.
 
@@ -82,14 +82,14 @@ Callback function to decrypt an encrypted frame.
 |---|---|
 | hSH | DRM Session handle.|
 | pIV | Initial vector.|
-| dwIVLen | Bytelength of initial vector.|
+| dwIVLen | Byte length of initial vector.|
 | pEncFrame | Encrypted frame.|
-| dwEncFrameLen | Bytelength of encrypted frame.|
+| dwEncFrameLen | Byte length of encrypted frame.|
 | pDecFrame | Decrypted frame. |
-| pdwDecFrameLen| Bytelength of decrypted frame.
+| pdwDecFrameLen| Byte length of decrypted frame.
 | pUserData | The user data passed when the callback was registered. |
 
-#### typedef int(∗ NEXPLAYERDashDrmSessionOpenCallbackFunc)(long long ∗pSH, char ∗pDrmInfo, unsigned int dwDrmInfoSize, void ∗pUserData)
+#### typedef int(∗NEXPLAYERDashDrmSessionOpenCallbackFunc) (long long ∗pSH, char ∗pDrmInfo, unsigned int dwDrmInfoSize, void ∗pUserData)
 Callback function to open DASH DRM Session.
 
 **Parameters**
@@ -98,10 +98,10 @@ Callback function to open DASH DRM Session.
 |---|---|
 |pSH| DRM session handle. The initial value is -1 which indicates that DRM Session is not opened, therefore `NEXPLAYERDashDrmSessionCloseCallbackFunc` will not be called.|
 |pDrmInfo| Contains all the ContentProtection tags in MPD.|
-|dwDrmInfoSize |Thebytelength ofpDrmInfo.|
+|dwDrmInfoSize |The byte length of pDrmInfo.|
 |pUserData |The user data passed when the callback was registered.|
 
-#### typedef int(∗ NEXPLAYERDashDrmSessionSetCencBoxCallbackFunc)(long long hSH, char ∗pBoxName, char ∗pBoxData, unsigned int dwBoxDataSize, void ∗pUserData)
+#### typedef int(∗NEXPLAYERDashDrmSessionSetCencBoxCallbackFunc) (long long hSH, char ∗pBoxName, char ∗pBoxData, unsigned int dwBoxDataSize, void ∗pUserData)
 
 Callback function to transfer CencBox.
 
@@ -110,16 +110,16 @@ Callback function to transfer CencBox.
 | Name  | Description  | 
 |---|---|
 |hSH |DRM session handle.|
-|pBoxName| The box name as a NULL-terminated string :seig,tencorpssh.|
+|pBoxName| The box name as a NULL-terminated string :seig, tencorpssh.|
 |pBoxData |The payload information of the box.|
-|dwBoxDataSize| Bytelength ofpBoxData.|
+|dwBoxDataSize| Byte length of pBoxData.|
 |pUserData| The user data passed when the callback was registered.|
 
-#### typedef int(∗ NEXPLAYERGetPDBlockCallbackFunc)(char ∗pBlockBuf, long long ulOffset, int uiBlockSize, void ∗pUserData)
+#### typedef int(∗NEXPLAYERGetPDBlockCallbackFunc) (char ∗pBlockBuf, long long ulOffset, int uiBlockSize, void ∗pUserData)
 
-Callback function for receiving blocks of Progressive Download(PD) content.
+Callback function for receiving blocks of Progressive Download (PD) content.
 
-This is called each time NexPlayer receives a block of Progressive Download(PD) content. NexPlayer sends
+This is called each time NexPlayer receives a block of Progressive Download (PD) content. NexPlayer sends
 the received block and the block’s size with this callback.
 
 **Parameters**
@@ -135,7 +135,7 @@ the received block and the block’s size with this callback.
 
 Zero, but has no meaning and should be ignored.
 
-#### typedef unsigned int(∗ NEXPLAYERGetPlaylistInfoCallbackFunc)(char ∗pUrl, char ∗pPlaylist, unsigned int uiPlaylistSize, void ∗pUserData)
+#### typedef unsigned int(∗NEXPLAYERGetPlaylistInfoCallbackFunc) (char ∗pUrl, char ∗pPlaylist, unsigned int uiPlaylistSize, void ∗pUserData)
 
 Callback function for receiving updates to the HLS playlist data.
 
@@ -153,15 +153,15 @@ TS or audio file will always be from the playlist most recently received by this
 | Name  | Description  | 
 |---|---|
 | pUrl| The URL of the playlist.|
-| pPlaylist| The contents of the playlist, astext.|
-| uiPlaylistSize| The size of pPlayList, inbytes, not including any terminating *NULL*.|
+| pPlaylist| The contents of the playlist, as text.|
+| uiPlaylistSize| The size of pPlayList, in bytes, not including any terminating *NULL*.|
 | pUserData |The user data passed when the callback was originally registered.|
 
 **Returns**
 
 The callback should return zero for success and -1 in case of an error.
 
-#### typedef int(∗ NEXPLAYERHLSAES128DescrambleCallbackFunc)(unsigned char ∗pInBuf,unsigned int dwInBufSize,unsigned char ∗pOutBuf,unsigned int ∗pdwOutBufSize,char ∗pSegmentUrl,char ∗pMpdUrl,char ∗pKeyAttr,unsigned int dwSegmentSeq,unsigned char ∗pKey,unsigned int dwKeySize,void ∗pUserData)
+#### typedef int(∗NEXPLAYERHLSAES128DescrambleCallbackFunc) (unsigned char ∗pInBuf, unsigned int dwInBufSize, unsigned char ∗pOutBuf, unsigned int ∗pdwOutBufSize, char ∗pSegmentUrl, char ∗pMpdUrl, char ∗pKeyAttr, unsigned int dwSegmentSeq, unsigned char ∗pKey, unsigned int dwKeySize, void ∗pUserData)
 
 Callback function for receiving AES128 encrypted HLS content.
 
@@ -174,7 +174,7 @@ When registered, this callback function is called every time AES128 encrypted HL
 |pInBuf| A pointer to the input buffer.|
 |dwInBufSize |The size of the input buffer, inbytes.|
 |pOutBuf| A pointer to the output buffer where decrypted content is stored.|
-|pdwOutBufSize| A pointer to the size of the decrypted segment, inbytes.|
+|pdwOutBufSize| A pointer to the size of the decrypted segment, in bytes.|
 |pSegmentUrl| A pointer to the URL of the segment of content.|
 |pMpdUrl |A pointer to the original URL of the content playlist.|
 |pKeyAttr| A pointer to the decryption Key information.|
@@ -187,8 +187,7 @@ When registered, this callback function is called every time AES128 encrypted HL
 
 The callback should return zero for success and -1 in case of an error.
 
-#### typedef int(∗ NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc)(unsigned char ∗pInBuf,unsigned
-int dwInBufSize,unsigned char ∗pOutBuf,unsigned int ∗pdwOutBufSize,char ∗pSegmentUrl,long long qByteRangeOffset,long long qByteRangeLength,char ∗pMpdUrl,char ∗pKeyAttr,unsigned int dwSegmentSeq,unsigned char ∗pKey,unsigned int dwKeySize,void ∗pUserData)
+#### typedef int(∗NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc)(unsigned char ∗pInBuf, unsigned int dwInBufSize, unsigned char ∗pOutBuf, unsigned int ∗pdwOutBufSize, char ∗pSegmentUrl, long long qByteRangeOffset, long long qByteRangeLength, char ∗pMpdUrl, char ∗pKeyAttr, unsigned int dwSegmentSeq, unsigned char ∗pKey, unsigned int dwKeySize, void ∗pUserData)
 
 Callback function for receiving AES128 encrypted HLS content with byte range.
 
@@ -199,16 +198,16 @@ When registered, this callback function is called every time AES128 encrypted HL
 |Name  | Description  | 
 |---|---|
 |pInBuf| A pointer to the input buffer.|
-|dwInBufSize |The size of the input buffer, inbytes.|
+|dwInBufSize |The size of the input buffer, in bytes.|
 |pOutBuf|A pointer to the output buffer where decrypted content is stored.|
-|pdwOutBufSize| A pointer to the size of the decrypted segment, inbytes.|
+|pdwOutBufSize| A pointer to the size of the decrypted segment, in bytes.|
 |pSegmentUrl| A pointer to the URL of the content segment.|
 |qByteRangeOffset|The offset of the byte range.|
 |qByteRangeLength|The length of the byte range.|
 |pMpdUrl| A pointer to the original URL of the content playlist.|
 |pKeyAttr| A pointer to the decryption Key information.|
 |dwSegmentSeq| The sequence number of the TS segment file.|
-|pKey| A pointer to the decryption Key. This parameter is only meaningful whendwKeySizeis greater than 0 (i.e. a key has been downloaded).|
+|pKey| A pointer to the decryption Key. This parameter is only meaningful when dwKeySize is greater than 0 (i.e. a key has been downloaded).|
 |dwKeySize| The size of the decryption Key. This parameter will be zero if no key has been downloaded.|
 |pUserData| The passed user data when the callback was registered.|
 
@@ -216,7 +215,7 @@ When registered, this callback function is called every time AES128 encrypted HL
 
 The callback should return zero for success and -1 in case of an error.
 
-#### typedef int(∗ NEXPLAYERHLSIsSupportKeyCallbackFunc)(char ∗pMpdUrl,char ∗pKeyAttr,void ∗pUserData)
+#### typedef int(∗NEXPLAYERHLSIsSupportKeyCallbackFunc) (char ∗pMpdUrl, char ∗pKeyAttr, void ∗pUserData)
 
 Callback function that verifies whether or not a key attribute is supported by the DRM module.
 
@@ -235,7 +234,7 @@ callback returns a non-zero value, NexPlayer will not call DRM functions even if
 
 If the DRM is supporting that key attribute, then it should return zero(0). Then NexPlayer will call DRM callbacks depending on the encryption method. If the DRM does not support the key, then it should return a non-zero value. In this case, NexPlayer will not call the DRM callbacks and it will decrypt using its internal decryption function.
 
-#### typedef int(∗ NEXPLAYERMPDDescrambleCallbackFunc)(char ∗pMpdUrl, unsigned int dwMpdUrlLen, char ∗pMpd, unsigned int dwMpdLen, unsigned int ∗pdwNewMpdLen, void ∗pUserData)
+#### typedef int(∗NEXPLAYERMPDDescrambleCallbackFunc) (char ∗pMpdUrl, unsigned int dwMpdUrlLen, char ∗pMpd, unsigned int dwMpdLen, unsigned int ∗pdwNewMpdLen, void ∗pUserData)
 
 Callback function to handle content with an encrypted playlist or manifest.
 
@@ -245,10 +244,10 @@ NexPlayer calls this function whenever it receives the manifest or top level of 
 
 |Name  | Description  | 
 |---|---|
-|pMpdUrl| The original URL of the top-level MPD. In the case of redirection, this will be the URLbeforeredirection.|
-|dwMpdUrlLen| The length of the manifest or playlist URL, inbytes.|
+|pMpdUrl| The original URL of the top-level MPD. In the case of redirection, this will be the URL before redirection.|
+|dwMpdUrlLen| The length of the manifest or playlist URL, in bytes.|
 |pMpd| The top level playlist or manifest.|
-|dwMpdLen| The size of the manifest or playlist, inbytes.|
+|dwMpdLen| The size of the manifest or playlist, in bytes.|
 |pdwNewMpdLen| The size of the decrypted manifest or playlist.|
 |pUserData |The user data passed when the callback was registered.|
 
@@ -256,11 +255,11 @@ NexPlayer calls this function whenever it receives the manifest or top level of 
 
 The callback should return zero for success and -1 in case of an error.
 
-#### typedef int(∗ NEXPLAYERPDEnvelopHeaderParsingCallbackFunc)(char ∗pData, long long qOffset, int iDataSize, unsigned int ∗puContentOffset, void ∗pUserData)
+#### typedef int(∗NEXPLAYERPDEnvelopHeaderParsingCallbackFunc) (char ∗pData, long long qOffset, int iDataSize, unsigned int ∗puContentOffset, void ∗pUserData)
 
-Callback function for parsing headers of Progressive Download(PD) content.
+Callback function for parsing headers of Progressive Download (PD) content.
 
-This is called when NexPlayer receives a header of Progressive Download(PD) content. NexPlayer sends the received header and its size with this callback.
+This is called when NexPlayer receives a header of Progressive Download (PD) content. NexPlayer sends the received header and its size with this callback.
 
 **Parameters**
 
@@ -279,7 +278,7 @@ This is called when NexPlayer receives a header of Progressive Download(PD) cont
 - DRM error code : <-1
 - Remark : When it is not DRM content, return 0 with puContentOffset=0;
 
-#### typedef int( ∗ NEXPLAYERPiffPlayReadyDescrambleCallbackFunc)(unsigned char ∗pInputBuffer, unsigned int dwInputBufferSize, unsigned char ∗pOutputBuffer, unsigned int ∗pdwOutputBufferSize, unsigned char ∗pSampleEncBox, unsigned int dwSampleEncBoxLen, unsigned int dwSampleIDX, unsigned int dwTrackID, void ∗pUserData)
+#### typedef int(∗NEXPLAYERPiffPlayReadyDescrambleCallbackFunc) (unsigned char ∗pInputBuffer, unsigned int dwInputBufferSize, unsigned char ∗pOutputBuffer, unsigned int ∗pdwOutputBufferSize, unsigned char ∗pSampleEncBox, unsigned int dwSampleEncBoxLen, unsigned int dwSampleIDX, unsigned int dwTrackID, void ∗pUserData)
 
 Callback function for descrambling PlayReady encrypted content in a PIFF file.
 
@@ -288,20 +287,20 @@ Callback function for descrambling PlayReady encrypted content in a PIFF file.
 |Name  | Description  | 
 |---|---|
 | pInputBuffer | The encrypted data to be descrambled.|
-| dwInputBufferSize | The size of the encrypted data, inbytes.|
+| dwInputBufferSize | The size of the encrypted data, in bytes.|
 | pOutputBuffer | The location at which to place the descrambled output data. This may point to the same location as the input buffer, or it may point to a separate location. The size available for the output buffer is the same as the size of the input buffer. That is, the decrypted data may be smaller than the encrypted data, but not larger.|
-| pdwOutputBufferSize|The size of the decrypted data. The callback must set this value. This may be equal to or smaller thandwInputBufferSize, but not larger.
-| pSampleEncBox| The SampleEncryptionBox, as detailed in the[MS-SSTR] Smooth Streaming Protocol Specification. |
+| pdwOutputBufferSize|The size of the decrypted data. The callback must set this value. This may be equal to or smaller than dwInputBufferSize, but not larger.
+| pSampleEncBox| The SampleEncryptionBox, as detailed in the [MS-SSTR] Smooth Streaming Protocol Specification. |
 |dwSampleEncBoxLen| The length, inbytes, of the data atpSampleEncBox.|
 | dwSampleIDX| The index of the media object (frame or sample, depending on media format) being descrambled.|
-|dwTrackID| Media Track ID, fromTfhdBox, as defined in the[MS-SSTR] Smooth Streaming Protocol Specification.|
+|dwTrackID| Media Track ID, from TfhdBox, as defined in the [MS-SSTR] Smooth Streaming Protocol Specification.|
 | pUserData| The user data passed when the callback was originally registered.|
 
 **Returns**
 
 The callback should return zero if the data was successfully descrambled. In the case of an error, it should return -1.
 
-#### typedef int( ∗ NEXPLAYERRemoteFile_CloseFt)(NEXFileHandle hFile, void ∗pUserData)
+#### typedef int(∗NEXPLAYERRemoteFile_CloseFt) (NEXFileHandle hFile, void ∗pUserData)
 
 Remote File I/O callback for closing a file.
 
@@ -319,7 +318,7 @@ This is one of several callback functions that can be registered using the Remot
 
 0 if successful, or -1 if an error occurred.
 
-#### typedef NEXFileHandle( ∗ NEXPLAYERRemoteFile_OpenFt)(char ∗pFileName, NEXFileMode iMode, void ∗pUserData)
+#### typedef NEXFileHandle(∗NEXPLAYERRemoteFile_OpenFt) (char ∗pFileName, NEXFileMode iMode, void ∗pUserData)
 
 Remote File I/O callback for opening a file.
 
@@ -337,14 +336,14 @@ This is one of several callback functions that can be registered using the Remot
 
 The handle of the opened file, or -1 if an error occurred.
 
-#### ssize_t( ∗ NEXPLAYERRemoteFile_ReadFt)(NEXFileHandle hFile, void ∗pBuf, unsigned int uiSize, size_t uiCount, void ∗pUserData)
+#### ssize_t(∗NEXPLAYERRemoteFile_ReadFt) (NEXFileHandle hFile, void ∗pBuf, unsigned int uiSize, size_t uiCount, void ∗pUserData)
 
 Remote File I/O callback for reading a file.
 
 This is one of several callback functions that can be registered using the Remote File I/O Interface in order to replace
 the system calls normally used for opening and accessing files.
 
-The actual number ofbytesto read is (uiSize∗uiCount).
+The actual number of bytes to read is (uiSize∗uiCount).
 
 **Parameters**
 
@@ -352,7 +351,7 @@ The actual number ofbytesto read is (uiSize∗uiCount).
 |---|---|
 | hFile| File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of file to read from.|
 | pBuf| Buffer to receive the data.|
-| uiSize| Record size, inbytes.|
+| uiSize| Record size, in bytes.|
 | uiCount| Number of records to read.|
 | pUserData| The user data passed when the callback was originally registered.|
 
@@ -362,33 +361,7 @@ The actual number ofbytesto read is (uiSize∗uiCount).
 - 0: Reached the end of the file.
 - -1: An error occurred.
 
-#### typedef long long( ∗ NEXPLAYERRemoteFile_Seek64Ft)(NEXFileHandle hFile, long long iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)
-
-Remote File I/O callback for seeking a file.
-
-This is one of several callback functions that can be registered using the Remote File I/O Interface in order to replace
-the system calls normally used for opening and accessing files.
-
-This sets the location in the file at which the nextreadoperation will occur.
-
-**Note**
-
-> This supports seek offsets of up to 64-bits. Implement this callback if you wish to support files over 2GB in size.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-|hFile| File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of file to be seeked.|
-|iOffset| Seek destination, as an offset inbytesfromiOrigin|
-|iOrigin| Origin foriOffset. See NEXFileSeekOrigin for possible values.|
-|pUserData| The user data passed when the callback was originally registered.|
-
-**Returns**
-
-New offset from beginning of file, or -1 if an error occurred.
-
-#### typedef int( ∗ NEXPLAYERRemoteFile_SeekFt)(NEXFileHandle hFile, int iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)
+#### typedef long long(∗NEXPLAYERRemoteFile_Seek64Ft) (NEXFileHandle hFile, long long iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)
 
 Remote File I/O callback for seeking a file.
 
@@ -399,36 +372,62 @@ This sets the location in the file at which the next read operation will occur.
 
 **Note**
 
->  This supports seek offsets of up to 32-bits. For large offsets, NEXPLAYERRemoteFile_Seek64Ft will be called instead. If the 64-bit callback is not registered, file with sizes over 2GB will not be supported.
+> This supports seek offsets of up to 64-bits. Implement this callback if you wish to support files over 2GB in size.
 
 **Parameters**
 
 | Name  | Description  | 
 |---|---|
 |hFile| File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of file to be seeked.|
-|iOffset| Seek destination, as an offset inbytesfromiOrigin|
-|iOrigin |Origin foriOffset. See NEXFileSeekOrigin for possible values.|
+|iOffset| Seek destination, as an offset in bytes from iOrigin|
+|iOrigin| Origin for iOffset. See NEXFileSeekOrigin for possible values.|
 |pUserData| The user data passed when the callback was originally registered.|
 
 **Returns**
 
 New offset from beginning of file, or -1 if an error occurred.
 
-#### typedef long long( ∗ NEXPLAYERRemoteFile_SizeFt)(NEXFileHandle hFile, void ∗pUserData)
+#### typedef int(∗NEXPLAYERRemoteFile_SeekFt) (NEXFileHandle hFile, int iOffset, NEXFileSeekOrigin iOrigin, void ∗pUserData)
+
+Remote File I/O callback for seeking a file.
+
+This is one of several callback functions that can be registered using the Remote File I/O Interface in order to replace
+the system calls normally used for opening and accessing files.
+
+This sets the location in the file at which the next read operation will occur.
+
+
+
+>**Note**  This supports seek offsets of up to 32-bits. For large offsets, NEXPLAYERRemoteFile_Seek64Ft will be called instead. If the 64-bit callback is not registered, file with sizes over 2GB will not be supported.
+
+**Parameters**
+
+| Name  | Description  | 
+|---|---|
+|hFile| File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of file to be seeked.|
+|iOffset| Seek destination, as an offset in bytes from iOrigin|
+|iOrigin |Origin for iOff set. See NEXFileSeekOrigin for possible values.|
+|pUserData| The user data passed when the callback was originally registered.|
+
+**Returns**
+
+New offset from beginning of file, or -1 if an error occurred.
+
+#### typedef long long(∗NEXPLAYERRemoteFile_SizeFt) (NEXFileHandle hFile, void ∗pUserData)
 
 Remote File I/O callback for getting the size of a file.
 
 This is one of several callback functions that can be registered using the Remote File I/O Interface in order to replace
 the system calls normally used for opening and accessing files.
 
-This callback should return the size of the filewithoutmodifying the position to which the file has been seeked (if
+This callback should return the size of the file without modifying the position to which the file has been seeked (if
 the seek location must be moved to determine the size, this function should move it back afterwards).
 
 **Parameters**
 
 | Name  | Description  | 
 |---|---|
-|hFile | File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of the ile for which the size should be retrieved.|
+|hFile | File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of the file for which the size should be retrieved.|
 |pUserData| The user data passed when the callback was originally registered.|
 
 **Returns**
@@ -437,7 +436,7 @@ the seek location must be moved to determine the size, this function should move
 The actual number of bytes written, or -1 if an error occurred.
 ```
 
-#### typedef ssize_t( ∗ NEXPLAYERRemoteFile_WriteFt)(NEXFileHandle hFile, char ∗pBuf, size_t dwSize, void ∗pUserData)
+#### typedef ssize_t(∗NEXPLAYERRemoteFile_WriteFt) (NEXFileHandle hFile, char ∗pBuf, size_t dwSize, void ∗pUserData)
 
 Remote File I/O callback for writing to a file.
 
@@ -449,7 +448,7 @@ This is one of several callback functions that can be registered using the Remot
 |---|---|
 |hFile| File handle (as returned by NEXPLAYERRemoteFile_OpenFt) of file to be written to.
 |pBuf |The data to write to file|
-|dwSize| The number ofbytesto write to file|
+|dwSize| The number of bytes to write to file|
 |pUserData| The user data passed when the callback was originally registered.|
 
 **Returns**
@@ -477,9 +476,9 @@ Callback function for descrambling HLS-TS encrypted content (HTTP Live Streaming
 The callback should return zero if the data was successfully descrambled. In the case of an error, it should
 return -1.
 
-#### void NEXPLAYEREngine_registerGetPDBlockCallBackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERGetPDBlockCallbackFunc pGetPDBlockCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerGetPDBlockCallBackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERGetPDBlockCallbackFunc pGetPDBlockCallbackFunc, void ∗ pUserData )
 
-Registers a callback function to receive a pointer for Progressive Download(PD) block and block’s size. PD data is decrypted using this information.
+Registers a callback function to receive a pointer for Progressive Download (PD) block and block’s size. PD data is decrypted using this information.
 
 **Parameters**
 
@@ -493,7 +492,7 @@ Registers a callback function to receive a pointer for Progressive Download(PD) 
 
 - NEXPLAYERGetPDBlockCallbackFunc
 
-#### void NEXPLAYEREngine_registerGetPlaylistInfoFuncCallBackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERGetPlaylistInfoCallbackFunc pGetPlaylistInfoCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerGetPlaylistInfoFuncCallBackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERGetPlaylistInfoCallbackFunc pGetPlaylistInfoCallbackFunc, void ∗ pUserData )
 
 Registers a callback function to receive HLS playlist content every time a new HLS playlist is received.
 
@@ -509,7 +508,7 @@ Registers a callback function to receive HLS playlist content every time a new H
 
 - NEXPLAYERGetPlaylistInfoCallbackFunc
 
-#### void NEXPLAYEREngine_registerHLSAES128DescrambleCallbackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSAES128DescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerHLSAES128DescrambleCallbackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSAES128DescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
 
 Registers a callback function to handle AES128 encrypted HLS content.
 
@@ -525,8 +524,7 @@ Registers a callback function to handle AES128 encrypted HLS content.
 
 - NEXPLAYERHLSAES128DescrambleCallbackFunc
 
-#### void NEXPLAYEREngine_registerHLSAES128DescrambleWithByteRangeCallbackFunc ( NEXPLAYERENGINE_handle
-hEngine, NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerHLSAES128DescrambleWithByteRangeCallbackFunc (NEXPLAYERENGINE_handlehEngine, NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
 
 Registers a callback function to handle AES128 encrypted HLS content with ByteRange.
 
@@ -542,7 +540,7 @@ Registers a callback function to handle AES128 encrypted HLS content with ByteRa
 
 - NEXPLAYERHLSAES128DescrambleWithByteRangeCallbackFunc
 
-#### void NEXPLAYEREngine_registerHLSIsSupportKeyCallbackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSIsSupportKeyCallbackFunc pHLSIsSupportKeyCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerHLSIsSupportKeyCallbackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSIsSupportKeyCallbackFunc pHLSIsSupportKeyCallbackFunc, void ∗ pUserData )
 Registers a callback function that verifies whether or not a key attribute is supported by the DRM module.
 
 **Parameters**
@@ -553,7 +551,7 @@ Registers a callback function that verifies whether or not a key attribute is su
 |pHLSIsSupportKey|Callback function to register.|
 |pUserData| Additional data to pass to the callback function when it is called.|
 
-#### void NEXPLAYEREngine_registerHLSTSDescrambleCallBackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSTSDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerHLSTSDescrambleCallBackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERHLSTSDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
 
 Registers an HLS/TS descrambling callback function.
 
@@ -569,7 +567,7 @@ Registers an HLS/TS descrambling callback function.
 
 - NEXPLAYERHLSTSDescrambleCallbackFunc
 
-#### void NEXPLAYEREngine_registerMPDDescrambleCallbackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERMPDDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerMPDDescrambleCallbackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERMPDDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
 
 Registers a callback function to handle encrypted manifests or playlists in content.
 
@@ -585,9 +583,9 @@ Registers a callback function to handle encrypted manifests or playlists in cont
 
 - NEXPLAYERMPDDescrambleCallbackFunc
 
-#### void NEXPLAYEREngine_registerPDEnvelopHeaderParsingCallBackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERPDEnvelopHeaderParsingCallbackFunc pPDEnvelopHeaderParsingCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerPDEnvelopHeaderParsingCallBackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERPDEnvelopHeaderParsingCallbackFunc pPDEnvelopHeaderParsingCallbackFunc, void ∗ pUserData )
 
-Registers a callback function to receive a pointer of Progressive Download(PD) Header and header’s size. Header data is parsed using this information.
+Registers a callback function to receive a pointer of Progressive Download (PD) Header and header’s size. Header data is parsed using this information.
 
 **Parameters**
 
@@ -602,7 +600,7 @@ Registers a callback function to receive a pointer of Progressive Download(PD) H
 - NEXPLAYERPDEnvelopHeaderParsingCallbackFunc
 
 
-#### void NEXPLAYEREngine_registerPIFFPlayReadyDescrambleCallBackFunc ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERPiffPlayReadyDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerPIFFPlayReadyDescrambleCallBackFunc (NEXPLAYERENGINE_handle hEngine, NEXPLAYERPiffPlayReadyDescrambleCallbackFunc pDescrambleCallbackFunc, void ∗ pUserData )
 
 Registers a PIFF PlayReady descrambling callback function.
 
@@ -618,7 +616,7 @@ Registers a PIFF PlayReady descrambling callback function.
 
 - NEXPLAYERPiffPlayReadyDescrambleCallbackFunc
 
-#### void NEXPLAYEREngine_registerRemoteFileIOInterface ( NEXPLAYERENGINE_handle hEngine, NEXPLAYERRemoteFileIOInterface ∗ pRemoteFileIOInterface, void ∗ pUserData )
+#### void NEXPLAYEREngine_registerRemoteFileIOInterface (NEXPLAYERENGINE_handle hEngine, NEXPLAYERRemoteFileIOInterface ∗ pRemoteFileIOInterface, void ∗ pUserData )
 
 Registers a set of callback functions for Remote File I/O.
 
@@ -658,7 +656,7 @@ The designated initializer.
 
 #### - (void) setMultiChannelEnabled: (BOOL)enableforCodecType:(NXCodecID) codecType
 
-This method sets whether or not to have more than 2 audio channels (i.e. 5.1 channels), if the decoder of the codec type supports multi-channel output. The value of the enable argument(YES or NO) affects the value of NexAudioPostProcessingParams::inChannels in ’params’ of audioAdapter:shouldPostProcessWithParams:.
+This method sets whether or not to have more than 2 audio channels (i.e. 5.1 channels), if the decoder of the codec type supports multi-channel output. The value of the enable argument (YES or NO) affects the value of NexAudioPostProcessingParams::inChannels in ’params’ of audioAdapter:shouldPostProcessWithParams:.
 
 | Name  | Description  | 
 |---|---|
@@ -688,7 +686,7 @@ Called to request the delegate to perform post-processing, if audioAdapterShould
 
 **Returns**
 
-The length of output stored in the buffer pointed bypBuffer, inbytes.
+The length of output stored in the buffer pointed by pBuffer, in bytes.
 
 #### - (BOOL) audioAdapter: (NexAudioPostProcessingAdapter ∗) adapter shouldPostProcessWithParams:(NexAudioPostProcessingParams) params
 
@@ -819,7 +817,7 @@ This class represents data of decoded video picture.
 **Properties**
 
 - `BOOL isRawbits`
-    This property determines whether or not the video picture is inrawbitsproperty orpixelBufferproperty.
+    This property determines whether or not the video picture is in raw bits property or pixelBuffer property.
 - `CVPixelBufferRef pixelBuffer`
     This property contains the information of a decoded video picture inCVPixelBufferReftype.
 - `NexVideoRawBits rawbits`
@@ -835,11 +833,11 @@ YES if the video picture can be retrieved with rawbits property. NO if the video
 
 This property contains the information of a decoded video picture in CVPixelBufferRef type.
 
-Valid only if isRawbits is NO.
+Valid only if is Rawbits is NO.
 
 #### - (NexVideoRawBits) rawbits [read], [write], [nonatomic], [assign]
 
-This property contains the information of a decoded video picture in NexVideoRawBits type. Valid only if isRawbts is YES.
+This property contains the information of a decoded video picture in NexVideoRawBits type. Valid only if is Rawbits is YES.
 
 ### NexVideoTextureReceiver Class Reference
 
@@ -895,7 +893,7 @@ See NXPlayer::asfPlayReadyDescrambler for additional information.
 
 Called by the player when there is data available for descrambling.
 
-Note that the descramble method will be called for all data of the requested type (specified by DRMType) even if the data is not encrypted. This is because the player has no way to determine if the data is cleartext or encrypted. This method must make that determination separately.
+Note that the descramble method will be called for all data of the requested type (specified by DRMType) even if the data is not encrypted. This is because the player has no way to determine if the data is clear text or encrypted. This method must make that determination separately.
 
 **Parameters**
 
@@ -905,7 +903,7 @@ Note that the descramble method will be called for all data of the requested typ
 | pInputBuffer | The original (possibly scrambled) input data.|
 | uiInputBufferSize | The size (in bytes) of the input buffer.|
 | pOutputBuffer | The location at which to write the descrambled output data. Note that this may overlap or be the same as the input buffer location.|
-| puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller thanuiInputBufferSize, but not larger.|
+| puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller than uiInputBufferSize, but not larger.|
 | pIVBuffer | The initial vector.|
 | dwIVBufferSize | The size (in bytes) of the initial vector|
 
@@ -932,7 +930,7 @@ This structure is used to store the BoundingBox information which overrides defa
 
 This class retrieves the specified buffer information.
 
-> **Note** Do not create instance of this class directly. Instead, use theNXStatisticsAPI::bufferInfoproperty.
+> **Note** Do not create instance of this class directly. Instead, use the NXStatisticsAPI::bufferInfo property.
  
 **Example code:**
 
@@ -946,7 +944,7 @@ NSUInteger bufferSize = [statisticsAPI.bufferInfo bufferSize: NXBufferInfoMediaT
 
 - NXStatisticsAPI::bufferInfo
 
-#### - (NSUInteger) bufferedSize: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) bufferedSize: (NXBufferInfoMediaType) mediaType
 
 This method gets the buffered size of current media stream.
 
@@ -960,7 +958,7 @@ This method gets the buffered size of current media stream.
 
 The buffered size.
 
-#### - (NXBufferingState) bufferingState: (NXBufferInfoMediaType)mediaType
+#### - (NXBufferingState) bufferingState: (NXBufferInfoMediaType) mediaType
 
 This method gets the buffering state of current media content.
 
@@ -974,7 +972,7 @@ This method gets the buffering state of current media content.
 
 The buffering state of the current media content.
 
-#### - (NSUInteger) bufferRate: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) bufferRate: (NXBufferInfoMediaType) mediaType
 
 This method gets the buffer rate : (Buffered size)∗100 / (Total buffer size), or how much percentage full the current buffer is.
 
@@ -988,7 +986,7 @@ This method gets the buffer rate : (Buffered size)∗100 / (Total buffer size), 
 
 The buffer rate of current media stream.
 
-#### - (NSUInteger) bufferSize: (NXBufferInfoMediaType)mediaType**
+#### - (NSUInteger) bufferSize: (NXBufferInfoMediaType) mediaType
 
 This method gets the buffer size of current media stream.
 
@@ -1002,7 +1000,7 @@ This method gets the buffer size of current media stream.
 
 The buffer size of current media stream.
 
-#### - (NSUInteger) firstFrameCTS: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) firstFrameCTS: (NXBufferInfoMediaType) mediaType
 
 This method gets the CTS of first frame in the buffer.
 
@@ -1014,9 +1012,9 @@ This method gets the CTS of first frame in the buffer.
 
 **Returns**
 
-The CTS of first frame in the buffer. If there is no frame, returnNXBufferInfoValueNotAvailable.
+The CTS of first frame in the buffer. If there is no frame, return NXBufferInfoValueNotAvailable.
 
-#### - (NSUInteger) initialBufferingSize: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) initialBufferingSize: (NXBufferInfoMediaType) mediaType
 
 This method gets the initial buffering size of current media stream.
 
@@ -1030,7 +1028,7 @@ This method gets the initial buffering size of current media stream.
 
 The Initial buffering size of current media stream.
 
-#### - (NSUInteger) initialBufferingTime: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) initialBufferingTime: (NXBufferInfoMediaType) mediaType
 
 This method gets the initial buffering time of current media stream.
 
@@ -1045,7 +1043,7 @@ This method gets the initial buffering time of current media stream.
 The initial buffering time of current media stream.
 
 
-#### - (NSUInteger) lastFrameCTS: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) lastFrameCTS: (NXBufferInfoMediaType) mediaType
 
 This method gets the CTS of last frame in the buffer.
 
@@ -1057,9 +1055,9 @@ This method gets the CTS of last frame in the buffer.
 
 **Returns**
 
-The CTS of last frame in the buffer. If there is no frame, returnNXBufferInfoValueNotAvailable.
+The CTS of last frame in the buffer. If there is no frame, return NXBufferInfoValueNotAvailable.
 
-#### - (NSUInteger) totalDuration: (NXBufferInfoMediaType)mediaType
+#### - (NSUInteger) totalDuration: (NXBufferInfoMediaType) mediaType
 
 This method gets the total duration of frames in the buffer.
 
@@ -1071,9 +1069,9 @@ This method gets the total duration of frames in the buffer.
 
 **Returns**
 
-The total duration of all the frames in the buffer, inmilliseconds.
+The total duration of all the frames in the buffer, in milliseconds.
 
-#### - (NSUInteger) totalFrameCount: (NXBufferInfoMediaType)mediaType**
+#### - (NSUInteger) totalFrameCount: (NXBufferInfoMediaType) mediaType
 
 This method gets the total count of frames in the buffer.
 
@@ -1100,8 +1098,7 @@ Sets the automatic adjustment for the caption position.
 Default value is YES
 
 > **Note**
-In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this prop-
-erty.
+In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 #### - (UIColor∗) backgroundColor [read], [write], [nonatomic], [strong]
 
@@ -1117,13 +1114,13 @@ If the value is `NAN`, background color opacity will be rendered in the default 
 
 > **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
 
-#### - (NXBoundingBox) boundingBox** [read] **,** [write] **,** [nonatomic] **,** [assign]
+#### - (NXBoundingBox) boundingBox ** [read] **, ** [write] **, ** [nonatomic] **, ** [assign]**
 
 Sets the BoundingBox information for captions.
 
-If one of the values isNAN, captions will be rendered in the default content defined area.
+If one of the values is NAN, captions will be rendered in the default content defined area.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 Default value is `NAN` for all the attribute.
 
@@ -1143,7 +1140,7 @@ Available edge styles are defined by the `NXCaptionEdgeStyle` enumeration and in
 - `NXCaptionEdgeStyle_Depressed` Caption text displayed as if pressed or "depressed" into the screen.
 - `NXCaptionEdgeStyle_Uniform` Caption text displayed with a uniform edge effect.
 
-> **Note** In order to an edge style or shadow to be displayed, the propertyshadowColormust be set in addition to setting the `edgeStyle` with this property. If `shadowColor` is `nil`, no edge style will be displayed.
+> **Note** In order to an edge style or shadow to be displayed, the property shadow Color must be set in addition to setting the `edgeStyle` with this property. If `shadowColor` is `nil`, no edge style will be displayed.
 
 **See Also**
 
@@ -1178,7 +1175,7 @@ This property sets the font color opacity.
 
 If the value is NAN, font color opacity will be rendered in the default content defined value or Opaque(100) if it is not defined.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 #### - (NXTriState) fontItalic [read], [write], [nonatomic], [assign]
 
@@ -1188,7 +1185,7 @@ If the value isNXTriState_Default, fontItalic will be rendered in the default co
 
 Default value is NXTriState_Default.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 **See Also**
 
@@ -1208,7 +1205,7 @@ This property sets the font size (in points).
 
 If this value is `NAN`, the caption will be rendered in the default content defined value.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 Default value is NAN.
 
@@ -1216,7 +1213,7 @@ Default value is NAN.
 
 Sets the font size scale as a percentage.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 Default value is 100
 
@@ -1224,12 +1221,12 @@ Default value is 100
 
 Enable/Disable underlined font.
 
-If the value isNXTriState_Default, fontUnderline will be rendered in the default content defined value or
+If the value is NXTriState_Default, fontUnderline will be rendered in the default content defined value or
 non-underline if it is not defined.
 
 Default value is NXTriState_Default.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property. If the edge style is uniform, underline color will be the same as font color
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property. If the edge style is uniform, underline color will be the same as font color
 
 **See Also**
 
@@ -1239,9 +1236,9 @@ NXCaptionAttribute::NXTriState
 
 Sets the horizontal alignment for captions.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
  
-Default value isNXHorizontalAlignment_Default
+Default value is NXHorizontalAlignment_Default
 
 **See Also**
 
@@ -1264,12 +1261,12 @@ This property sets the shadow color opacity.
 
 If the value is NAN, shadow color opacity will be rendered in the default content defined value or Opaque(100) if it is not defined.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 #### - (NXVerticalAlignment) verticalAlignment [read], [write], [nonatomic], [assign]
 Sets the vertical alignment for captions.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 Default value is `NXVerticalAlignment_Default`
 
@@ -1283,14 +1280,14 @@ This property sets the window color.
 
 If the value isnil, the window color will be rendered in the default content defined value or transparent if it is not defined.
 
-> **Note** In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note** In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 #### - (CGFloat) windowColorOpacity [read], [write], [nonatomic], [assign]
 This property sets the window color opacity.
 
 If the value is NAN, window color opacity will be rendered in the default content defined value or Opaque(100) if it is not defined.
 
-> **Note**In case of CEA608 caption, NXCaptionView::useCEA608CustomView should be set to YES to use this property.
+> **Note**In case of CEA608 caption, NXCaptionView::use CEA608CustomView should be set to YES to use this property.
 
 ### NXCaptionRenderController Class Reference
 
@@ -1320,13 +1317,13 @@ Represents a complete CEA 608 caption display.
 
 CEA 608 closed captions, unlike other subtitle formats, do not merely include text captions associated with the playing content but also support numerous other attributes including caption color (text and background), text effects (italics, flashing characters, and underlining), and text positioning on the screen as well as supporting an animated "rolling up" display of the captions.
 
-While NexPlayer handles and displays these closed captions according to the specification in `NXCEA608CaptionView` if they are turned on using NXPlayer::selectedCEA608Channel, this interface can also be used to handle and display the captions independently if another view is provided.
+While NexPlayer handles and displays these closed captions according to the specification in `NXCEA608CaptionView` if they are turned on using NXPlayer::selected CEA608Channel, this interface can also be used to handle and display the captions independently if another view is provided.
 
 #### - (void) drawCaptionsInRect: (CGRect) rect inContext:(CGContextRef) cgx redrawTime:(unsigned int ∗) redrawTime
 
 Draws the captions represented by this object in the specified rectangle.
 
-This generally should be called from withindrawRectmethod of aUIViewsubclass.
+This generally should be called from within drawRect method of aUIView subclass.
 
 **Parameters**
 
@@ -1340,14 +1337,14 @@ This generally should be called from withindrawRectmethod of aUIViewsubclass.
 
 Gets information on the character and attributes of a caption cell.
 
-This method gets the caption cell information for CEA 608 close captions for display. These captions are generally displayed by NexPlayer in the NXCEA608CaptionView, and the captions to display are chosen by setting the channel to receive captions with NXPlayer::selectedCEA608Channel.
+This method gets the caption cell information for CEA 608 close captions for display. These captions are generally displayed by NexPlayer in the NXCEA608CaptionView, and the captions to display are chosen by setting the channel to receive captions with NXPlayer::selected CEA608Channel.
 
 **Parameters**
 
 | Name  | Description  | 
 |---|---|
 | cellInfo | The CEA 608 closed caption information to be displayed.|
-| size | The size of the caption cell, namely sizeof(NXCEA608CellInfo)|
+| size | The size of the caption cell, namely size of (NXCEA608CellInfo)|
 | row | The row position of the caption cell. This will be an integer from 0 to 14, or -1 for a row that has "rolled-off" the screen.|
 | col | The column position of the caption cell. This will be an integer from 0 to 31.|
 
@@ -1378,7 +1375,7 @@ NXCEA608Color for supported colors.
 
 Gets the recommended UIColor to use for the specified NXCEA608Color, in a foreground color context.
 
-Based on the color specified byNXCEA608Color, this determines the UIColor to use to display the text of captions in the cell. Note that text colors do not include transparency, unlike the background colors of captions.
+Based on the color specified by NXCEA608Color, this determines the UIColor to use to display the text of captions in the cell. Note that text colors do not include transparency, unlike the background colors of captions.
 
 **Parameters**
 
@@ -1416,11 +1413,11 @@ When closed captions are to be displayed "rolling up" on the screen, this value 
 
 The number of rows (2-4) of roll-up captioning, or zero if not in roll-up captioning mode.
 
-For CEA 608 closed captions, a roll-up display of captions is supported. If these captions are to roll up on the screen, captions will always begin by appearing in the base row indicated byrollupBaseRow, and will then roll up for the number of row set here.
+For CEA 608 closed captions, a roll-up display of captions is supported. If these captions are to roll up on the screen, captions will always begin by appearing in the base row indicated by rollupBaseRow, and will then roll up for the number of row set here.
 
 This property indicates the number of rows to be rolled up and is a number between 2 and 4.
 
-This property as well asrollupBaseRow can be used to position the rows rolling up, and the property `timeSinceRollupStart` should be used to help animate the roll-up display, if animated independently.
+This property as well as rollupBaseRow can be used to position the rows rolling up, and the property `timeSinceRollupStart` should be used to help animate the roll-up display, if animated independently.
 
 #### - (unsigned long) timeSinceRollupStart [read], [nonatomic], [assign]
 
@@ -1486,17 +1483,17 @@ This structure is used by to store CEA 608 closed caption cell information and i
 
 Information about specific multimedia content.
 
-Information about the currently loaded content is available as anNXContentInfoobject via NXPlayer::contentInfo.
+Information about the currently loaded content is available as an NXContentInfo object via NXPlayer::contentInfo.
 
 **Class Methods**
 
-- `(NSString∗) + stringFromAudioCodecID:` Convenience method that returns astringrepresentation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for audio codec IDs.
-- `(NSString∗) + stringFromVideoCodecID:` Convenience method that returns atringrepresentation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for video codec IDs.
-- `(NSString∗) + stringFromFileFormat:` Convenience method that returns astringrepresentation of an NXFileFormat, useful for diagnostic and log output, and for displaying to the user.
-- `(NSString∗) + stringFromCaptionType:` Convenience method that returns astringrepresentation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for caption types.
+- `(NSString∗) + stringFromAudioCodecID:` Convenience method that returns a string representation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for audio codec IDs.
+- `(NSString∗) + stringFromVideoCodecID:` Convenience method that returns a string representation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for video codec IDs.
+- `(NSString∗) + stringFromFileFormat:` Convenience method that returns a string representation of an NXFileFormat, useful for diagnostic and log output, and for displaying to the user.
+- `(NSString∗) + stringFromCaptionType:` Convenience method that returns a string representation of an NXCodecID, useful for diagnostic and log output, and for displaying to the user. Use this for caption types.
 
 #### - (NSString∗) infoAsMultiLineString
-Formats the content information as a multi-linestringthat can be displayed to the user or logged for diagnostic information.
+Formats the content information as a multi-line string that can be displayed to the user or logged for diagnostic information.
 
 The string includes all of the details included in NXContentInfo, as well as details on all of the streams available within.
 
@@ -1542,7 +1539,7 @@ In the current version, only the types listed above will be recognized and if ca
 
 Furthermore, if an external subtitle file is included in addition to another format, this member will be set to the external subtitle type (SMI or SRT).
 
-Since CEA 608 and CEA 708 closed captions cannot be identified until decoding begins,captionTypewill also
+Since CEA 608 and CEA 708 closed captions cannot be identified until decoding begins, caption Type will also
 be set to `NXTypes::(NXCodecID)NXCodecID_UNKNOWN` when they are included in content.
 
 #### - (NXMediaStreamInfo∗) currentAudioStream [read], [write], [nonatomic], [strong]
@@ -1583,15 +1580,15 @@ NXFileFormat for a list of possible values.
 
 YES if the content includes audio.
 
-In some cases, where the content includes audio in a format that NexPlayer doesn’t recognize, this may beNO
-even for content with audio. If this isYES, the content includes audio, and NexPlayer is capable of playing back that audio.
+In some cases, where the content includes audio in a format that NexPlayer doesn’t recognize, this may be NO
+even for content with audio. If this is YES, the content includes audio, and NexPlayer is capable of playing back that audio.
 
 #### - (BOOL) hasVideo [read], [write], [nonatomic], [assign]
 
 YES if the content includes video.
 
-In some cases, where the content includes video in a format that NexPlayer doesn’t recognize, this may beNO
-even for content with video. If this isYES, the content includes video, and NexPlayer is capable of playing back that video.
+In some cases, where the content includes video in a format that NexPlayer doesn’t recognize, this may be NO
+even for content with video. If this is YES, the content includes video, and NexPlayer is capable of playing back that video.
 
 #### - (BOOL) junkContent [read], [write], [nonatomic], [assign]
 
@@ -1643,7 +1640,7 @@ This is the frame rate specified in the content.
 
 If the device isn’t powerful enough to decode and display the video stream in real-time, the actual number of displayed frames may be lower than this value.
 
-For the actual number of displayed frames, see NXPlayer::videoPerformanceStats
+For the actual number of displayed frames, see NXPlayer::video PerformanceStats
 
 ### NXDashDRMSessionDelegate Protocol Reference
 

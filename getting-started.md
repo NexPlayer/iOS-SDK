@@ -49,7 +49,7 @@ Make sure you edit the header file to indicate that this implements the NXPlayer
 }
 ```
 
-And then create an instance of yourPlayerControllerwhen your application starts, and add its view to your
+And then create an instance of your PlayerController when your application starts, and add its view to your
 window:
 
 ```objc
@@ -70,7 +70,7 @@ That’s all there is to it; just make sure your HLS media URL, "http://your.med
 NexPlayer generates various events to notify the application of changes in the player’s status in real time. This allows the application to update the user interface in an appropriate manner, detect the end of the content, and respond to errors.
 
 Events are handled through the NXPlayerDelegate protocol. You should create an object which conforms to this
-protocol and assign it to thedelegateproperty of your NXPlayer instance.
+protocol and assign it to the delegate property of your NXPlayer instance.
 
 See NXPlayerDelegate for more information on handling events.
 
@@ -181,7 +181,7 @@ NXRemoteFileIOInterface for details
 
 - `Member [NXHTTPCredentialsProvider-p HTTPCredentialHeaders]` 
 
- This only handled the HTTP 401 case; please use HTTPCredentialHeadersForHTTPStatusCode:response-
+ This only handled the HTTP 401 case; please use HTTPCredentialHeaders for HTTPStatusCode:response-
 Data: instead.
 
 - `Member [NXPlayer logging]`

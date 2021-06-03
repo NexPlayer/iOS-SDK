@@ -3502,7 +3502,7 @@ If there is an object assigned to this property, the player will call methods of
 
 An object that conforms to `NXHLSTSDescrambler` that will handle descrambling of HTTP Live Streaming TS segments.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble HTTP Live Streaming TS segments before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3546,7 +3546,7 @@ Check whether AirPlay is active.
 
 An object that conforms to NXManifestAndPlaylistDescrambler that will handle manifest and playlist descrambling.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble manifests and/or playlists before NexPlayer processes them, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3562,7 +3562,7 @@ type.
 
 An object that conforms to `NXPDBlockDescrambler` that will handle descrambling of Progressive Download content.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble blocks of Progressive Download before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3583,7 +3583,7 @@ An object that conforms to `NXPiffPlayReadyDescrambler` that will handle descram
 
 **Note**
 
-Like a delegate, this isnot retained.
+Like a delegate, this is not retained.
 
 If your application needs to descramble Piff PlayReady content before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3602,7 +3602,7 @@ If there is an object assigned to this property, the player will call methods of
 
 An object that conforms to `NXRemoteFileIOInterface` that will handle file input and output.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your are playing back local content that is not available via the standard operating system file APIs, you can provide your own replacement functions which NexPlayer will use for opening and reading your file.
 
@@ -3645,7 +3645,7 @@ This property provides the current name of the SDK in use, which may be helpful 
 
 The current seekable length.
 
-If content is seekable, this property provides the length of the portion of the content that is seekable. While this will be the entire length of a local seekable file, or the downloaded portion of a progressively downloaded file, this value may also be used withseekBaseto determine which portion of a live stream is within the seekable window.
+If content is seekable, this property provides the length of the portion of the content that is seekable. While this will be the entire length of a local seekable file, or the downloaded portion of a progressively downloaded file, this value may also be used with seekBaseto determine which portion of a live stream is within the seekable window.
 
 For more information, please see the introductory section on server-side timeshifting.
 
@@ -3831,11 +3831,11 @@ playback.
 **Warning**
 
 To dynamically change the minimum and maximum bandwidth in the middle of playback, please use this
-method. To take effect, this method should be called after callingopen. Note that the minimum, and maximum bandwith can also be set before play begins by setting the properties,NXPropertyMinBW, with changeMinBandwidth. and NXPropertyMaxBW, with changeMaxBandwidth.
+method. To take effect, this method should be called after calling open. Note that the minimum, and maximum bandwith can also be set before play begins by setting the properties, NXPropertyMinBW, with changeMinBandwidth. and NXPropertyMaxBW, with changeMaxBandwidth.
 
 This applies in cases where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the minimum, and over the maximum bandwidth when determining whether a track change is appropriate, even if it detects less, and more bandwidth available.
 
-Note that to remove a minimum and maximum that has been set with this method (so that NexPlayer will again consider all tracks regardless of bandwidth), set both ofmin, andmaxto0x00000000.
+Note that to remove a minimum and maximum that has been set with this method (so that NexPlayer will again consider all tracks regardless of bandwidth), set both of min, and max to 0x00000000.
 
 **Parameters**
 
@@ -3852,7 +3852,7 @@ NXErrorNone for success, or a non-zero NexPlayer error code in the event of a fa
 
 This method sets the maximum bandwidth for streaming content in NexPlayer, dynamically during playback.
 
-> **Warning** To dynamically change the maximum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after callingopen. Note that the maximum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMaxBW`, with `changeMaxBandwidth`.
+> **Warning** To dynamically change the maximum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after calling open. Note that the maximum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMaxBW`, with `changeMaxBandwidth`.
 
 This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track over the maximum bandwidth when determining whether a track change is appropriate, even if it detects more bandwidth available.
 
@@ -3862,7 +3862,7 @@ Note that to remove a maximum that has been set with this method (so that NexPla
 
 | Name  | Description  | 
 |---|---|
-| max | Maximum bandwidth in kbps (kilobits per second). To reset to no maximum bandwidth, set max= 0x00000000. |
+| max | Maximum bandwidth in kbps (kilo bits per second). To reset to no maximum bandwidth, set max= 0x00000000. |
 
 **Returns**
 
@@ -3874,7 +3874,7 @@ This method sets the minimum bandwidth for streaming content in NexPlayer, dynam
 
 **Warning**
 
-To dynamically change the minimum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after callingopen. Note that the minimum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMinBW`, with `changeMinBandwidth`.
+To dynamically change the minimum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after callin gopen. Note that the minimum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMinBW`, with `changeMinBandwidth`.
 
 This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the minimum bandwidth when determining whether a track change is appropriate, even if it detects less bandwidth available.
 
@@ -3884,7 +3884,7 @@ Note that to remove a minimum that has been set with this method (so that NexPla
 
 | Name  | Description  | 
 |---|---|
-| min | Minimum bandwidth in kbps (kilobits per second). To reset to no minimum bandwidth, set min= 0x00000000.|
+| min | Minimum bandwidth in kbps (kilo bits per second). To reset to no minimum bandwidth, set min= 0x00000000.|
 
 **Returns**
 
@@ -3896,9 +3896,9 @@ This method sets whether or not ABR methods should be used.
 
 In general, NexPlayer plays streaming content, including content with multiple tracks at different bandwidths such as HLS, by choosing the optimal track according to network conditions and device performance. This is the default behavior of NexPlayer and this occurs when ABR is enabled (or calling `NXPlayerABRController::setABREnabled` with the parameter enabled set to YES).
 
-However, there may be instances when an application may want to set limits on which tracks should be selected and played by NexPlayer in order to provide a specific user experience, and to force NexPlayerto stay on a particular bandwidth track, regardless of network conditions. In cases like this, in order to keep playing a track at a target bandwidth (set with `NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption:`) this method must be called to disable NexPlayer’s ABR behavior (with the parameter enabled set to NO).
+However, there may be instances when an application may want to set limits on which tracks should be selected and played by NexPlayer in order to provide a specific user experience, and to force NexPlayer to stay on a particular bandwidth track, regardless of network conditions. In cases like this, in order to keep playing a track at a target bandwidth (set with `NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption:`) this method must be called to disable NexPlayer’s ABR behavior (with the parameter enabled set to NO).
 
-> **Warning** This methodmustbe called withenabledset to NO before callingNXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption: if the application should continue playing the target bandwidth regardless of network conditions.
+> **Warning** This method must be called with enabled set to NO before calling NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption: if the application should continue playing the target bandwidth regardless of network conditions.
 
 **Parameters**
 
@@ -3926,8 +3926,8 @@ This applies in cases with content where there are multiple tracks at different 
 | Name  | Description  | 
 |---|---|
 | targetBwBps | Target bandwidth in bps (bits per second). |
-| segOption | One of the followingNexBandwidthSegmentOptionvalues, indicating how to handle buffered content when the track changes: <br> - **NexBandwidthSegmentOptionDefault = 0** : Default (NexPlayer will decide betweenNexBandwidthSegmentOptionQuickMix(changing tracks quickly) and NexBandwidthSegmentOptionLateMix(playing buffered content and changing tracks more slowly)). <br> -**NexBandwidthSegmentOptionQuickMix = 1** : NexPlayer will clear the buffer as much as possible and will start to download new track so user can see a new track faster. <br>- **NexBandwidthSegmentOptionLateMix = 2** : NexPlayer will preserve and play the content segments already buffered and will download a new track.
-| targetOption | How to use the target bandwidth value set. One of the followingNexBandwidthTargetOptionoptions: <br>- **NexBandwidthTargetOptionDefault = 0** : Default target option (NexBandwidthTargetOptionBelow). <br>- **NexBandwidthTargetOptionBelow = 1** : Select a track with a bandwidth below the target bandwidth. <br>- **NexBandwidthTargetOptionAbove = 2** : Select a track with a bandwidth above the target bandwidth. <br>- **NexBandwidthTargetOptionMatch = 3** : Select the track that has a bandwidth that matches the target set; otherwise send an error and no new target bandwidth is selected.
+| segOption | One of the following NexBandwidthSegmentOption values, indicating how to handle buffered content when the track changes: <br> - **NexBandwidthSegmentOptionDefault = 0** : Default (NexPlayer will decide between NexBandwidthSegmentOptionQuickMix (changing tracks quickly) and NexBandwidthSegmentOptionLateMix (playing buffered content and changing tracks more slowly)). <br> -**NexBandwidthSegmentOptionQuickMix = 1** : NexPlayer will clear the buffer as much as possible and will start to download new track so user can see a new track faster. <br>- **NexBandwidthSegmentOptionLateMix = 2** : NexPlayer will preserve and play the content segments already buffered and will download a new track.
+| targetOption | How to use the target bandwidth value set. One of the following NexBandwidthTargetOption options: <br>- **NexBandwidthTargetOptionDefault = 0** : Default target option (NexBandwidthTargetOptionBelow). <br>- **NexBandwidthTargetOptionBelow = 1** : Select a track with a bandwidth below the target bandwidth. <br>- **NexBandwidthTargetOptionAbove = 2** : Select a track with a bandwidth above the target bandwidth. <br>- **NexBandwidthTargetOptionMatch = 3** : Select the track that has a bandwidth that matches the target set; otherwise send an error and no new target bandwidth is selected.
 
 > **Warning** This method should be called after open: (NXPlayer).
 
@@ -3969,7 +3969,7 @@ Whenever CEA 608 closed caption information is updated and new caption informati
 
 For more information about CEA 608 closed captions, please see `NXCEA608Caption`.
 
-#### - (void) nexPlayer: (NXPlayer ∗)nxplayerupdatedCaption:(NXCEA608Caption ∗ )caption forCEA608Channel:(NXCEA608Channel)channel
+#### (void) nexPlayer: (NXPlayer ∗)nxplayerupdatedCaption:(NXCEA608Caption ∗ )caption forCEA608Channel:(NXCEA608Channel)channel
 
 This method receives the updated caption information for content with CEA 608 closed captions.
 
@@ -3990,7 +3990,7 @@ It will be used each time information about the playing content changes, for exa
 
 For more details about the recorded information of the current content, please see NXContentInfo.
 
-#### - (void) nexPlayerDidUpdateContentInfo: (id)nxplayer
+#### (void) nexPlayerDidUpdateContentInfo: (id)nxplayer
 
 Sent when content information is updated.
 
@@ -4041,7 +4041,7 @@ Use the general event handling method if you need to respond to a large group of
 }
 ```
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerbufferingProgress:(NSInteger)percent
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerbufferingProgress:(NSInteger)percent
 
 Buffering has progressed and the percentage complete has changed.
 
@@ -4056,7 +4056,7 @@ Buffering has progressed and the percentage complete has changed.
 
 - `nexPlayerDidBeginBuffering:` for more information
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdMediaOnOffWithResult:(NXError)result mediaType:(NXMediaType)mediaTypebOnOff:(BOOL)bOnOff
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdMediaOnOffWithResult:(NXError)result mediaType:(NXMediaType)mediaTypebOnOff:(BOOL)bOnOff
 
 An asynchronous media on/off operation has completed.
 
@@ -4075,7 +4075,7 @@ completed.
 
 - `setMediaOnOff:mediaType: (NXPlayer)`
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdOpenWithResult:(NXError)result playbackType:(NXPlaybackType)type
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdOpenWithResult:(NXError)result playbackType:(NXPlaybackType)type
 
 An asynchronous open operation has completed.
 

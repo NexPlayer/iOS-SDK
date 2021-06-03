@@ -273,14 +273,14 @@ Set a low latency buffer option.
 Sets the range where NexPlayer will seek to a Random Access
 point rather than the exact target position provided in the seekToAdjustedTime API.
 
-> **Warning** This property is only valid when the second parameter,exact, in the seekToAdjustedTime API is true.
+> **Warning** This property is only valid when the second parameter, exact, in the seekToAdjustedTime API is true.
 
 Setting this value is a kind of option for the seekToAdjustedTime API and can be used to minimize the time required to seek in content by taking advantage of Random Access points in the content. A Random Access point is a specific position that the parser is allowed to seek to directly.
 
 This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equalsmsec(milliseconds), the first parameter in the seek() API.
-If theexactparameter, the second parameter in the seekToAdjustedTime API, istrueand the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If theexactparameter is set totrueand the difference between a Random Access point and the target position is beyond this range,seekwill give up the accurate target point and will instead seek to and play from the Random Access point.
+If the exact parameter, the second parameter in the seekToAdjustedTime API, istrueand the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
 
-For example, if NexPlayer is seeking to 10000 ms exactly (exact=true) and there is a Random Access point at 7000 ms, if this property is set to less than 3000 ms, the player will ignore the exact target value and will instead play from 7000 ms. On the other hand, if this property is set to more than 3000 ms, then NexPlayer will seek exactly to 10000 ms and begin playback.
+For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and there is a Random Access point at 7000 ms, if this property is set to less than 3000 ms, the player will ignore the exact target value and will instead play from 7000 ms. On the other hand, if this property is set to more than 3000 ms, then NexPlayer will seek exactly to 10000 ms and begin playback.
 
 > **Warning** Please remember that in order to seek to a target position, audio or video frames have to be decoded. If too large of a value is set here, it may cause the seek process to consume an excessive amount of time especially in high resolution video content.
 
@@ -415,7 +415,9 @@ If set to 1, this enables MS Smooth Streaming support.
  - Type: boolean
  - Default: 1
  
-### NXPropertyAVSyncOffset Adjusts A/V synchronization by ofsetting video relative to audio. Positive values cause the video to play faster than the audio, while negative values cause the audio to play faster than the video. Under normal operation, this can be set to zero, but in some cases where the synchronization is bad in the original content, this can be used to correct for the error.
+### NXPropertyAVSyncOffset 
+
+Adjusts A/V synchronization by ofsetting video relative to audio. Positive values cause the video to play faster than the audio, while negative values cause the audio to play faster than the video. Under normal operation, this can be set to zero, but in some cases where the synchronization is bad in the original content, this can be used to correct for the error.
 
 While A/V synchronization is generally optimized internally by NexPlayer , there may occasionally be devices which need to be offset in order to improve overall A/V synchronization. For examples of how to set AV_SET_OFFSET based on the device in use, please see the Sample Application code as well as the introductory section A/V Synchronization section.
 
@@ -594,10 +596,10 @@ Controls whether the player honors cookies sent by the server.
 
 ### NXPropertySetLiveBackOff 
 
-Sets the SmoothStreamingLiveBackOffproperty when playing Smooth
+Sets the SmoothStreamingLiveBackOff property when playing Smooth
 Streaming content. This property sets the duration of content (closest to live) that cannot yet be accessed or downloaded by the player. It is like setting how long to wait before asking for the latest fragment in a live presentation, and thus basically sets the played "live" point back from the actual live content available on the server.
 
-The end-to-end latency of the player (what is being played "live" in the player compared to what is available live on the server) is at least the duration ofLiveBackOffadded to the duration set forLivePlaybackOffsetwith NXPropertySetLiveBackOffset.
+The end-to-end latency of the player (what is being played "live" in the player compared to what is available live on the server) is at least the duration ofLiveBackOff added to the duration set for LivePlaybackOffset with NXPropertySetLiveBackOffset.
 
 - Type: unsigned int
 - Units:msec
@@ -605,7 +607,7 @@ The end-to-end latency of the player (what is being played "live" in the player 
 
 ### NXPropertySetLiveBackOffset 
 
-Sets the SmoothStreamingLivePlaybackOffsetproperty when playing Smooth Streaming content. This property sets the duration away from the live position to start playback when joining a live presentation when the LiveView option is set to "Recent", but excludes the `LiveBackOff` duration (set by NXPropertySetLiveBackOff).
+Sets the Smooth Streaming LivePlaybackOffset property when playing Smooth Streaming content. This property sets the duration away from the live position to start playback when joining a live presentation when the LiveView option is set to "Recent", but excludes the `LiveBackOff` duration (set by NXPropertySetLiveBackOff).
 
 As a result, live content will be played behind the actual live position by a duration determined by BOTH `LiveBackOff` and the value for `LivePlaybackOffset` set here.
 
@@ -761,9 +763,9 @@ TTML captions in ID3 tag to be displayed instead of the CEA closed captions text
  
 ### NXPropertyPreferLanguage 
 
-Sets the language of both audio and text played in multi-stream content. It can be used to set the preferred language of audio and text streams to be displayed in content,before NexPlayer begins playing content.
+Sets the language of both audio and text played in multi-stream content. It can be used to set the preferred language of audio and text streams to be displayed in content, before NexPlayer begins playing content.
 
-This property should be set by calling setProperty:toValue: (NXPlayer) afterinitand beforeopenis
+This property should be set by calling setProperty:toValue: (NXPlayer) after init and before open is
 called, as demonstrated in the following sample code:
 
 ```
@@ -778,9 +780,9 @@ called, as demonstrated in the following sample code:
 
 ### NXPropertyPreferLanguageAudio 
 
-Sets the language to use for audio in multi-stream content, before content is played. This property can be used to set the preferred language of audio streams to be used in content, beforeNexPlayer begins playing content.
+Sets the language to use for audio in multi-stream content, before content is played. This property can be used to set the preferred language of audio streams to be used in content, before NexPlayer begins playing content.
 
-This property should be set by callingsetProperty:afterinitand beforeopen: (NXPlayer)
+This property should be set by callingsetProperty:after init and before open: (NXPlayer)
 is called.
 
 To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
@@ -835,7 +837,7 @@ When this property is set, NexPlayer selects and starts playing the track in con
 Note that as playback continues, the track played may change as NexPlayer judges all factors that
 influence streaming playback and chooses the best option.
 
-This property should be called afterinitbut before callingopen.
+This property should be called after init but before calling open.
 
 - Type: int
 - Unit: bps (bits per second)
@@ -971,8 +973,8 @@ This property sets whether CEA 608 closed captions should be rendered in caption
 - Type: boolean
 - Default: 0
 - Values:
- - **0:** Render CEA 608 closed captions incaptionmode.
- - **1:** Render CEA 608 closed captions intextmode.
+ - **0:** Render CEA 608 closed captions in caption mode.
+ - **1:** Render CEA 608 closed captions in text mode.
 
 ### Timed Metadata Keys
 
@@ -1097,7 +1099,7 @@ For live streams where duration of content cannot be determined, this type can b
 
 - typedef NSUInteger NXDuration
  
- Represents the duration of the content as a span of time inmilliseconds.
+ Represents the duration of the content as a span of time in milliseconds.
 
 - typedef void∗NXFileHandle
 
@@ -1131,7 +1133,7 @@ For live streams where duration of content cannot be determined, this type can b
 
 ### NXBufferInfoMediaType
 
-This enumeration defines the possible stream type forNXBufferInfoMediaType.
+This enumeration defines the possible stream type for NXBufferInfoMediaType.
  
 ```
 enum NXBufferInfoMediaType { 
@@ -1144,7 +1146,7 @@ enum NXBufferInfoMediaType {
 
 ### NXBufferingState
 
-This enumeration defines the possible buffering state forNXBufferingState.
+This enumeration defines the possible buffering state for NXBufferingState.
 
 
 ```
@@ -1778,9 +1780,9 @@ typedef struct NexAudioPostProcessingParams NexAudioPostProcessingParams
 
 ### NEXFileHandle
 
-File handle used inRemote File I/Ocallbacks.
+File handle used in Remote File I/O callbacks.
 
-This is the file handle used in calls to the variousRemote File I/Ocallback functions. This value is returned by the file-open callback, and can be any value that the remote file callbacks can use to uniquely identify the open file instance.
+This is the file handle used in calls to the various Remote File I/O callback functions. This value is returned by the file-open callback, and can be any value that the remote file callbacks can use to uniquely identify the open file instance.
 
 ```
 typedef void∗ NEXFileHandle
@@ -1887,7 +1889,7 @@ typedef enum NXFileFormat_ NXFileFormat
 
 Opaque file handle.
 
-This is an arbitrary value used to identify files in calls toNXRemoteFileIOInterfacemethods. The meaning of this is unique to a given implementation ofNXRemoteFileIOInterface, and return values from different implementations should not be mixed.
+This is an arbitrary value used to identify files in calls to NXRemoteFileIOInterfacemethods. The meaning of this is unique to a given implementation of NXRemoteFileIOInterface, and return values from different implementations should not be mixed.
 
 ```
 typedef void ∗ NXFileHandle
@@ -1901,7 +1903,7 @@ typedef void ∗ NXFileHandle
 
 Mode for opening a file.
 
-Identifies different methods for opening or creating a file. This is is passed to implementations of theNXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
+Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
 
 ```
 typedef enum NXFileMode_ NXFileMode
@@ -1915,7 +1917,7 @@ typedef enum NXFileMode_ NXFileMode
 
 Origin when seeking within a file.
 
-Identifies different origins for seeking within a file. This is is passed to implementations of theNXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
+Identifies different origins for seeking within a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
 
 ```
 typedef enum NXFileSeekOrigin_ NXFileSeekOrigin
@@ -1969,7 +1971,7 @@ File open mode.
 
 This is passed by NexPlayer in calls to the `NEXPLAYERRemoteFile_OpenFt` callback.
 
-This is a bitfield, so the constants can be combined with the bitwise-or operator.
+This is a bit field, so the constants can be combined with the bitwise-or operator.
 
 ```
 // Open file for writing; create if it doesn’t exist
@@ -2070,7 +2072,7 @@ This enumeration defines the possible buffering state forNXBufferingState.
 
 CEA 608 Channel IDs. These are possible values for `NXPlayer::selectedCEA608Channel`.
 
-They set the channel from which CEA 608 closed captions will be received. While there are four channels to receive caption information from the NTSC line 21 fields, as channels 1 and 2 share field 1 and channels 3 and 4 share field 2, the most common channels used to receive captions are Channels 1 and 3. These channels can represent the same information in different languages and are often intended to be selected by the user from the application.
+They set the channel from which CEA 608 closed captions will be received. While there are four channels to receive caption information from the NTSC line 21 fields, as channels 1 and 2 share field 1 and channels 3 and 4 share field 2, the most common channels used to receive captions are channels 1 and 3. These channels can represent the same information in different languages and are often intended to be selected by the user from the application.
 
 **Enumerator**
 
@@ -2260,7 +2262,7 @@ Origin when seeking within a file. Identifies different origins for seeking with
 
 ### enum NXKeepAliveSendMode_
 
-Keep alive send modes. These are possible values for theproperty::NXPropertyKeepAliveSendMode
+Keep alive send modes. These are possible values for the  property::NXPropertyKeepAliveSendMode
 See that property for details.
 
 
@@ -2300,7 +2302,7 @@ The higher the log level, the more logs will be enabled. The following are the l
 
 ### enum NXMediaType
 
-Media types. These are used withNXMediaStreamInfo::typeto indicate the type of the stream (audio or video) described by `NXMediaStreamInfo`.
+Media types. These are used with NXMediaStreamInfo::typeto indicate the type of the stream (audio or video) described by `NXMediaStreamInfo`.
 
 **Enumerator**
 
@@ -2316,7 +2318,7 @@ Deprecated This has been deprecated since version 5.16. Do not use.
 
 ### enum NXOpenMode
 
-Open modes. These are possible argument values formodeparameter in open: (NXPlayer).
+Open modes. These are possible argument values for mode parameter in open: (NXPlayer).
 
 **Enumerator**
 

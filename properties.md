@@ -2066,7 +2066,7 @@ This enumeration defines the possible stream type forNXBufferInfoMediaType.
 
 ### enum NXBufferingState
 
-This enumeration defines the possible buffering state forNXBufferingState.
+This enumeration defines the possible buffering state for NXBufferingState.
 
 ### enum NXCEA608Channel
 

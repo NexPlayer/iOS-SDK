@@ -1674,7 +1674,7 @@ NXPlayer::deceUVDescrambler for additional information.
 
 Called by the player when there is DECE Ultra Violet data available for descrambling.
 
-Note that the descramble method will be called for all data of the requested type (specified by NXDRMType) even if the data is not encrypted. This is because the player has no way to determine if the data is cleartext or encrypted.
+Note that the descramble method will be called for all data of the requested type (specified by NXDRMType) even if the data is not encrypted. This is because the player has no way to determine if the data is clear text or encrypted.
 
 This method must make that determination separately.
 
@@ -1769,7 +1769,7 @@ In most cases, the handling of these events is optional; NexPlayer will continue
 This method will be called by the NexPlayer when thumbnail data is created.
 
 If the `enableDynamicThumbnail (NXPlayer):` method is called before HLS & Smooth Streaming content
-is in theopenstate, then this method will be called and gets the thumbnail information associated with the content.
+is in the open state, then this method will be called and gets the thumbnail information associated with the content.
 
 **Parameters**
 
@@ -1921,7 +1921,7 @@ Refer to the `NXHTTPStoreDelegate` protocol for details on how HLS content can b
 
 Once HLS content has been stored by NexPlayer, to retrieve and play that content offline:
 
-1. Set the bitrate usingsetVideoBitrates:len:withOption:to thesamebitrate used to store the HLS content.
+1. Set the bitrate using setVideoBitrates:len:withOption:to the same bitrate used to store the HLS content.
 2. Implement the `NXHTTPRetrieveDelegate` protocol and call the `HTTPRetrieve:url:retrieve    Offset:receivedLength:outputBuffer:retrievedSize:` function to retrieve offline content.
 3. Open, start, and stop the player normally as with any HLS content (except that the previously stored content will be played).
 
@@ -1979,7 +1979,7 @@ This event occurs when NexPlayer started downloading a file which is one of the 
 
 | Name  | Description  | 
 |---|---|
-| downStart | The detailed downStart information(see `NXHttpStateInfoDownStart`).|
+| downStart | The detailed downStart information (see `NXHttpStateInfoDownStart`).|
 
 
 #### - (void) nexPlayer: (NXPlayer ∗) nxplayer urlString:(NSString ∗) URLString stateInfoHttpError:(NXHttpStateInfo- HttpError ∗) httpError [optional]
@@ -2057,14 +2057,13 @@ Any application that will handle HLS offline storage must implement this protoco
 
 In order to store content for offline playback:
 
-1. NXPlayer should set a desired bitrate using thesetVideoBitrates:len:withOption.
+1. NXPlayer should set a desired bitrate using the setVideoBitrates:len:withOption.
 2. The NXHTTPStoreDelegateshould be implemented. The `HTTPStore:url:storeOffset:receivedLength:storeBuffer:retrievedSize:` method will be called when HLS contents need to be stored.
-3. The player should be opened with a call tomode:NXOpenModeStoreStream.
+3. The player should be opened with a call to mode: NXOpenModeStoreStream.
 4. Then the player should be started with a call to `nexPlayer:completedAsyncCmdOpenWithResult:playbackType:` from the NXPlayer delegate.
-5. After contents are stored,stop: should be called once the event `nexPlayerDidReachEndOFContent` is received by `NXPlayerDelegate`.
+5. After contents are stored, stop: should be called once the event `nexPlayerDidReachEndOFContent` is received by `NXPlayerDelegate`.
 
-Once content is stored for offline playback, an application can implementNXHTTPRetrieveDelegateto re-
-trieve the stored HLS content and play it back.
+Once content is stored for offline playback, an application can implement NXHTTPRetrieveDelegate to retrieve the stored HLS content and play it back.
 
 **See Also**
 
@@ -2131,7 +2130,7 @@ Some streaming formats support variations on the content (not merely the encodin
 
 #### - (NSString∗) infoAsMultiLineString
 
-Formats the media stream information as a multi-line string that can be displayed to the user or logged for diagnosticinformation.
+Formats the media stream information as a multi-line string that can be displayed to the user or logged for diagnostic information.
 
 The string includes all of the details included in NXMediaStreamInfo.
 
@@ -2247,19 +2246,19 @@ Based on the counting method set by `mCountingType`, this value specifies that o
 
 #### unsigned int NXPicTiming_ClockTSInfo::counting_type
 
-This is thecounting_typevalue in SEI picture timing information in H.264 content.
+This is the counting_type value in SEI picture timing information in H.264 content.
 
 It indicates the method of dropping values of then_framesin SEI picture timing information.
 
 **Values:**
 
-- 0 : no dropping of n_frames count values and no use oftime_offset
+- 0 : no dropping of n_frames count values and no use of time_offset
 - 1 : no dropping of n_frames count values
 - 2 : dropping of individual zero values of n_frames count
 - 3 : dropping of individual MaxFPS - 1 values of n_frames count
 - 4 : dropping of the two lowest (value 0 and 1) n_frames counts when seconds_value is equal to 0 and minutes_value is not an integer multiple of 10
-- 5 : dropping of unspecified individual n_framescount values
-- 6 : dropping of unspecified numbers of unspecifiedn_framescount values
+- 5 : dropping of unspecified individual n_frames count values
+- 6 : dropping of unspecified numbers of unspecified n_frames count values
 - 7..31 : Reserved.
 
 #### unsigned int NXPicTiming_ClockTSInfo::ct_type
@@ -2286,16 +2285,16 @@ Please see the H.264 specifications for details in how to interpret the values h
 
 #### unsigned char NXPicTiming_ClockTSInfo::full_timestamp_flag
 
-This is thefull_timestamp_flagvalue in SEI picture timing information in H.264 content.
+This is the full_timestamp_flag value in SEI picture timing information in H.264 content.
 
 **Values:**
 
-- 0 : Indicates that then_frameselement is followed only by theseconds_flag
-- 1 : Indicates that a full timestamp is included and that then_frameselement is followed byseconds_value, minutes_value, and hours_value.
+- 0 : Indicates that then_frames element is followed only by the seconds_flag
+- 1 : Indicates that a full timestamp is included and that then_frames element is followed by seconds_value, minutes_value, and hours_value.
 
 #### unsigned int NXPicTiming_ClockTSInfo::hours_value
 
-This is thehours_valuein SEI picture timing information in H.264 content.
+This is the hours_value in SEI picture timing information in H.264 content.
 
 **Values:** 
 
@@ -2303,7 +2302,7 @@ This is thehours_valuein SEI picture timing information in H.264 content.
 
 #### unsigned int NXPicTiming_ClockTSInfo::minutes_value
 
-This is theminutes_valuein SEI picture timing information in H.264 content.
+This is the minutes_value in SEI picture timing information in H.264 content.
 
 **Values:** 
 
@@ -2311,7 +2310,7 @@ This is theminutes_valuein SEI picture timing information in H.264 content.
 
 #### unsigned int NXPicTiming_ClockTSInfo::n_frames
 
-This is theseconds_valuein SEI picture timing information in H.264 content.
+This is the seconds_value in SEI picture timing information in H.264 content.
 
 **Values:** 
 
@@ -2319,13 +2318,13 @@ This is theseconds_valuein SEI picture timing information in H.264 content.
 
 #### unsigned char NXPicTiming_ClockTSInfo::nuit_field_based_flag
 
-This is the nuit_field_based_flagin SEI picture timing information in H.264 content.
+This is the nuit_field_based_flag in SEI picture timing information in H.264 content.
 
 This value can be used to calculate the clock timestamp of H.264 video frames.
 
 ####  unsigned int NXPicTiming_ClockTSInfo::seconds_value
 
-This is theminutes_valuein SEI picture timing information in H.264 content.
+This is the minutes_value in SEI picture timing information in H.264 content.
 
 **Values:** 
 
@@ -2383,7 +2382,7 @@ If the content includes video, this class requires a CAEAGLLayer in which to dis
 
 The `NXPlayerView` class provides a CAEAGLLayer for video output, and even handles the creation of an associated `NXPlayer` instance automatically (this instance can be accessed through `NXPlayerView::player`).
 
-Alternatively, you can create your own UIView subclass with CAEAGLLayer support, and assign the layer from that class to `NXPlayer::renderLayer`. If you do this, you should also have thelayoutSubviewsmethod of the custom UIView subclass call `prepareVideoBuffers (NXPlayer)` to adjust the size of the OpenGL buffers to match the new size of the layer.
+Alternatively, you can create your own UIView subclass with CAEAGLLayer support, and assign the layer from that class to `NXPlayer::renderLayer`. If you do this, you should also have the layout Subviews method of the custom UIView subclass call `prepareVideoBuffers (NXPlayer)` to adjust the size of the OpenGL buffers to match the new size of the layer.
 
 If your content does not include video, or if you do not care about displaying that video, you may safely create an`NXPlayer` instance without an associated render layer.
 
@@ -2399,7 +2398,7 @@ Events will be forwarded in sequence from receivers to delegate.
 
 | i/o  | Name  | Description  | 
 |---|---|---|
-| in | receiver | The object that implements `NXPlayerDelegate` to which methods will be calledwhen events occur. |
+| in | receiver | The object that implements `NXPlayerDelegate` to which methods will be called when events occur. |
 
 **See Also**
 
@@ -2423,13 +2422,13 @@ NXErrorNone if successful, or another NXError value in case of failure.
 
 Specifies additional fields to be sent along with the normal headers in RTSP requests.
 
-RTSP requests are very similar to HTTP requests, and include a header consisting of a set of required fields. Thismethod adds additional fields that will be sent as part of future RTSP requests.
+RTSP requests are very similar to HTTP requests, and include a header consisting of a set of required fields. This method adds additional fields that will be sent as part of future RTSP requests.
 
 One possible use of this, for example, is to set a user agent identifier to be used in RTSP requests.
 
 Each call to this method adds one field. To add multiple fields, call this method multiple times. There is currently no way to delete a field once it has been added, although the value could be set to an empty string.
 
-If the specified field already exists, the current value of that field and the set of RTSP methods to which it applies will be overwritten. That is, if this method is called more than once with the same header field specified, only the most recent call will be used for the value and RTSP method set of that header field.
+If the specified field already exists, the current value of that field and the set of RTSP methods to which it applies will be over written. That is, if this method is called more than once with the same header field specified, only the most recent call will be used for the value and RTSP method set of that header field.
 
 There are several request types that are part of the RTSP protocol, and when a header is added, you must specify with which request types it will be included. This is done by performing a bitwise OR on one or more of the following values, and specifying the result in the `methodCombination` parameter:
 
@@ -2483,7 +2482,7 @@ NXErrorNone if successful, or another NXError value in case of failure.
 
 Closes any currently open content.
 
-If the content is currently playing or paused, the content will be stopped first before it is closed. (This behavior differs from the old API, where the content must be stopped before closing it to avoid unpredictable behavior).
+If the content is currently playing or paused, the content will be stopped first before it is closed (this behavior differs from the old API, where the content must be stopped before closing it to avoid unpredictable behavior).
 
 Note that in some cases (such as when this is called while content is already playing, or if an open method is called while there is already open content) the content we automatically be closed when the nexPlayer:completedAsyncCmdStopWithResult: (NXPlayerDelegate-p) even occurs. In this very particular case, an additional (redundant) call to the close method inside the nexPlayer:completedAsyncCmdStopWithResult: (NXPlayerDelegate-p) handler will be ignored.
 
@@ -2495,7 +2494,7 @@ NXErrorNone if successful, or another NXError value in case of failure. Even if 
 
 This method disables the Dynamic Thumbnail feature, if enabled.
 
-> **Warning** The Dynamic Thumbnail featuremustbe disabled by calling this method before callingclosewhen a player is being closed.
+> **Warning** The Dynamic Thumbnail feature must be disabled by calling this method before calling close when a player is being closed.
 
 **Returns**
 
@@ -2509,16 +2508,14 @@ Refer to the following steps to use this method accurately:
 
 1. The `enableDynamicThumbnail:` method should be called before `open:`.
 2. When `open:` is successful, use the `NXPlayer::contentInfo` to get the total playtime of the content.
-    By dividing the extracted total playtime value by the number of the thumbnail buffer array from the UI (thenumber of available thumbnails), the interval time is determined. The interval time can then be used with the `setOptionDynamicThumbnail:` method to get thumbnail information.
+    By dividing the extracted total playtime value by the number of the thumbnail buffer array from the UI (the number of available thumbnails), the interval time is determined. The interval time can then be used with the `setOptionDynamicThumbnail:` method to get thumbnail information.
 3. If the setting above works normally, NexPlayer will use the `onDynamicThumbnailData()` method to
     send thumbnail data to the UI.
 4. The `disableDynamicThumbnail:` method should be called before `close:` when closing content.
 5. If a video track is changed while content is playing, these methods should be called in the following order:
     - FIRST, `disableDynamicThumbnail:`
     - SECOND, `enableDynamicThumbnail:` to enable Dynamic Thumbnails for the new content, and
-    - LASTLY, `setOptionDynamicThumbnailwithOption:` NexDynamicThumbnailOption::Nex-
-       DynamicThumbnailOptionInterval andParam1:interval_time andParam2:0 to set the appropriate interval
-       for the new thumbnails.
+    - LASTLY, `setOptionDynamicThumbnailwithOption:` NexDynamicThumbnailOption::NexDynamicThumbnailOptionInterval andParam1:interval_time andParam2:0 to set the appropriate interval for the new thumbnails.
 
 **Returns**
 
@@ -2572,8 +2569,7 @@ This value is to check current the playback rate.
 This method gets the date and time information in HLS content when the HLS tag, #EXT-X-PROGRAM-DATE-TIME,
 is included.
 
-It can be used to determine the current time of the frame and help when syncing content and text or when deter-
-mining when to play text.
+It can be used to determine the current time of the frame and help when syncing content and text or when determining when to play text.
 
 **Parameters**
 
@@ -2676,7 +2672,7 @@ Normally, when playing live content, previously recorded data (for example, a fe
 
 | i/o  | Name  | Description  | 
 |---|---|---|
-| in | exact | IfexactisYES, the player will seek exactly to the time specified bymsec. Otherwise, the playhead will seek to the nearest approximate position for faster seeking performance |
+| in | exact | If exactis YES, the player will seek exactly to the time specified by msec. Otherwise, the playhead will seek to the nearest approximate position for faster seeking performance |
 
 **Returns**
 
@@ -2758,7 +2754,7 @@ This is a convenience function, and is equivalent to calling NXPlayer::open:mode
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicates success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicates success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError)open: (NSString ∗ )pathmode:(NXOpenMode)modesubtitles:(NSString ∗ )subtitlePathtransport:(NXTransportType)transportstartAt:(NXDuration)startAtTimeautoPlay:(BOOL)autoPlay
 
@@ -2801,13 +2797,13 @@ autoPlay:YES];
 
 **Returns**
  
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) openAndPlay: (NSString ∗ )path
 
 Opens and begins playing content.
 
-This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime:autoPlay: with a mode of NXOpenModeAuto, a transport of NXTransportTypeTCP, no subtitle path, andautoPlay set to YES
+This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime:autoPlay: with a mode of NXOpenModeAuto, a transport of NXTransportTypeTCP, no subtitle path, and autoPlay set to YES
 
 **Parameters**
 
@@ -2817,13 +2813,13 @@ This is a convenience function, and is equivalent to calling NXPlayer::open:mode
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) openAndPlayFromBundle: (NSString ∗ )path
 
 Opens the specified local content from the application bundle and begins playing it.
 
-This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime:autoPlay: with a mode of NXOpenModeLocalBundle, a transport of NXTransportTypeTCP, no subtitle path, and autoPlayset to YES
+This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime:autoPlay: with a mode of NXOpenModeLocalBundle, a transport of NXTransportTypeTCP, no subtitle path, and autoPlay set to YES
 
 **Parameters**
 
@@ -2833,15 +2829,14 @@ This is a convenience function, and is equivalent to calling NXPlayer::open:mode
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 ####  - (NXError) openFromBundle: (NSString ∗ )path
 
 Opens the specified local content from the application bundle.
 
-This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime-
-:autoPlay: with a mode of NXOpenModeLocalBundle, a transport of NXTransportTypeTCP, no subtitle path, and
-autoPlayset toNO
+This is a convenience function, and is equivalent to calling NXPlayer::open:mode:subtitles:transport:startAtTime:autoPlay: with a mode of NXOpenModeLocalBundle, a transport of NXTransportTypeTCP, no subtitle path, and
+autoPlayset to NO.
 
 **Parameters**
 
@@ -2851,7 +2846,7 @@ autoPlayset toNO
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) pause
 
@@ -2861,12 +2856,12 @@ Content must be in a playing state or this has no effect.
 
 Playback can be resumed by calling **resume**.
 
-This is an asynchronous operation that completes in the background. When it is finished, the NXPlayerDelegate::nexPlayer:completedAsyncCmdPause: method of the delegate will be called (and theresultargument will
+This is an asynchronous operation that completes in the background. When it is finished, the NXPlayerDelegate::nexPlayer:completedAsyncCmdPause: method of the delegate will be called (and the result argument will
 indicate success or failure).
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) prepareVideoBuffers
 
@@ -2876,8 +2871,8 @@ Creates or adjusts the buffers used for rendering video to match the current dim
 > It is not necessary to call this if you are using `NXPlayerView`, because that class automatically manages the render layer.
 
 If you provide your own UIView subclass and set up NXPlayer::renderLayer manually, you must call this function
-once afterrenderLayerhas been set up, and again any time the dimensions of the layer change. This is usually
-done in thelayoutSubviewsmethod of the UIView subclass, as follows:
+once after render Layer has been set up, and again any time the dimensions of the layer change. This is usually
+done in the layout Subviews method of the UIView subclass, as follows:
 
 ```objc
 - (void) layoutSubviews { 
@@ -2936,12 +2931,11 @@ Seeks to the specified time in the content.
 If the content is currently playing, it will continue playing after the seek; if it is paused, it will be paused after the seek
 operation.
 
-This is an asynchronous operation that completes in the background. When it is finished, the NXPlayerDelegate::nexPlayer:completedAsyncCmdSeek: method of the delegate will be called (and theresultargument will indi-
-cate success or failure).
+This is an asynchronous operation that completes in the background. When it is finished, the NXPlayerDelegate::nexPlayer:completedAsyncCmdSeek: method of the delegate will be called (and the result argument will indicate success or failure).
 
 Note that seeking is not possible on all types of content. For live content, seeking may or may not be available. To determine if seeking is possible, check the `isSeekable` member of `NXPlayer::contentInfo`.
 
-In the case of live content that is seekable, the seek timestamp is relative to the seek base,seekBaseand the window within which seek can be performed in the content can be determined with the property `seekableLength`.
+In the case of live content that is seekable, the seek timestamp is relative to the seek base, seekBase and the window within which seek can be performed in the content can be determined with the property `seekableLength`.
 
 **Parameters**
 
@@ -2951,7 +2945,7 @@ In the case of live content that is seekable, the seek timestamp is relative to 
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### + (void) setAVPlayerForAirPlay: (BOOL)bUse
 
@@ -3101,7 +3095,7 @@ begins, call from completedAsyncCmdOpenWithResult:.
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | bOnOff | if you want to disable the media, set toNO. if you want to enable the media, set to YES. |
+| in | bOnOff | if you want to disable the media, set to NO. if you want to enable the media, set to YES. |
 | in | mediaType | The mediaType to disable or enable. The method uses NXMediaType and values below only are valid. NXMediaTypeAudio NXMediaTypeVideo NXMediaTypeText NXMediaTypeAV => not recommended. Return value is not guaranteed. |
 
 **Returns**
@@ -3129,7 +3123,7 @@ Zero for success, or a non-zero NexPlayer error code in the event of a failure.
 
 This method is used to change the playback rate.
 
-> **Note** Speed Control is an optional feature. This method makes it possible to allow users to adjust the playback rate, from 0.1 of the original speed to 4x speed, by changing the value of the parameterplayRate. For example, to play content at half-speed,playRateshould be set to 0.5
+> **Note** Speed Control is an optional feature. This method makes it possible to allow users to adjust the playback rate, from 0.1 of the original speed to 4x speed, by changing the value of the parameter play Rate. For example, to play content at half-speed, play Rate should be set to 0.5
 
 This method doesn’t work if it is called when NexPlayer is stopped.
 
@@ -3195,7 +3189,7 @@ Zero if successful, non-zero if there was an error.
 
 This method allows specific subtracks to be selected and played based on the bitrates of the tracks in HLS content.
 
-Only the tracks with the bitrates passed on this method with the parameterbitrateswill be played by NexPlayer. However, choosing a different option with the parameteroptionallows NexPlayerTM to choose and play the selected subtracks based on the passed bitrates differently.
+Only the tracks with the bitrates passed on this method with the parameter bitrates will be played by NexPlayer. However, choosing a different option with the parameter option allows NexPlayer to choose and play the selected subtracks based on the passed bitrates differently.
 
 
 **Parameters**
@@ -3203,7 +3197,7 @@ Only the tracks with the bitrates passed on this method with the parameterbitrat
 | Name  | Description  | 
 |---|---|
 | bitrates | The bitrates of the HLS content subtracks to play, as an integer array. |
-| option | How HLS subtracks should be played based on the bitrates selected in bitrates. This will be one of: <br> - **NexAvailableBitrateNone:** No restriction on subtracks other than the bitrates selected inbitrates. <br> - **NexAvailableBitrateMatch** Only use subtracks which have exact same bitrate as the selected bitrates passed inbitrates. <br> - **NexAvailableBitrateNearest:** Only use subtracks which have the nearest bitrates to the target bitrates described in the list passed inbitrates. For example, if the target bitrates passed are [300K, 600K] and the HLS playlist includes 100K, 200K, 500K, 700K tracks, only the 200K (close to 300K) and 500K (close to 600K) tracks will be used. <br> - **NexAvailableBitrateHigh:** Only use subtracks which have bitrates equal to or higher than the target bitrate. The first bitrate in the list passed inbitratesis the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateLow:** Only use subtracks which have bitrates equal to or lower than the target bitrate. The first bitrate in the list passed inbitratesis the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateInsideRange:** Only use subtracks which have bitrates inside the range defined by the bitrates passed inbitrates. The first bitrate in the list is taken as the lower boundary, the second as the upper boundary, and the rest of the list will be ignored. Subtracks with bitrates between the lower and upper boundaries will be used.
+| option | How HLS subtracks should be played based on the bitrates selected in bitrates. This will be one of: <br> - **NexAvailableBitrateNone:** No restriction on subtracks other than the bitrates selected in bitrates. <br> - **NexAvailableBitrateMatch** Only use subtracks which have exact same bitrate as the selected bitrates passed in bitrates. <br> - **NexAvailableBitrateNearest:** Only use subtracks which have the nearest bitrates to the target bitrates described in the list passed in bitrates. For example, if the target bitrates passed are [300K, 600K] and the HLS playlist includes 100K, 200K, 500K, 700K tracks, only the 200K (close to 300K) and 500K (close to 600K) tracks will be used. <br> - **NexAvailableBitrateHigh:** Only use subtracks which have bitrates equal to or higher than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateLow:** Only use subtracks which have bitrates equal to or lower than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateInsideRange:** Only use subtracks which have bitrates inside the range defined by the bitrates passed in bitrates. The first bitrate in the list is taken as the lower boundary, the second as the upper boundary, and the rest of the list will be ignored. Subtracks with bitrates between the lower and upper boundaries will be used.
 
 **Returns**
 
@@ -3223,9 +3217,9 @@ among these strings as necessary to provide the best possibly quality for the av
 
 In addition to providing different levels of quality, the tracks associated with a video stream can also provide different types of content (for example, different camera angles). These tracks are labeled with custom attributes.
 
-Custom attributes consist of key/value pairs, and zero or more may be associated with any given track. Each unique combination of custom attributes makes up oneattribute set. The list of possible attribute sets available for a given stream can be found in `NXMediaStreamInfo::customAttrSets`.
+Custom attributes consist of key/value pairs, and zero or more may be associated with any given track. Each unique combination of custom attributes makes up one attribute set. The list of possible attribute sets available for a given stream can be found in `NXMediaStreamInfo::customAttrSets`.
 
-You may limit the selection of tracks to only those that share a particular set of custom attributes by specifying the set of key/value pairs as an NSDictionary in thetrackAttrargument.
+You may limit the selection of tracks to only those that share a particular set of custom attributes by specifying the set of key/value pairs as an NSDictionary in the track Attr argument.
 
 > **Note** This is an asynchronous operation that completes in the background. When it is finished, the NXPlayerDelegate::completedAsyncCmdSetMediaStreamWithResult: method of the delegate will be called (and the result argument will indicate success or failure).
 
@@ -3236,18 +3230,18 @@ You may limit the selection of tracks to only those that share a particular set 
 | in | videoStream | The video stream to select. This may be any one of the elements of `NXContentInfo::streams` where `NXMediaStreamInfo::type` is NXMediaTypeVideo. Specify nil to leave the video stream unchanged. |
 | in | audioStream | The audio stream to select. This may be any one of the elements of `NXContentInfo::streams` where `NXMediaStreamInfo::type` is NXMediaTypeAudio. Specify nil to leave the audio stream unchanged. |
 | in | textStream | The text stream to select. This may be any one of the elements of NXContentInfo::streams where NXMediaStreamInfo::type is NXMediaTypeText. Specify nil to leave the text stream unchanged. |
-| in | trackAttr | A dictionary specifying the custom attributes by which to select a video track within the stream. Only video tracks that match ALL specified attributes (both name and value) will be used. Names and values must all be given asNSStringinstances. Specifynilto use the first available combination of custom attributes (the first available attribute set) in the selected video stream. |
+| in | trackAttr | A dictionary specifying the custom attributes by which to select a video track within the stream. Only video tracks that match ALL specified attributes (both name and value) will be used. Names and values must all be given asNSString instances. Specify nil to use the first available combination of custom attributes (the first available attribute set) in the selected video stream. |
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicates success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicates success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) setVideoStream: (NXMediaStreamInfo ∗ )videoStreamaudioStream:(NXMediaStreamInfo ∗ )audioStreamtrackAttributes:(NSDictionary ∗ )trackAttr
 
 Convenience function for setting audio and video streams.
 
 This is a convenience function, and is equivalent to calling `setVideoStream:audioStream:textStream:trackAttributes:`
-with textStream specified as nil.
+with text Stream specified as nil.
 
 **Parameters**
 
@@ -3275,7 +3269,7 @@ Do not use this to resume paused content; use `resume` for that, instead.
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) startFromTime: (NXDuration)startTime
 
@@ -3297,20 +3291,20 @@ Do not use this to resume paused content; use `resume` for that, instead.
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### - (NXError) stop
 
 Stops playback of content.
 
-Content must be in either the playing or paused state. IfautoPlaywas specified when the content was opened,
+Content must be in either the playing or paused state. If autoPlay was specified when the content was opened,
 stopping the content will also cause it to automatically be closed.
 
 This is an asynchronous operation that completes in the background. When it is finished, the `nexPlayer:completedAsyncCmdStopWithResult: (NXPlayerDelegate-p)` method of the delegate will be called (and the result argument will indicate success or failure).
 
 **Returns**
 
-NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check theresultargument of the appropriate delegate callback method.
+NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
 #### + (BOOL) useAVPlayerForAirPlay
 
@@ -3378,7 +3372,7 @@ Contains information on the content that is currently playing.
 
 See the `NXContentInfo` class for details on the information that is available.
 
-The first time that content information becomes available, and any time thereafter that the content information has been updated, the `nexPlayerDidUpdateContentInfo: (NXPlayerDelegate-p)` method will be called on the delegate.
+The first time that content information becomes available, and any time there after that the content information has been updated, the `nexPlayerDidUpdateContentInfo: (NXPlayerDelegate-p)` method will be called on the delegate.
 
 In addition, when the asynchronous open command has completed and the `nexPlayer:completedAsyncCmdOpenWithResult:playbackType: (NXPlayerDelegate-p)` method on the delegate is called, content information will be available (unless the open command failed).
 
@@ -3419,7 +3413,7 @@ For internal use only. Please do not use.
 
 An object that conforms to NXDeceUVDescrambler that will handle DECE UV(Ultra Violet) descrambling.
 
-> **Note** Like a delegate, this isnot retained.
+> **Note** Like a delegate, this is not retained.
 
 If your application needs to descramble DECE UV encrypted content before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 
@@ -3453,7 +3447,7 @@ An object that conforms to NXDRMDescrambler that will handle DRM descrambling.
 
 **Note**
 
-Like a delegate, this isnot retained.
+Like a delegate, this is not retained.
 
 If your application needs to descramble DRM encrypted content before NexPlayer decodes and plays that content, you should define a class that handles the descrambling operation and assign an instance of that class to this property.
 

@@ -6,17 +6,17 @@ First thing you have to keep in mind before implementing NexPlayer SDK is that m
 
 ## Create a new project
 
-1. Open Xcode
+1. Open Xcode.
 2. Click “Create a new Xcode project” (or select File > New > Project).
-3. Select iOS at the top of the dialog. Then select App
-4. Set the name og your app and choose additional options for your project
-5. Click Next
-6. Choose a location to save your project and click Create
+3. Select iOS at the top of the dialog. Then select App.
+4. Set the name og your app and choose additional options for your project.
+5. Click Next.
+6. Choose a location to save your project and click Create.
 
 ## Import required frameworks
 
-1. Copy NexPlayerSDK.framework to your Xcode project folder
-2. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > General > Frameworks, Libraries and Embedded Content, click on (**+**) to add frameworks and libraries to the list
+1. Copy NexPlayerSDK.framework to your Xcode project folder.
+2. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > General > Frameworks, Libraries and Embedded Content, click on (**+**) to add frameworks and libraries to the list.
 3. To import NexPlayerSDK, click the (**+**) in Frameworks, Libraries and Embedded Content > Add Other... > Add Files... > Select NexPlayerSDK.framework in your Xcode folder. Please ensure that you are using the following Frameworks and Libraries:  
  
  - AVKit  

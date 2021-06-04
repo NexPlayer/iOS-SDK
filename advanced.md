@@ -4054,7 +4054,7 @@ Buffering has progressed and the percentage complete has changed.
 
 **See Also**
 
-- `nexPlayerDidBeginBuffering:` for more information
+- `nexPlayerDidBeginBuffering:` for more information.
 
 #### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdMediaOnOffWithResult:(NXError)result mediaType:(NXMediaType)mediaTypebOnOff:(BOOL)bOnOff
 
@@ -4067,7 +4067,7 @@ completed.
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | result | The result of the asynchronous operation (NXErrorNone for success, or a nonzero NXError code in the event of a failure). |
+| in | result | The result of the asynchronous operation (NXErrorNone for success, or a non-zero NXError code in the event of a failure). |
 | in | mediaType | The mediaType to disable or enable. The method uses NXMediaType and values below only are valid. NXMediaTypeAudio NXMediaTypeVideo NXMediaTypeText |
 | in | bOnOff | if you want to disable the media, set to NO. if you want to enable the media, set to YES. | 
 
@@ -4095,7 +4095,7 @@ If autoPlay was set to YES when the open command was issued, the player will aut
 
 - `open:mode:subtitles:transport:autoPlay: (NXPlayer)`, the method starting the open operations that calls this method when they complete.
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdPauseWithResult:(NXError)result
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdPauseWithResult:(NXError)result
 
 An asynchronous *pause* operation has completed.
 
@@ -4110,7 +4110,7 @@ This method is called when the pause operation initiated by `pause (NXPlayer)` h
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdResumeWithResult:(NXError)result
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdResumeWithResult:(NXError)result
 
 An asynchronous *resume* operation has completed.
 
@@ -4125,7 +4125,7 @@ This method is called when the resume operation initiated by `resume (NXPlayer)`
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSeekWithResult:(NXError)result
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSeekWithResult:(NXError)result
 
 An asynchronous *seek* operation has completed.
 
@@ -4140,11 +4140,11 @@ This method is called when the seek operation initiated by NXPlayer::seek has co
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). |
 
-####  - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetExternalSubtitleWithResult:(NXError)result
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetExternalSubtitleWithResult:(NXError)result
 
 An asynchronous *forward* operation has completed.
 
-> **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements theforwardcommand, and this event can therefore never occur. It may be supported in future versions, so you should not write code
+> **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements the forward command, and this event can therefore never occur. It may be supported in future versions, so you should not write code
 > that processes this event at present (otherwise that code may break in the future).
 
 **Parameters**
@@ -4154,7 +4154,7 @@ An asynchronous *forward* operation has completed.
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). An asynchronous backwards operation has completed. |
 
-> **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements thebackwardscommand, and this event can therefore never occur. It may be supported in future versions, so you should not write code that processes this event at present (otherwise that code may break in the future).
+> **Deprecated** There is currently no API in the NexPlayer iOS SDK that implements the backwards command, and this event can therefore never occur. It may be supported in future versions, so you should not write code that processes this event at present (otherwise that code may break in the future).
 
 **Parameters**
 
@@ -4171,7 +4171,7 @@ This method is called when the pause operation initiated by NXPlayer::setExterna
 |---|---|---|
 | in | result | The result of the asynchronous operation (NXErrorNone for success, or a nonzero NXError code in the event of a failure). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetMediaStreamWithResult:(NXError)result streamInfo:(NXMediaStreamInfo ∗ )stream
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayercompletedAsyncCmdSetMediaStreamWithResult:(NXError)result streamInfo:(NXMediaStreamInfo ∗ )stream
 
 An asynchronous media stream switching operation has completed.
 
@@ -4211,7 +4211,7 @@ This method is called when the stop operation initiated by stop (NXPlayer) has c
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | result | The result of the asynchronous operation (zero if the operation succeeded, or a non-zero NXError code if the operation failed due to an error). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdebugMessage:(NSString ∗ )messagecategory:(NXDebugMsgCat) category
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdebugMessage:(NSString ∗ )messagecategory:(NXDebugMsgCat) category
 
 Provides debugging and diagnostic information during playback.
 
@@ -4228,7 +4228,7 @@ be added in the future.
 | in | message | Debugging message |
 | in | category | Message category; currently, one of: <br> - NXDebugMsgCat_RTSP <br> - NXDebugMsgCat_RTCP_RR_SEND <br> - NXDebugMsgCat_RTCP_BYE_RECV <br> - NXDebugMsgCat_ContentInfo
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdidChangeFromState:(NXPlayerState)oldState toState:(NXPlayerState)newState [optional]
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdidChangeFromState:(NXPlayerState)oldState toState:(NXPlayerState)newState [optional]
 
 General event handling method that is called before any specific method.
 
@@ -4258,7 +4258,7 @@ This can be used to update the user interface to reflect the new state, such as 
 | in | oldState | The previous player state (see NXPlayerState for details). |
 | in | newState | The new player state (see NXPlayerState for details). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdidDownloadSoFar (NSUInteger)downloadedBytestotalSize:(NSUInteger) totalSize
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdidDownloadSoFar (NSUInteger)downloadedBytestotalSize:(NSUInteger) totalSize
 
 The player is downloading content, and the download has progressed.
 
@@ -4272,7 +4272,7 @@ This event provides status updates on the number of bytes downloaded so that app
 | in | downloadedBytes | The number of bytes downloaded so far. |
 | in | totalSize | The total number of bytes in the file to be downloaded. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdidReceiveInformativeEvent:(NexInformativeEvent)event details:(NSDictionary ∗ )details
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdidReceiveInformativeEvent:(NexInformativeEvent)event details:(NSDictionary ∗ )details
 
 This method delivers an informative event such as NexInformativeEventDownloadBegan.
 
@@ -4280,11 +4280,11 @@ This method delivers an informative event such as NexInformativeEventDownloadBeg
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | nxplayer | TheNXPlayerinstance that generated the event. |
+| in | nxplayer | Th eNXPlayer instance that generated the event. |
 | in | event | The informative event. |
 | in | details | Dictionary contains parameters for the event, if available. See NexInformativeEventfor details. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdidReceiveSessionData:(NSMutableArray ∗ )sessionDataArr
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdidReceiveSessionData:(NSMutableArray ∗ )sessionDataArr
 
 This method reports the arbitrary session data of the HLS master playlist.
 
@@ -4292,10 +4292,10 @@ This method reports the arbitrary session data of the HLS master playlist.
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | nxplayer | TheNXPlayerinstance that generated the event. |
+| in | nxplayer | The NXPlayer instance that generated the event. |
 | in | sessionDataArr | The array of NexSessionData object that includes the arbitrary session data of the HLS master playlist. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerdidUpdateDownloadProgressWithFileCount:(NSUInteger)current totalFileCount:(NSUInteger)total
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerdidUpdateDownloadProgressWithFileCount:(NSUInteger)current totalFileCount:(NSUInteger)total
 
 This method provides the download progress for Offline Playback.
 
@@ -4303,11 +4303,11 @@ This method provides the download progress for Offline Playback.
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | nxplayer | TheNXPlayerinstance that generated the event. |
+| in | nxplayer | The NXPlayer instance that generated the event. |
 | in | current | Current file count. |
 | in | total | Total File count. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerencounteredError:(NXError)errorCode
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerencounteredError:(NXError)errorCode
 
 An error has occurred during playback.
 
@@ -4326,7 +4326,7 @@ If this method is not implemented by the delegate, the default behavior is to di
 | in | nxplayer | The NXPlayer instance that generated the event.
 | in | errorCode | The error that has occurred. (See NXError for details). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayermediaTypeChangedTo:(NXMediaType)newType
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayermediaTypeChangedTo:(NXMediaType)newType
 
 The stream being played back has changed and the new stream has a different media type.
 
@@ -4339,7 +4339,7 @@ This event happens whenever the state changes between video-only, audio-only and
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | newType | The new media type (see NXMediaType). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayeronHTTPRequest:(NSString ∗ )strRequest
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayeronHTTPRequest:(NSString ∗ )strRequest
 
 This method allows NexPlayer to pass HTTP request messages to an application.
 
@@ -4352,13 +4352,13 @@ This should be called before a request is sent to an HTTP server. To handle the 
 | i/o | Name  | Description  | 
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
-| in | strRequest | The HTTP request to be sent to the server, as a String.
+| in | strRequest | The HTTP request to be sent to the server, as a String.|
 
 **See Also**
 
 - `nexPlayer:onHTTPResponse:statusCode:`
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayeronHTTPResponse:(NSString ∗ )strResponsestatusCode:(NSUInteger)statusCode
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayeronHTTPResponse:(NSString ∗ )strResponsestatusCode:(NSUInteger)statusCode
 
 This method allows responses from an HTTP server to be received and handled in a more customized way.
 
@@ -4378,7 +4378,7 @@ This should be called after a response has been received from the server.
 
 - `nexPlayer:onHTTPRequest:`
 
-#### - (NSString ∗ ) nexPlayer: (NXPlayer ∗ )nxplayeronModifyHttpRequest:(NSString ∗ )requestString
+#### (NSString ∗ ) nexPlayer: (NXPlayer ∗ )nxplayeronModifyHttpRequest:(NSString ∗ )requestString
 
 This method allows the HTTP request that will be used by NexPlayer to be switched when an HTTP request should be modified.
 
@@ -4400,7 +4400,7 @@ HTTP request.
 
 `NXProperty::NXPropertyEnableModifyHTTPRequest`
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayeronStatusHTTPInvalidResponse:(NSUInteger)statusCode
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayeronStatusHTTPInvalidResponse:(NSUInteger)statusCode
 
 This method is called when an HTTP error response was received from the server.
 
@@ -4412,7 +4412,7 @@ This method is called when an HTTP error response was received from the server.
 | in | statusCode | contains the error code (this is a normal HTTP response code, such as 404,
 500, etc.) |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerplayheadAdvancedTo:(NXDuration)newPosition
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerplayheadAdvancedTo:(NXDuration)newPosition
 
 Playback has progressed to a certain position.
 
@@ -4427,7 +4427,7 @@ The current playback position is also available through `NXPlayer::currentTimeSt
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | newPosition | The new playback position (in milliseconds from start of content) |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerplaylistReceived:(NSString ∗ )newPlaylistforURL:(NSString ∗ )URL
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerplaylistReceived:(NSString ∗ )newPlaylistforURL:(NSString ∗ )URL
 
 Called whenever a new playlist is received.
 
@@ -4448,7 +4448,7 @@ will always be from the playlist most recently received by this callback.
 | in | URL | The URL of the playlist. |
 | in | newPlaylist | The playlist that was just received. Playlists can be very large, so the memory backing this string is managed by the engine. Do not retain this string. If you must use it after this method returns, make a copy of the playlist string or relevant portions. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerseekableStateChangedTo:(BOOL)isSeekableseekBase:(uint64_t) seekBaseseekableLength:(NSUInteger)seekableLen
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerseekableStateChangedTo:(BOOL)isSeekableseekBase:(uint64_t) seekBaseseekableLength:(NSUInteger)seekableLen
 
 The seekable state of the content has changed.
 
@@ -4471,7 +4471,7 @@ The actual values that can appear in `seekBase` for live content are arbitrary a
 | in | seekBase | The earliest possible time that the player can seek to. |
 | in | seekableLen | The length of the seekable region starting atseekBase. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerstreamChangedTo:(NXMediaStreamInfo ∗ )stream
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerstreamChangedTo:(NXMediaStreamInfo ∗ )stream
 
 The stream has changed.
 
@@ -4484,7 +4484,7 @@ This happens for protocols such as Smooth Streaming that support multiple stream
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | stream | The new stream of NXContentInfo. |
 
-####  - (void) nexPlayer: (NXPlayer ∗ )nxplayersubTitleChange:(NSString ∗ )subtitleTextoriginalBytes:(NSData ∗ )subtitleBytes**
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayersubTitleChange:(NSString ∗ )subtitleTextoriginalBytes:(NSData ∗ )subtitleBytes**
 
 Subtitle (caption) text has changed, and the application should update the display with the new text.
 
@@ -4498,7 +4498,7 @@ Subtitle (caption) text has changed, and the application should update the displ
 | in | subtitleText | The string as decoded using the detected encoding. |
 | in | subtitleBytes | The original bytes of the string prior to decoding. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayersubTitleChange:(NSString ∗ )subtitleTextoriginalBytes:(NSData ∗ )subtitleBytessubtitleSource:(NSString ∗ )source
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayersubTitleChange:(NSString ∗ )subtitleTextoriginalBytes:(NSData ∗ )subtitleBytessubtitleSource:(NSString ∗ )source
 
 Subtitle (caption) text has changed, and the application should update the display with the new text.
 
@@ -4511,7 +4511,7 @@ There are multiple sources for subtitles. For example, subtitles may come from a
 - LOCAL
 - STREAM
 
-To handle subtitles from an arbitrary number of sources simultaneously, use thesourcevalue as a dictionary key and keep a dictionary of the current subtitles for each source. Then concatenate these when updating the display.
+To handle subtitles from an arbitrary number of sources simultaneously, use the source value as a dictionary key and keep a dictionary of the current subtitles for each source. Then concatenate these when updating the display.
 
 > **A note about Encoding**
 
@@ -4538,7 +4538,7 @@ To handle subtitles from an arbitrary number of sources simultaneously, use thes
 | in | subtitleBytes The original bytes of the string prior to decoding. |
 | in | source | The source of the subtitles. See above. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayertrackChangedTo:(NXTrackInfo ∗ )track
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayertrackChangedTo:(NXTrackInfo ∗ )track
 
 The track has changed.
 
@@ -4551,7 +4551,7 @@ This happens for protocols such as HLS that provide the content in multiple form
 | in | nxplayer | The NXPlayer instance that generated the event. |
 | in | track | The new track. |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedCaption:(NXClosedCaption ∗ )caption
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedCaption:(NXClosedCaption ∗ )caption
 
 This method receives updated closed captions for contents such as WebVTT or TTML.
 
@@ -4562,7 +4562,7 @@ This method receives updated closed captions for contents such as WebVTT or TTML
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | caption | New captions to be displayed on the contents. (see `NXClosedCaption` for more details). |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedCaption:(NXCEA608Caption ∗ )caption forCEA608Channel:(NXCEA608Channel)channel
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedCaption:(NXCEA608Caption ∗ )caption forCEA608Channel:(NXCEA608Channel)channel
 
 CEA 608 closed caption text has changed.
 
@@ -4578,7 +4578,7 @@ NexPlayer can handle and display CEA 608 closed captions fully but an applicatio
 | in | caption | The caption to display (see `NXCEA608Caption` for details). This should replace ALL existing displayed caption text. |
 | in | channel | The channel that closed caption data relates to (may be 0 if captions were just turned off, and this event is to erase the caption display).
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedMetaData:(NSDictionary ∗ )metaData
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedMetaData:(NSDictionary ∗ )metaData
 
 The metadata associated with the current content has changed.
 
@@ -4591,7 +4591,7 @@ Whenever any metadata changes for the current content, this method will be calle
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | metaData | A dictionary containing only the updated metadata fields. Field names are the same as `NXContentInfo::metaData` |
 
-#### - (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedSEIPicTiming:(NXPicTimingInfo ∗ )timing
+#### (void) nexPlayer: (NXPlayer ∗ )nxplayerupdatedSEIPicTiming:(NXPicTimingInfo ∗ )timing
 
 This method provides SEI picture timing information about video frames of H.264 content when it is available and changes.
 
@@ -4604,7 +4604,7 @@ While SEI may include a variety of attributes, this method specifically receives
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | timing | The `NXPicTimingInfo` object that includes the new SEI picture timing information for the content. |
 
-#### - (void) nexPlayerBeganDownloadBuffering: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerBeganDownloadBuffering: (NXPlayer ∗ )nxplayer
 
 The player does not have enough data to play back content.
 
@@ -4616,10 +4616,9 @@ This event occurs during a progressive download when there is not enough data to
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDataInactivityTimeout: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDataInactivityTimeout: (NXPlayer ∗ )nxplayer
 
-NexPlayer hasn’t received any data from the streaming server for the period specified by NXPropertyData-
-InactivityTimeout.
+NexPlayer hasn’t received any data from the streaming server for the period specified by NXPropertyDataInactivityTimeout.
 
 The value of NXPropertyDataInactivityTimeout can be set by calling setProperty:toValue: (NXPlayer), and it indicates the maximum time to wait for packets from the server before timing out and generating this event.
 
@@ -4631,9 +4630,9 @@ If this method is not implemented by the delegate, the default behavior is to fo
 
 | i/o | Name  | Description  | 
 |---|---|---|
-| in | nxplayer | The `NXPlayer` instance that generated the event.
+| in | nxplayer | The `NXPlayer` instance that generated the event.| 
 
-#### - (void) nexPlayerDidBeginBuffering: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidBeginBuffering: (NXPlayer ∗ )nxplayer
 
 The player has begun buffering.
 
@@ -4659,7 +4658,7 @@ In general, the application should handle these events as follows:
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidBeginDownloading: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidBeginDownloading: (NXPlayer ∗ )nxplayer
 
 The player has begun to download the content.
 
@@ -4669,7 +4668,7 @@ The player has begun to download the content.
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidChangeCodec: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidChangeCodec: (NXPlayer ∗ )nxplayer
 
 One or more of the codecs in use has changed.
 
@@ -4681,7 +4680,7 @@ There was a change in the audio codec in use, the video codec in use, or both. T
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidChangeDSI: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidChangeDSI: (NXPlayer ∗ )nxplayer
 
 An attribute relating to the video or audio format (such as the resolution, bitrate, etc.) has changed.
 
@@ -4693,7 +4692,7 @@ See `NXPlayer::contentInfo` for the updated information.
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidConnectForDownload: (NXPlayer∗ )nxplayertotalSize:(NSInteger)sizeInBytes
+#### (void) nexPlayerDidConnectForDownload: (NXPlayer∗ )nxplayertotalSize:(NSInteger)sizeInBytes
 
 The player connected to the HTTP server and got the HEAD information successfully.
 
@@ -4704,7 +4703,7 @@ The player connected to the HTTP server and got the HEAD information successfull
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 | in | sizeInBytes | The total size, in bytes, of the file to be downloaded. |
 
-#### - (void) nexPlayerDidConnectToServer: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidConnectToServer: (NXPlayer ∗ )nxplayer
 
 The RTSP connection has been successfully established with the streaming server.
 
@@ -4716,7 +4715,7 @@ This is a one-time event and applies only to RTSP streaming, not to other forms 
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidFailToGetAudioCodec: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFailToGetAudioCodec: (NXPlayer ∗ )nxplayer
 
 Failed to determine the audio codec.
 
@@ -4730,7 +4729,7 @@ The player doesn’t take any special automatic action when this event occurs. P
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidFailToGetVideoCodec: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFailToGetVideoCodec: (NXPlayer ∗ )nxplayer
 
 Failed to determine the video codec.
 
@@ -4744,7 +4743,7 @@ The player doesn’t take any special automatic action when this event occurs. P
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidFailToInitAudioCodec: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFailToInitAudioCodec: (NXPlayer ∗ )nxplayer
 
 The audio codec failed to initialize.
 
@@ -4758,7 +4757,7 @@ The player doesn’t take any special automatic action when this event occurs. P
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidFailToInitVideoCodec: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFailToInitVideoCodec: (NXPlayer ∗ )nxplayer
 
 The video codec failed to initialize.
 
@@ -4772,7 +4771,7 @@ The player doesn’t take any special automatic action when this event occurs. P
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidFinishBuffering: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFinishBuffering: (NXPlayer ∗ )nxplayer
 
 The player has finished buffering.
 
@@ -4788,7 +4787,7 @@ This happens when the player has buffered the requested amount of data and is ab
 
 - `nexPlayerDidBeginBuffering:` for more information
 
-#### - (void) nexPlayerDidFinishDownloading: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidFinishDownloading: (NXPlayer ∗ )nxplayer
 
 The player has finished downloading the content.
 
@@ -4798,7 +4797,7 @@ The player has finished downloading the content.
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidReachEndOfContent: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidReachEndOfContent: (NXPlayer ∗ )nxplayer
 
 Playback has completed successfully up to the end of content.
 
@@ -4814,7 +4813,7 @@ in response to this event.
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
 
-#### - (void) nexPlayerDidStartAudioTask: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidStartAudioTask: (NXPlayer ∗ )nxplayer
 
 The player’s audio task has been activated.
 
@@ -4828,7 +4827,7 @@ It is not reliable to use this to detect which content has audio, because the au
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
 
-#### - (void) nexPlayerDidStartVideoTask: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidStartVideoTask: (NXPlayer ∗ )nxplayer
 
 The player’s video task has been activated.
 
@@ -4842,7 +4841,7 @@ It is not reliable to use this to detect which content has video, because the vi
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerDidUpdateContentInfo: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerDidUpdateContentInfo: (NXPlayer ∗ )nxplayer
 
 The content information has changed.
 
@@ -4859,7 +4858,7 @@ The new content information can be found in `NXPlayer::contentInfo`.
 |---|---|---|
 | in | nxplayer | The `NXPlayer` instance that generated the event. |
 
-#### - (void) nexPlayerFinishedDownloadBuffering: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerFinishedDownloadBuffering: (NXPlayer ∗ )nxplayer
 
 This event occurs when there is enough data downloaded to resume playback.
 
@@ -4873,7 +4872,7 @@ This event occurs when there is enough data downloaded to resume playback.
 
 - nexPlayerBeganDownloadBuffering: for details.
 
-#### - (void) nexPlayerPauseSupervisionTimeout: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerPauseSupervisionTimeout: (NXPlayer ∗ )nxplayer
 
 NexPlayer has been in the `NXPlayerStatePause` state for the period specified by NXPropertyPauseSupervisionTimeout.
 
@@ -4889,7 +4888,7 @@ If this method is not implemented by the delegate, the default behavior is to fo
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event.
 
-#### - (void) nexPlayerReadyForControl: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerReadyForControl: (NXPlayer ∗ )nxplayer
 
 The player is now ready to accept control commands (pause and seek) if appropriate for the open content.
 
@@ -4901,7 +4900,7 @@ There are several stages that the player must go through (opening the content, s
 |---|---|---|
 | in | nxplayer | The NXPlayer instance that generated the event. |
 
-#### - (void) nexPlayerRTSPCommandTimeout: (NXPlayer ∗ )nxplayer
+#### (void) nexPlayerRTSPCommandTimeout: (NXPlayer ∗ )nxplayer
 
 NexPlayer made an RTSP request, but has not received a response from the streaming server within the period specified by NXPropertyRTSPCommandTimeout.
 
@@ -4921,7 +4920,7 @@ If this method is not implemented by the delegate, the default behavior is to fo
 
 ### NXPlayerDRMDelegateProvider Class Reference
 
-A class dedicated to provide DRM delegates to the associatedNXPlayerinstance.
+A class dedicated to provide DRM delegates to the associated NXPlayer instance.
 
 Example code :
 
@@ -4949,11 +4948,11 @@ Example code :
     ...
 }
 ```
-#### + (id) providerWithNXPlayer: (NXPlayer ∗ )nxplayer
+#### (id) providerWithNXPlayer: (NXPlayer ∗ )nxplayer
 
-This method creates an instance of this class associated with the parameternxplayer.
+This method creates an instance of this class associated with the parameter nxplayer.
 
-#### - (id < NXPlayerGetKeyExtDelegate > ) getKeyExtDelegate [read] , [write] , [nonatomic] , [weak]
+#### (id < NXPlayerGetKeyExtDelegate > ) getKeyExtDelegate [read] , [write] , [nonatomic] , [weak]
 
 Delegate object that will be called with it’s nexPlayer:getKeyExtForURLString:result: (NXPlayerGetKeyExtDelegatep) method when an encryption key retrieval is required from a HLS playlist to be passed to NexPlayer for descrambling.
 
@@ -4965,7 +4964,7 @@ NXPlayerGetKeyExtDelegate
 
 Delegate interface that defines the methods that will be called when an encryption key retrieval is required from a HLS playlist to be passed to NexPlayer for descrambling.
 
-#### - (NSData ∗ ) nexPlayer: (NXPlayer ∗ )nxplayergetKeyExtForURLString:(NSString ∗ )URLStringresult:(BOOL ∗ ) pResult
+#### (NSData ∗ ) nexPlayer: (NXPlayer ∗ )nxplayergetKeyExtForURLString:(NSString ∗ )URLStringresult:(BOOL ∗ ) pResult
 
 This method is called for encryption key retrieval from the NexPlayer for descrambling.
 
@@ -4985,7 +4984,7 @@ NSData object that contains encryption key information if successful .nil otherw
 
 Provides a view in which NexPlayer video output can be displayed, creates an associated NXPlayer object, and binds it to the view.
 
-This is similar to NXPlayerView, except that NXPlayerView scales the video to maintain the aspect ratio, and handles resizing and rotation, whereas NXPlayerRenderView simply stretches the video to fill the view.
+This is similar to NXPlayerView, except that NXPlayerView scales the video to maintain the aspect ratio, and handles resizing and rotation, where as NXPlayerRenderView simply stretches the video to fill the view.
 
 This is the recommended way to render video with NexPlayer if you wish to calculate scaling values yourself.
 
@@ -4999,7 +4998,7 @@ In addition, you can use the NXPlayerRenderView::player property to access the N
 [hPlayerView.player openAndPlayFromBundle: @"test.wmv"];
 ```
 
-#### - (NXPlayer ∗ ) player [read] , [nonatomic] , [strong]
+#### (NXPlayer ∗ ) player [read] , [nonatomic] , [strong]
 
 The NXPlayer instance associated with this view.
 
@@ -5023,7 +5022,7 @@ In addition, you can use the NXPlayerView::player property to access the NXPlaye
 [hPlayerView.player openAndPlayFromBundle: @"test.wmv"];
 ```
 
-#### - (NXScale) autoScaling** [read] , [write] , [nonatomic] , [assign]
+#### (NXScale) autoScaling** [read] , [write] , [nonatomic] , [assign]
 
 Controls automatic scaling of the video image when the view is resized.
 
@@ -5037,7 +5036,7 @@ Changes to the scale can be animated using the usual UIView animation technqiues
 
 Possible values:
 
-- `NXScale_None` The video size will not be changed; the size and location can be set by assigning values to thevideoRectproperty.
+- `NXScale_None` The video size will not be changed; the size and location can be set by assigning values to the video Rect property.
 - `NXScale_OriginalSize` The video will be displayed at its original size, centered in the view. The original video dimensions are calculated using regular (normal resolution) pixels in order to maintain consistency between normal and retina displays.
 - `NXScale_FitInView` Fit video to container (as large as possible without cropping). The aspect ratio of the video is maintained. There may be black bars if the aspect ratio of the video doesn’t precisely match the aspect ratio of the view.
 - `NXScale_FillView` NexPlayer will fill the parent container. If the video dimensions don’t match the view dimensions, the video will be cropped to avoid black bars. The aspect ratio is maintained.
@@ -5047,7 +5046,7 @@ The default for this is NXScale_Stretch.
 
 > **Warning** Changing this should be done while the NXPlayerView instance is visible on the screen.
 
-#### - (BOOL) captionHidden** [read] , [write] , [nonatomic] , [assign]
+#### (BOOL) captionHidden** [read] , [write] , [nonatomic] , [assign]
 
 Sets visibility state of captions available in content.
 
@@ -5059,54 +5058,54 @@ Default value is NO.
 
 - CEA608CaptionView
 
-#### - (NXCaptionRenderController** ∗) captionRenderController** [read] , [nonatomic] , [strong]
+#### (NXCaptionRenderController** ∗) captionRenderController** [read] , [nonatomic] , [strong]
 
-TheNXCaptionRenderControllerobject returned by this property allows the rendering options set for captions to be rendered on the screen.
+The NXCaptionRenderController object returned by this property allows the rendering options set for captions to be rendered on the screen.
 
-#### - (NXCEA608CaptionView** ∗ ) CEA608CaptionView [read] , [nonatomic] , [strong]
+#### (NXCEA608CaptionView** ∗ ) CEA608CaptionView [read] , [nonatomic] , [strong]
 
 The `NXCEA608CaptionView` contained within this view.
 
 If closed captions are turned on, and the current captions are CEA 608 closed caption standard, they will be displayed in this view whenever caption data is updated by NexPlayer.
 
-If a developer wishes to handle and display CEA 608 closed captions independently, the captionHidden property must be setNOand a separate view should be implemented to receive and display captions in the application.
+If a developer wishes to handle and display CEA 608 closed captions independently, the captionHidden property must be set NO and a separate view should be implemented to receive and display captions in the application.
 
-**Deprecated** If a developer wishes to handle and display CEA 608 closed captions independently,captionHidden property must be set toNOinstead of using `CEA608CaptionView.hidden`.
+**Deprecated** If a developer wishes to handle and display CEA 608 closed captions independently, captionHidden property must be set to NO instead of using `CEA608CaptionView.hidden`.
 
 **See Also**
 
 - captionHidden
 
-#### - (NXPlayer** ∗ ) player [read] , [nonatomic] , [weak]
+#### (NXPlayer** ∗ ) player [read] , [nonatomic] , [weak]
 
 The NXPlayer instance associated with this view.
 
 This can be used to control playback within this view.
 
-#### - (NXPlayerRenderView** ∗ ) renderView** [read] , [nonatomic] , [strong]
+#### (NXPlayerRenderView** ∗ ) renderView** [read] , [nonatomic] , [strong]
 
 The NXPlayerRenderView contained within this view.
 
 There is generally not much reason to access this directly.
 
-#### - (BOOL) useCEA608CustomView** [read] , [write] , [nonatomic] , [assign]
+#### (BOOL) useCEA608CustomView** [read] , [write] , [nonatomic] , [assign]
 
 This property allows the rendering mode of the CEA 608 closed captions.
 
-NO means basic CEA 608 rendering, meeting the specifications of the CEA 608 standard, and YES means an enhanced rendering mode that makes possible for CEA 608 closed captions to be rendered with additional display settings. (including the changing of the foreground and background colors, the font size, the font type, etc).
+NO means basic CEA 608 rendering, meeting the specifications of the CEA 608 standard, and YES means an enhanced rendering mode that makes possible for CEA 608 closed captions to be rendered with additional display settings (including the changing of the foreground and background colors, the font size, the font type, etc).
 
 Default value is NO.
 
-####= - (CGRect) videoRect** [read] , [write] , [nonatomic] , [assign]
+#### (CGRect) videoRect** [read] , [write] , [nonatomic] , [assign]
 
 Sets the rectangle in which the video image will be drawn.
 
 Dimensions are in pixels, and coordinates are relative to the NXPlayerView.
 
-Changing this property automatically forcesautoScalingto be set toNXScale_None.
+Changing this property automatically forces autoScaling to be set to NXScale_None.
 
-Enabling automatic scaling (settingautoScalingto a value other thanNXScale_None) causes the value of
-videoRectto change automatically when the layout or rotation of a parentFrame changes.
+Enabling automatic scaling (setting autoScaling to a value other thanNXScale_None) causes the value of
+videoRect to change automatically when the layout or rotation of a parentFrame changes.
 
 ### NXRemoteFileIOInterface Protocol Reference
 
@@ -5116,7 +5115,7 @@ If you are playing back local content that is not available via the standard ope
 
 To provide your own replacement funtions, create a class that implements this protocol, and assign an instance of that class to NXPlayer::remoteFileIOInterface
 
-#### - (int) remoteFileClose: (NXFileHandle)hFile
+#### (int) remoteFileClose: (NXFileHandle)hFile
 
 Replacement for `close()`
 
@@ -5135,7 +5134,7 @@ This should close the requested file and invalidate the handle.
 - 0 for success  
 - -1 if an error occurred.
 
-#### - (NXFileHandle) remoteFileOpen: (char ∗ )filenamemode:(NXFileMode)mode
+#### (NXFileHandle) remoteFileOpen: (char ∗ )filenamemode:(NXFileMode)mode
 
 Replacement for `open()`
 
@@ -5153,7 +5152,7 @@ value that this instance of NXRemoteFileIOInterface can use to identify the open
 
 The handle to the file.
 
-#### - (ssize_t) remoteFileRead: (NXFileHandle)hFilebuffer:(void ∗ )bufferlength:(NSUInteger)length
+#### (ssize_t) remoteFileRead: (NXFileHandle)hFilebuffer:(void ∗ )bufferlength:(NSUInteger)length
 
 Replacement for `read()`
 
@@ -5171,7 +5170,7 @@ This should read the specified number of bytes from the file. Unless the end of 
 
 The actual number of bytes read; 0 if the end of the file was reached; -1 if an error occurred.
 
-#### - (long long) remoteFileSeek64: (NXFileHandle)hFileoffset:(long long)offsetorigin:(NXFileSeekOrigin)origin
+#### (long long) remoteFileSeek64: (NXFileHandle)hFileoffset:(long long)offsetorigin:(NXFileSeekOrigin)origin
 
 Same as remoteFileSeek:offset:origin: except that 64-bit values are used for the offset and return value, allowing
 support of files greater than 2GB in size.
@@ -5184,13 +5183,13 @@ This should move the current read/write offset to the specified position.
 |---|---|
 | hFile | The handle of the file for which to adjust the read/write offset (as returned by remoteFile-Open:mode:) |
 | offset | The offset (from origin) by which to move the current read/write offset. |
-| origin | The position which theoffsetparameter is measured relative to. May be NXFileSeek-OriginBeginning, NXFileSeekOriginCurrent or NXFileSeekOriginEnd. |
+| origin | The position which the off set parameter is measured relative to. May be NXFileSeek-OriginBeginning, NXFileSeekOriginCurrent or NXFileSeekOriginEnd. |
 
 **Returns**
 
 The new position within the file.
 
-#### - (int) remoteFileSeek: (NXFileHandle)hFileoffset:(int)offsetorigin:(NXFileSeekOrigin)origin
+#### (int) remoteFileSeek: (NXFileHandle)hFileoffset:(int)offsetorigin:(NXFileSeekOrigin)origin
 
 Replacement for `lseek()`
 
@@ -5202,17 +5201,17 @@ This should move the current read/write offset to the specified position.
 |---|---|
 | hFile | The handle of the file for which to adjust the read/write offset (as returned by remoteFile-Open:mode:) |
 | offset | The offset (from origin) by which to move the current read/write offset. |
-| origin | The position which theoffsetparameter is measured relative to. May be NXFileSeek-OriginBeginning, NXFileSeekOriginCurrent or NXFileSeekOriginEnd. |
+| origin | The position which the off set parameter is measured relative to. May be NXFileSeek-OriginBeginning, NXFileSeekOriginCurrent or NXFileSeekOriginEnd. |
 
 **Returns**
 
 The new position within the file.
 
-#### - (long long) remoteFileSize: (NXFileHandle)hFile
+#### (long long) remoteFileSize: (NXFileHandle)hFile
 
 Replacement for getting the size of a file.
 
-This should return the size of the filewithoutmodifying the position to which the file has been seeked (if the seek
+This should return the size of the file without modifying the position to which the file has been seeked (if the seek
 location must be moved to determine the size, this function should move it back afterwards).
 
 **Parameters**
@@ -5223,21 +5222,21 @@ location must be moved to determine the size, this function should move it back 
 
 **Returns**
 
-The actual number ofbytesof file, or -1 if an error occurred.
+The actual number of bytes of file, or -1 if an error occurred.
 
-#### - (ssize_t) remoteFileWrite: (NXFileHandle)hFilebuffer:(void ∗ )bufferlength:(NSUInteger)length
+#### (ssize_t) remoteFileWrite: (NXFileHandle)hFilebuffer:(void ∗ )bufferlength:(NSUInteger)length
 
 Replacement for `write()`
 
-This should write the specified number ofbytesto the file.
+This should write the specified number of bytes to the file.
 
 **Parameters**
 
 | Name  | Description  | 
 |---|---|
 | hFile | The handle of the file to write to (as returned by remoteFileOpen:mode:) |
-| buffer | A buffer ofbytesto write to the file. |
-| length | The number ofbytesto write to file. |
+| buffer | A buffer of bytes to write to the file. |
+| length | The number of bytes to write to file. |
 
 **Returns**
 
@@ -5247,76 +5246,76 @@ The actual number of bytes written, or -1 if an error occurred.
 
 This class manages information about the current streaming content.
 
-#### - (NSUInteger) curNetworkBw** [read] , [nonatomic] , [assign]
+#### (NSUInteger) curNetworkBw** [read] , [nonatomic] , [assign]
 
-The actual bitrate, inbps, of the read segments. The read bitrate is the average speed at which the streaming
+The actual bitrate, in bps, of the read segments. The read bitrate is the average speed at which the streaming
 segments are read from the network server.
 
-#### - (NSUInteger) curTrackBw** [read] , [nonatomic] , [assign]
+#### (NSUInteger) curTrackBw** [read] , [nonatomic] , [assign]
 
-The bitrate, inbps, as specified in the segment profile.
+The bitrate, in bps, as specified in the segment profile.
 
-#### - (NSString ∗ ) initialMpd [read] , [nonatomic] , [strong]
+#### (NSString ∗ ) initialMpd [read] , [nonatomic] , [strong]
 
 Full content of an initial manifest file.
 
-#### - (NSString ∗ ) initialMpdUrl [read] , [nonatomic] , [strong]
+#### (NSString ∗ ) initialMpdUrl [read] , [nonatomic] , [strong]
 
 The actual URI (after all the redirects) for the request of a manifest file.
 
-#### - (NSString ∗ ) masterMpd [read] , [nonatomic] , [strong]
+#### (NSString ∗ ) masterMpd [read] , [nonatomic] , [strong]
 
 Full content of a master manifest file.
 
-#### - (NSString ∗ ) masterMpdUrl [read] , [nonatomic] , [strong]
+#### (NSString ∗ ) masterMpdUrl [read] , [nonatomic] , [strong]
 
 Master manifest URL.
 
-#### - (uint64_t) numOfBytesRecv [read] , [nonatomic] , [assign]
+#### (uint64_t) numOfBytesRecv [read] , [nonatomic] , [assign]
 
 The number of bytes received from the server by the player.
 
-#### - (NSUInteger) numOfRedirect [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfRedirect [read] , [nonatomic] , [assign]
 
 The total number of redirects. This includes redirects for both the manifest file and the individual segments.
 
-#### - (NSUInteger) numOfSegmentDownRate [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentDownRate [read] , [nonatomic] , [assign]
 
 The number of the segments with a lower read bitrate than the bitrate specified on the profile. The read bitrate is the average speed at which the streaming segments are read from the network server.
 
-#### - (NSUInteger) numOfSegmentFailToParse [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentFailToParse [read] , [nonatomic] , [assign]
 
 The number of segments failed to receive during the streaming.
 
-#### - (NSUInteger) numOfSegmentFailToRecv [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentFailToRecv [read] , [nonatomic] , [assign]
 
 The number of segments failed to receive from the server.
 
-#### - (NSUInteger) numOfSegmentInBuf [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentInBuf [read] , [nonatomic] , [assign]
 
 The total number of segments in the buffer.
 
-#### - (NSUInteger) numOfSegmentRecv [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentRecv [read] , [nonatomic] , [assign]
 
 The number of received segments from the server by the player.
 
-#### - (NSUInteger) numOfSegmentRequest [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentRequest [read] , [nonatomic] , [assign]
 
 The number of requested segments from the server by the player.
 
-#### - (NSUInteger) numOfSegmentTimeout [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfSegmentTimeout [read] , [nonatomic] , [assign]
 
 The number of segments that resulting a timeout.
 
-#### - (NSUInteger) numOfTrackSwitchDown [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfTrackSwitchDown [read] , [nonatomic] , [assign]
 
 The number of times that a content profile has changed to a profile with a lower bitrate.
 
-#### - (NSUInteger) numOfTrackSwitchUp [read] , [nonatomic] , [assign]
+#### (NSUInteger) numOfTrackSwitchUp [read] , [nonatomic] , [assign]
 
 The number of times that a content profile has changed to a profile with a higher bitrate.
 
-#### - (NSString ∗ ) startSegUrl [read] , [nonatomic] , [strong]
+#### (NSString ∗ ) startSegUrl [read] , [nonatomic] , [strong]
 
 The description of an initially selected profile.
 
@@ -5356,7 +5355,7 @@ NSString*buildTimeAndVersion =
 NSLog( @"Version: %@", buildTimeAndVersion );
 ```
 
-#### + (NXSDKVersion ∗ ) sharedInstance
+#### (NXSDKVersion ∗ ) sharedInstance
 
 Returns the single shared instance of this class.
 
@@ -5370,7 +5369,7 @@ The shared singleton instance of this class.
 
 NXSDKVersion for more information.
 
-#### - (NSString ∗ ) SDKName [read] , [nonatomic] , [weak]
+#### (NSString ∗ ) SDKName [read] , [nonatomic] , [weak]
 
 The name of the current SDK. This is a string the same as NXPlayer::SDKName.
 
@@ -5394,7 +5393,7 @@ A protocol you can implement if you wish to implement Smooth Streaming fragment 
 
 See NXPlayer::smoothStreamFragmentDescrambler for additional information.
 
-#### - (unsigned long) descrambleSmoothStreamingFragmentForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSize [optional]
+#### (unsigned long) descrambleSmoothStreamingFragmentForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSize [optional]
 
 Called by the player when there is data available for descrambling.
 
@@ -5409,9 +5408,9 @@ Buffer:outputBufferSize:mediaFileURL:parentPlaylistURL:` instead.
 | in | pInputBuffer | The original (possibly scrambled) input data. |
 |  | uiInputBufferSize | The size (in bytes) of the input buffer. |
 | out | pOutputBuffer | The location at which to write the descrambled output data. Note that this may overlap or be the same as the input buffer location. |
-| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller thanuiInputBufferSize, but not larger. |
+| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller than uiInputBufferSize, but not larger. |
 
-#### - (unsigned long) descrambleSmoothStreamingFragmentForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBufferoutputBufferSize:(unsigned int ∗ )puiOutputBufferSizemediaFileURL:(char ∗ )mediaFileURLparentPlaylistURL:(char ∗ )parentPlaylistURL [optional]
+#### (unsigned long) descrambleSmoothStreamingFragmentForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBufferoutputBufferSize:(unsigned int ∗ )puiOutputBufferSizemediaFileURL:(char ∗ )mediaFileURLparentPlaylistURL:(char ∗ )parentPlaylistURL [optional]
 
 Called by the player when there is data available for descrambling.
 
@@ -5427,9 +5426,9 @@ and descramble the fragment if necessary.
 | in | pInputBuffer | The original (possibly scrambled) input data. |
 | in | uiInputBufferSize | The size (in bytes) of the input buffer. |
 | out | pOutputBuffer | The location at which to write the descrambled output data. Note that this may overlap or be the same as the input buffer location. |
-| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller thanuiInputBufferSize, but not larger. |
+| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller than uiInputBufferSize, but not larger. |
 | in | mediaFileURL | The URL of the media file that this fragment belongs to. | 
-| in | parentPlaylistURL | The URL of the parent playlist thatmediaFileURLbelongs to. |
+| in | parentPlaylistURL | The URL of the parent playlist that mediaFileURL belongs to. |
 
 
 ### NXSmoothStreamPlayReadyDescrambler Protocol Reference
@@ -5438,7 +5437,7 @@ A protocol you can implement if you wish to implement Smooth Streaming PlayReady
 
 See NXPlayer::smoothStreamPlayReadyDescrambler for additional information.
 
-#### - (NSInteger) descrambleSmoothStreamPlayReadyForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSize outputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSize sampleEncBox:(unsigned char ∗ )pSampleEncBox sampleEncBoxLen:(unsigned int)dwSampleEncBoxLen sampleIndex:(unsigned int)dwSampleIDXtrackID:(unsigned int)dwTrackID
+#### (NSInteger) descrambleSmoothStreamPlayReadyForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBufferinputBufferSize:(unsigned int)uiInputBufferSize outputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSize sampleEncBox:(unsigned char ∗ )pSampleEncBox sampleEncBoxLen:(unsigned int)dwSampleEncBoxLen sampleIndex:(unsigned int)dwSampleIDXtrackID:(unsigned int)dwTrackID
 
 Called by the player when there is data available for descrambling.
 
@@ -5462,7 +5461,7 @@ This function is called every time a Smooth Streaming fragment is received, rega
 
 This class manages the playback statistics of the content.
 
-#### - (id) initWithPlayer: (NXPlayer ∗ )player
+#### (id) initWithPlayer: (NXPlayer ∗ )player
 
 Designated initializer.
 
@@ -5474,17 +5473,17 @@ Designated initializer.
 
 **Returns**
 
-An instance ofNXStatisticsAPIclass.
+An instance of NXStatisticsAPI class.
 
-#### - (NXBufferInfo ∗ ) bufferInfo [read] , [nonatomic] , [strong]
+#### (NXBufferInfo ∗ ) bufferInfo [read] , [nonatomic] , [strong]
 
-Instance ofNXBufferInfoclass to access buffer information related methods such asNSUInteger.
+Instance of NXBufferInfo class to access buffer information related methods such asNSUInteger.
 
 **See Also**
 
 NXBufferInfo
 
-#### - (NXDeviceInfo ∗ ) deviceInfo [read] , [nonatomic] , [strong]
+#### (NXDeviceInfo ∗ ) deviceInfo [read] , [nonatomic] , [strong]
 
 The information about the current device streaming a HLS content.
 
@@ -5492,7 +5491,7 @@ The information about the current device streaming a HLS content.
 
 NXDeviceInfo
 
-#### - (id < NXHttpStateDelegate > ) httpStateDelegate [read] , [write] , [nonatomic] , [weak]
+#### (id < NXHttpStateDelegate > ) httpStateDelegate [read] , [write] , [nonatomic] , [weak]
 
 An object that conforms to NXHttpStateDelegate which delivers HTTP state information.
 
@@ -5501,7 +5500,7 @@ An object that conforms to NXHttpStateDelegate which delivers HTTP state informa
 NXHttpStateDelegate
 
 
-#### - (NXRTStreamingInfo ∗ ) RTStreamingInfo [read] , [nonatomic] , [strong]
+#### (NXRTStreamingInfo ∗ ) RTStreamingInfo [read] , [nonatomic] , [strong]
 
 Information about the current HLS content.
 
@@ -5519,33 +5518,33 @@ This interface can be used to retrieve playback statistics such as the decoded f
 
 NXPlayer.h/statsInfo
 
-#### - (NSUInteger) avgAudioBitrate [read] , [nonatomic] , [assign]
+#### (NSUInteger) avgAudioBitrate [read] , [nonatomic] , [assign]
 
 The average bitrate of the audio content currently playing.
 
-#### - (NSUInteger) avgTimeDecodingVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) avgTimeDecodingVideoFrames [read] , [nonatomic] , [assign]
 
 The average time took to decode a video frame.
 
-#### - (NSUInteger) avgTimeRenderingVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) avgTimeRenderingVideoFrames [read] , [nonatomic] , [assign]
 
 The average time took to render a video frame.
 
-#### - (NSUInteger) avgVideoBitrate [read] , [nonatomic] , [assign]
+#### (NSUInteger) avgVideoBitrate [read] , [nonatomic] , [assign]
 
 The average bitrate of the video currently playing.
 
-#### - (NSUInteger) decodedVideoFramesLastInterval [read] , [nonatomic] , [assign]
+#### (NSUInteger) decodedVideoFramesLastInterval [read] , [nonatomic] , [assign]
 
 Number of video frames decoded by NexPlayer during the last interval of content.
 
 The default interval of content is 2seconds.
 
-#### - (double) decodedVideoFramesPerSec [read] , [nonatomic] , [assign]
+#### (double) decodedVideoFramesPerSec [read] , [nonatomic] , [assign]
 
 The average number of video frames decoded per second.
 
-#### - (NSUInteger) numDecodingVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) numDecodingVideoFrames [read] , [nonatomic] , [assign]
 
 Number of video frames decoded by NexPlayer during the last interval of content.
 
@@ -5553,7 +5552,7 @@ The default interval of content is 2 seconds.
 
 > **Deprecated** Use `decodedVideoFramesLastInterval` Instead.
 
-#### - (NSUInteger) numRenderingVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) numRenderingVideoFrames [read] , [nonatomic] , [assign]
 
 Number of video frames rendered and displayed by NexPlayer over the last interval of content.
 
@@ -5561,49 +5560,49 @@ Even though data for more frames of current content may be decoded during an int
 
 > **Deprecated** Use `renderedVideoFramesLastInterval` Instead.
 
-#### - (NSUInteger) renderedVideoFramesLastInterval [read] , [nonatomic] , [assign]
+#### (NSUInteger) renderedVideoFramesLastInterval [read] , [nonatomic] , [assign]
 
 Number of video frames rendered and displayed by NexPlayer over the last interval of content.
 
 Even though data for more frames of current content may be decoded during an interval, it may be necessary at times for some frames to be skipped in certain circumstances, and this value provides clearer information about what is actually displayed by the NexPlayer.
 
-#### - (double) renderedVideoFramesPerSec [read] , [nonatomic] , [assign]
+#### (double) renderedVideoFramesPerSec [read] , [nonatomic] , [assign]
 
 The average number of video frames displayed per second.
 
-#### - (NSUInteger) timeDecodingSingleVideoFrame [read] , [nonatomic] , [assign]
+#### (NSUInteger) timeDecodingSingleVideoFrame [read] , [nonatomic] , [assign]
 
 The time took to decode a video frame.
 
-#### - (NSUInteger) timeRenderingSingleVideoFrame [read] , [nonatomic] , [assign]
+#### (NSUInteger) timeRenderingSingleVideoFrame [read] , [nonatomic] , [assign]
 
 The time took to render a video frame.
 
-#### - (NSUInteger) totalAudioFrameBytes [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalAudioFrameBytes [read] , [nonatomic] , [assign]
 
 The total size of all the audio frames, in bytes.
 
-#### - (NSUInteger) totalDecodedVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalDecodedVideoFrames [read] , [nonatomic] , [assign]
 
 The total number of video frames decoded to play a video content.
 
-#### - (NSUInteger) totalDroppedVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalDroppedVideoFrames [read] , [nonatomic] , [assign]
 
 The total number of video frames skipped while playing a video content.
 
-#### - (NSUInteger) totalRenderedVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalRenderedVideoFrames [read] , [nonatomic] , [assign]
 
 The total number of video frames displayed during playing a video content.
 
-#### - (NSUInteger) totalVideoFrameBytes [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalVideoFrameBytes [read] , [nonatomic] , [assign]
 
 The total size of all the video frames of a video content, inbytes.
 
-#### - (NSUInteger) totalVideoFrames [read] , [nonatomic] , [assign]
+#### (NSUInteger) totalVideoFrames [read] , [nonatomic] , [assign]
 
 The total number of video frames to decode.
 
-#### - (NSUInteger) videoFramesLastInterval [read] , [nonatomic] , [assign]
+#### (NSUInteger) videoFramesLastInterval [read] , [nonatomic] , [assign]
 
 The number of video frames available to be decoded during the last interval of content.
 
@@ -5617,13 +5616,13 @@ For more information on local subtitles, see NXPlayer::subtitleTracks
 
 For more information on text tracks for streaming content, see setVideoStream:audioStream:textStream:trackAttributes: (NXPlayer)
 
-#### - (BOOL) enabled [read] , [write] , [nonatomic] , [assign]
+#### (BOOL) enabled [read] , [write] , [nonatomic] , [assign]
 
 Determines whether or not this track is enabled (included in subtitle displays).
 
 This property can be set to YES to enable this track, or NO to disable this track. The change will take effect immediately.
 
-#### - (NSDictionary ∗ ) metadata [read] , [nonatomic] , [strong]
+#### (NSDictionary ∗ ) metadata [read] , [nonatomic] , [strong]
 
 A dictionary containing additional information about this subtitle track.
 
@@ -5633,12 +5632,12 @@ The information available varies depending on the subtitle file format. For SMI 
 
 The properties in this interface define the different details of a custom tag in ID3 metadata.
 
-#### - (BOOL) isPicture [read] , [nonatomic] , [assign]
+#### (BOOL) isPicture [read] , [nonatomic] , [assign]
 
 This property checks whether the current tag contains any picture data and if they are accessible through thedata property.
 
-If YES, the picture data format is inmimeType propertyand thedata propertycontains the binary data of
-the image. If NO, the tag only includes text data and is accessible throughtext property.
+If YES, the picture data format is in mimeType property and the data property contains the binary data of
+the image. If NO, the tag only includes text data and is accessible through text property.
 
 ### NXTrackInfo Class Reference
 
@@ -5648,13 +5647,13 @@ For any given stream, the list of available tracks is in NXMediaStreamInfo::trac
 
 Any given stream may have multiple tracks containing the same content encoded at different quality levels to support different network conditions.
 
-#### - (NXCodecID) codecID** [read] **,** [write] **,** [nonatomic] **,** [assign]
+#### (NXCodecID) codecID** [read] **,** [write] **,** [nonatomic] **,** [assign]
 
 This indicates the codec used for the given track.
 
 > **Warning** Do not trust this value in HLS, DASH and MS Smooth Streaming mode, as invalid values are sometimes provided.
 
-#### - (unsigned int) internalId [read] , [write] , [nonatomic] , [assign]
+#### (unsigned int) internalId [read] , [write] , [nonatomic] , [assign]
 
 An internal numeric ID that uniquely identifies a track.
 
@@ -5674,22 +5673,19 @@ if( [mediaStreamInfo.tracks objectAtIndex:i] == mediaStreamInfo.currentTrack ){
 }
 ```
 
-The actual integer value that appears here is arbitrary and may be any 32-bit value. The method for assigning the
-internal ID may change in future versions.
+The actual integer value that appears here is arbitrary and may be any 32-bit value. 
 
 ### NXWMDRMDescrambler Protocol Reference
 
-The NXWMDRMDescrambler protocol must be adopted and implemented by objects that provide WM-DRM de-
-scrambling services.
+The NXWMDRMDescrambler protocol must be adopted and implemented by objects that provide WM-DRM descrambling services.
 
 Any object can adopt this protocol, but it is typically adopted by either the NXPlayerDelegate, or by a dedicated DRM descrambling object.
 
 An object that implements this protocol should be assigned to NXPlayer::WMDRMDescrambler.
 
-This protocol supports both payload-level and packet-level descrambling. The method DRMType (NXWMDRM-
-Descrambler-p) must return a value indicating the type of DRM that an objecting implementing this protocol will provide descrambling services for.
+This protocol supports both payload-level and packet-level descrambling. The method DRMType (NXWMDRMDescrambler-p) must return a value indicating the type of DRM that an objecting implementing this protocol will provide descrambling services for.
 
-#### - (int) descrambleWMDRMForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBuffer inputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSizeinitialVector:(unsigned char ∗ )pIVBuffer initialVectorSize:(unsigned int)dwIVBufferSize
+#### (int) descrambleWMDRMForPlayer: (NXPlayer ∗ )playerinputBuffer:(unsigned char ∗ )pInputBuffer inputBufferSize:(unsigned int)uiInputBufferSizeoutputBuffer:(unsigned char ∗ )pOutputBuffer outputBufferSize:(unsigned int ∗ )puiOutputBufferSizeinitialVector:(unsigned char ∗ )pIVBuffer initialVectorSize:(unsigned int)dwIVBufferSize
 
 Descrambles WM-DRM content.
 
@@ -5704,7 +5700,7 @@ The type of data passed for descrambling depends on the value that was returned 
 | in | pInputBuffer | The data to be descrambled |
 | in | uiInputBufferSize | The size of the data, in bytes |
 | out | pOutputBuffer | The location at which to place the descrambled output data. This may point to the same location as the input buffer, or it may point to a separate location. The size available for the output buffer is the same as the size of the input buffer. That is, the descrambled data may be smaller than the original data, but not larger. |
-| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller thanuiInputBufferSize, but not larger. |
+| out | puiOutputBufferSize | The size of the descrambled data. The callback must set this value. This may be equal to or smaller than uiInputBufferSize, but not larger. |
 | in | pIVBuffer | The initialization vector. dwIVBufferSize The size (in bytes) of the initialization vector. |
 
 **Returns**
@@ -5712,7 +5708,7 @@ The type of data passed for descrambling depends on the value that was returned 
 The method should return zero if the data was successfully descrambled. In the case of an error, it should
 return -1.
 
-#### - (NXDRMType) DRMType
+#### (NXDRMType) DRMType
 
 Returns a value indicating the type of DRM that the descrambling method expects.
 

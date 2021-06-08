@@ -110,7 +110,7 @@ Callback function to transfer CencBox.
 | Name  | Description  | 
 |---|---|
 |hSH |DRM session handle.|
-|pBoxName| The box name as a NULL-terminated string :seig, tencorpssh.|
+|pBoxName| The box name as a NULL-terminated string :seig, tenc or pssh.|
 |pBoxData |The payload information of the box.|
 |dwBoxDataSize| Byte length of pBoxData.|
 |pUserData| The user data passed when the callback was registered.|

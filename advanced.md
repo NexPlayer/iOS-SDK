@@ -1642,26 +1642,6 @@ If the device isn’t powerful enough to decode and display the video stream in 
 
 For the actual number of displayed frames, see NXPlayer::video PerformanceStats
 
-### NXDashDRMSessionDelegate Protocol Reference
-
-For internal use only. Please do not use.
-
-#### - (int) DashDRMSessionClose: (NXPlayer ∗) player drmSessionHandle:(long long) hSH
-
-For internal use only. Please do not use.
-
-#### - (int) DashDRMSessionDecryptIsobmffFrame: (NXPlayer ∗) player drmSessionHandle:(long long) hSH initialVector:(char ∗) pIV initialVectorLen:(unsigned int) dwIVLen encFrame:(char ∗) pEncFrame encFrameLen:(unsigned int) dwEncFrameLen decFrame:(char ∗) pDecFrame decFrameLen:(unsigned int ∗) pdwDecFrameLen
-
-For internal use only. Please do not use.
-
-#### - (int) DashDRMSessionOpen: (NXPlayer ∗) player drmSessionHandle:(long long ∗) pSH drmInfo:(char ∗) pDRMInfo pDRMInfoLen:(unsigned int) dwDrmInfoSize
-
-For internal use only. Please do not use.
-
-#### - (int) DashDRMSessionSetCencBox: (NXPlayer ∗) player drmSessionHandle:(long long) hSH boxName:(char ∗) pBoxName boxData:(char ∗) pBoxData boxLen:(unsigned int) dwBoxDataSize
-
-For internal use only. Please do not use.
-
 ### NXDeceUVDescrambler Protocol Reference
 
 A protocol to implement if DECE Ultra Violet descrambling should be implemented.
@@ -3405,9 +3385,6 @@ For local and streaming on-demand content, this is the number of milliseconds fr
 
 For live streaming content, this is the number of milliseconds from the seek base.
 
-#### - (id < NXDashDRMSessionDelegate > ) dashDRMSessionDelegate [read] , [write] , [nonatomic] , [weak]
-
-For internal use only. Please do not use.
 
 #### - (id < NXDeceUVDescrambler > ) deceUVDescrambler [read] , [write] , [nonatomic] , [weak]
 

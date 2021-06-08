@@ -192,29 +192,7 @@ All or any part of the specification shall not be reproduced nor distributed wit
 #### Optional Modules 
 
 - SW Widevine
-- PlayReady
 - Verimatrix (support for more than 9 included)
-
-#### Verified compatibility with external modules
-**Subject to additional and/or 3rd party licenses**
-
-- Analytics
-
-	- Conviva 
-
-	- Agama
-
-- Ad Insertion 
-
-	- Yospace 
-
-	- Freewheel 
-
-	- VAST
-
-- Sound
-
-	- Dolby 
 
 #### Other Products from NexPlayer
 

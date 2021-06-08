@@ -224,6 +224,8 @@ All or any part of the specification shall not be reproduced nor distributed wit
 
 - NexPlayer Unity Plugin
 
+
+
 **The NexPlayer iOS SDK is compatible with all devices running iOS version 8.0 and later**
 
 **Dedicated API for DRM integration**

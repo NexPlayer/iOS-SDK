@@ -12,7 +12,7 @@ This product is designed for general purpose, and accordingly the customer is re
 Copyright for all documents, drawings and programs related with this specification are owned by NexPlayer.
 All or any part of the specification shall not be reproduced nor distributed without prior written approval by NexPlayer Corp. Content and configuration of all or any part of the specification shall not be modified nor distributed without prior written approval by NexPlayer.
 
-© Copyright 2010-2020 NexPlayer. All rights reserved.
+© Copyright 2010-2021 NexPlayer. All rights reserved.
 
 ### NexPlayer™ Capabilities and Limitations
 

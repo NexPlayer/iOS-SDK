@@ -1,5 +1,8 @@
 # NexPlayer™ SDK for iOS Release Notes
 
+### Version 5.40.1.5152
+- [Fix] Fixed an issue with the pssh key for Widevine
+
 ### Version 5.40.1.5150
 - [Update] Support Widevine Key Renewal
 - [Fix] Fixed an issue for specific type of DRM contents

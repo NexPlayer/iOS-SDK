@@ -17,7 +17,7 @@ Here we have several fields that depending on our needs we will have to configur
 - **“Too"** much Sync: value”: Value between 2000.0and 10,000.0 ms (default 5000.0ms).
 - **“Sync"** to Device time”: Enable or disable. This field takes as reference the UTC time (disabled by default).
 
-![](image1.jpg)
+![](https://github.com/NexPlayer/iOS-SDK/blob/master/asset/image1.JPG)
 
 
 

@@ -63,8 +63,8 @@ This property should be called after init but before calling open.
 - Type: int
 - Default: 0
 - Values:
- - 0: SPD disabled.
- - 1: SPD enabled.
+  - 0: SPD disabled.
+  - 1: SPD enabled.
 
 ## NXPropertySpdSyncDiffTime
 

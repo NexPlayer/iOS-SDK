@@ -1,0 +1,88 @@
+# Enabling Video Synchronization Feature
+## What is Nexplayer’s synchronization feature?
+
+NexPlayer synchronization feature technology allows you to synchronise the video arrival and stream video synchronously across different devices using the DASH SPD value. This is also possible for HLS streams by controlling the SPD value from the client-side.
+## How to enable synchronization feature in the sample application
+
+To get started we need an apk and at least two devices. 
+Steps to enable Synchronization:
+
+- Go to Settings → scroll down and look for the "SPD" section.
+
+Here we have several fields that depending on our needs we will have to configure.
+
+- **“SPD”**: Enabled (this field is used to enable and disable SPD).
+- **“Delay"**: value”: Value between 500.0 ms and 20,000.0ms (default 2000.0ms).
+- **“Sync"**: value”: Value between 100.0 ms and 2000.0ms (default 300.0ms).
+- **“Too"** much Sync: value”: Value between 2000.0and 10,000.0 ms (default 5000.0ms).
+- **“Sync"** to Device time”: Enable or disable. This field takes as reference the UTC time (disabled by default).
+
+![](image1.jpg)
+
+
+
+
+Once we have configured what we need, we will play the content with SPD in the section.
+
+**Local** → **GO TO URL** (at the top) → put the **URL** in the **“URL - Enter the URL”**
+
+Synchronization feature is highly dependent on the internet speed and the configuration of the manifest.
+
+### Limitations
+
+- Only works with live content.
+- Device time should be adjusted correctly, incorrect device time or setting it manually might break the logic. This can be handled by using server time but the synchronisation won’t be precise as device time as server time is given in seconds, not in milliseconds as device time.
+- Setting a very low SPD value for the stream might affect smooth playback experience as it won’t allow the player to create enough buffer.
+
+## How to enable synchronization feature from the code
+NexPlayer synchronization can be enabled by setting the following property:
+
+`player.setProperty(NXPropertyEnableSpdSyncToGlobalTime, value: 1 as NSObject);`
+
+To set the SPD value from the client side for both DASH and HLS, you can set the SPD value as shown below:
+
+`player.setProperty(NXPropertySuggestedPresentationDelayTime, value: delay as NSObject)`
+
+Note that if the value of `SuggestedPresentationDelayTime` is too large or too small, the player may not find the delayed segment provided by the live content server.
+ 
+## Advanced configuration
+
+You can control the synchronization behaviour further by adjusting the below properties.
+ 
+ 
+## NXPropertyEnableSpdSyncToDeviceTime
+
+Enables synchronization to device UTC for more accurate behaviour.
+
+`player.setProperty(NXPropertyEnableSpdSyncToDeviceTime, value: 1 as NSObject)`
+
+This property should be called after init but before calling open.
+
+- Type: int
+- Default: 0
+- Values:
+ - 0: SPD disabled.
+ - 1: SPD enabled.
+
+## NXPropertySpdSyncDiffTime
+
+If the current playback desynchronizes from this value, the player will speed up or slow down the playback in order to re-synchronize.
+
+`player.setProperty(NXPropertySpdSyncDiffTime, value: syncDiffTime as NSObject)`
+
+This property should be called after init but before calling open.
+
+- Type: unsigned integer
+- Unit: msec (1/1000 sec)
+- Default: 300 (300 msec)
+ 
+## NXPropertySpdTooMuchDiffTime
+If playback is out of sync than this value, the player will jump to synchronize the video rather than make it by speeding up.
+
+`player.setProperty(NXPropertySpdTooMuchDiffTime, value: tooMuchDiffTime as NSObject)`
+
+This property should be called after init but before calling open.
+
+- Type: unsigned integer
+- Unit: msec (1/1000 sec)
+- Default: 5000 (5 seconds)

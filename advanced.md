@@ -2904,7 +2904,7 @@ This is an asynchronous operation that completes in the background. When it is f
 
 NXErrorNone if successful, or another NXError value in case of failure. Even if the return value indicate success, the operation may still fail later, because it completes asynchronously in the background. To determine actual success or failure, check the result argument of the appropriate delegate callback method.
 
-####  - (NXError) seekTo: (NXDuration)timestamp
+####  - (NXError) seek: (NXDuration)timestamp
 
 Seeks to the specified time in the content.
 
@@ -4108,7 +4108,7 @@ An asynchronous *seek* operation has completed.
 
 This method is called when the seek operation initiated by NXPlayer::seek has completed.
 
-> **Note** If you call seekTo: (NXPlayer) while a seek operation is already in progress, it just modifies the target of the current seek operation. No new seek operation is started, and therefore, only one single completion event will be generated.
+> **Note** If you call seek: (NXPlayer) while a seek operation is already in progress, it just modifies the target of the current seek operation. No new seek operation is started, and therefore, only one single completion event will be generated.
 
 **Parameters**
 

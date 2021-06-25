@@ -3,7 +3,7 @@
 - [Widevine Integration](/widevine_quickstart.md)
 - [Properties](/properties.md) 
 - [Advanced Usage](/advanced.md)
-- 3rd Party Integration
-    - [AWS-NexPlayer](/AWSMediaServices-NexPlayer.md)
+- 3rd Party Integrations
+   - [AWS Integration](https://nexplayer.github.io/NexPlayer_AWS/)
 - [Releases](/releases.md) 
 - [Request Demo](https://nexplayersdk.com/ios-player-sdk/) 

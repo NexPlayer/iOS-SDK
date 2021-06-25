@@ -2,7 +2,7 @@
 
 This tutorial demonstrates how to handle NexPlayer SDK in iOS applications with Widevine. In this tutorial, a sample player will be implemented in **Swift**.
 
-First thing you have to keep in mind before implementing NexPlayer SDK is that most of player methods behave __asynchronously__. There are numerous methods available in _NexPlayerDelegate.h_ which listen to what is happening in NexPlayer. Asynchronous approach is strongly recommended in NexPlayer SDK.
+First thing you have to keep in mind before implementing NexPlayer SDK is that most of player methods behave __asynchronously__. There are numerous methods available in `NexPlayerDelegate.h` which listen to what is happening in NexPlayer. Asynchronous approach is strongly recommended in NexPlayer SDK.
 
 ## Create a new project
 
@@ -28,10 +28,11 @@ First thing you have to keep in mind before implementing NexPlayer SDK is that m
  - SystemConfiguration  
  - NexPlayerSDK  
 
-4. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > PROJECT > Build Settings > All | Combined > Search **Other Linker Flags** > Add **-lc++** in **Other Linker Flags** 
-5. In order to import the required methods from NexPlayerSDK, we will need to create a Bridging Header, which will export all the Objective-C functions to Swift. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > Build Settings > All | Combined > Search **Objective-C Bridging Header** and set the value to: `<Root folder of your folder>/BridgingHeader.h`
+4. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > PROJECT > Build Settings > All | Combined > Search **Other Linker Flags** > Add **-lc++** in **Other Linker Flags** 
+5. In order to import the required methods from NexPlayerSDK, we will need to create a Bridging Header, which will export all the Objective-C functions to Swift. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > TARGETS > Build Settings > All | Combined > Search **Objective-C Bridging Header** and set the value to: `<Root folder of your folder>/BridgingHeader.h`
 
 ####  BridgingHeader.h
+
 ```
 #import <NexPlayerSDK/NexPlayerSDK.h>
 #import <NexPlayerSDK/NXPlayerABRController.h>
@@ -189,11 +190,6 @@ extension MainViewUI: NXPlayerDelegate {
 
 Now it is time to set up the Widevine. The first thing that you have to be aware of Widevine frameworks is that there are three types of Widevine Frameworks (develop, simulator, and release). In this tutorial, `widevine_cdm_secured_ios.framework` (develop) will be used to implement Widevine DRM with NexPlayer.
 
-The device should follow these two requirements.
-
-1. iOS version 9.0+
-2. arm64 CPU architecture
-
 ### Import Widevine Integration
 
 1. Copy `WidevineIntegration.framework` and `widevine_cdm_secured_ios.framework` to your Xcode project folder.
@@ -212,13 +208,13 @@ The device should follow these two requirements.
  - **WidevineIntegration**
  - **NexPlayerSDK**
 
-> **NOTE:** If the `NexPlayerSDK` is not located __under__ both `widevine_cdm_secured_ios` and `WidevineIntegration`, WidevineIntegration is not able to call NexPlayerSDK.
+> **IMPORTANT NOTE:** If the `NexPlayerSDK` is not located __under__ both `widevine_cdm_secured_ios` and `WidevineIntegration`, WidevineIntegration is not able to call NexPlayerSDK.
 
 4. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > PROJECT > Build Settings > All | Combined > Search __Allow Non-Modular Includes In Framework Modules__ > `YES`
 
 5. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > PROJECT > Build Settings > All | Combined > Search __Enable Bitcode__ > `NO`
 
-> **NOTE:** We need to implement Widevine in BridgingHeader
+6. We need to implement Widevine in BridgingHeader
 
 ####  BridgingHeader.h
 
@@ -231,7 +227,6 @@ The device should follow these two requirements.
 #import <WidevineIntegration/WidevineIntegration.h>
 #import <WidevineIntegration/NexWidevineDelegate.h>
 ```
-
 
 ### Setup Widevine
 
@@ -294,7 +289,6 @@ extension MainViewUI: NexWidevineDelegate {
 Client information is needed to initialize Widevine object. Before start API of WidevineIntegration is called, the license server URL should be set.
  
 Keep in mind that start API of WidevineIntegration should be called before open API of NexPlayerSDK, and stop API of WidevineIntegration should be called before close API of NexPlayerSDK.
-
 
 ### NexPlayer with Widevine project
 
@@ -381,8 +375,7 @@ extension MainViewUI: NXPlayerDelegate {
         if (result == NXError.none) {
             
             //widevine should stop before closing the player
-            widevine.stop()
-            
+            widevine.stop()            
             nxplayer.close()
         }
         else {

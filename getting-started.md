@@ -17,9 +17,7 @@
 	- AVFoundation.framework
 	- VideoToolbox.framework
 
-5. If you wish to support older versions of iOS (prior to 9) you will need to set the iOS Deployment Target and Base SDK in Xcode. See iOS Versions and Multitasking for details.
-
-For a quick start to your first application, create a `UIViewController` subclass (we’ll call it, for this example,`PlayerController`) and simply add the following code in the `viewDidLoad` method:
+For a quick start to your first application, create a `UIViewController` subclass (we’ll call it, for this example, `PlayerController`) and simply add the following code in the `viewDidLoad` method:
 
 ```objc
 - (void)viewDidLoad {
@@ -40,7 +38,6 @@ For a quick start to your first application, create a `UIViewController` subclas
 }
 ```
 
-
 Make sure you edit the header file to indicate that this implements the NXPlayerDelegate protocol:
 
 ```objc
@@ -49,8 +46,7 @@ Make sure you edit the header file to indicate that this implements the NXPlayer
 }
 ```
 
-And then create an instance of your PlayerController when your application starts, and add its view to your
-window:
+And then create an instance of your PlayerController when your application starts, and add its view to your window:
 
 ```objc
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*) launchOptions {
@@ -61,7 +57,7 @@ window:
 }
 ```
 
-That’s all there is to it; just make sure your HLS media URL, "http://your.media.com/index.m3u8" for example, is availble on the network and this simple program will load and play that content.
+That’s all; just make sure your HLS media URL, "http://your.media.com/index.m3u8" for example, is available on the network and this simple program will load and play that content.
 
 > **Warning** Bitcode is not supported yet. To disable Bitcode, the build option Enable Bitcode in the Build Settings of the target of your App should be set to No.
 
@@ -69,8 +65,7 @@ That’s all there is to it; just make sure your HLS media URL, "http://your.med
 
 NexPlayer generates various events to notify the application of changes in the player’s status in real time. This allows the application to update the user interface in an appropriate manner, detect the end of the content, and respond to errors.
 
-Events are handled through the NXPlayerDelegate protocol. You should create an object which conforms to this
-protocol and assign it to the delegate property of your NXPlayer instance.
+Events are handled through the NXPlayerDelegate protocol. You should create an object which conforms to this protocol and assign it to the delegate property of your NXPlayer instance.
 
 See NXPlayerDelegate for more information on handling events.
 
@@ -80,33 +75,20 @@ In addition to support for standard subtitle formats, this version of the SDK al
 
 Basic support (rendering of text) for CEA 708 closed captions, WebVTT text tracks, and 3GPP/TTML timed text is also currently supported.
 
-Please see `NXCEA608Caption` and `NXCEA608CaptionView` for more information on how to implement CEA 608
-closed captions as well as `NXPlayer::selectedCEA608Channel:` for selecting or disabling CEA 608 closed captions.
+Please see `NXCEA608Caption` and `NXCEA608CaptionView` for more information on how to implement CEA 608 closed captions as well as `NXPlayer::selectedCEA608Channel:` for selecting or disabling CEA 608 closed captions.
 
 ## Support for Server-side Time Shift in Live Content
 
-This version of the NexPlayer SDK introduces support for server-side timeshifting playback in live content. While content is viewed live, a certain amount of time in the past or future may also be available to be played, depending on the server for the given content. By checking the member `isSeekable` in `NXPlayer::contentInfo` to determine if seeking is allowed, NexPlayer then uses the properties `seekBase` and `seekableLength` to determine the range within the content where seek can be performed and thus within which playback may be timeshifted.
+This version of the NexPlayer SDK introduces support for server-side time-shifting playback in live content. While content is viewed live, a certain amount of time in the past or future may also be available to be played, depending on the server for the given content. By checking the member `isSeekable` in `NXPlayer::contentInfo` to determine if seeking is allowed, NexPlayer then uses the properties `seekBase` and `seekableLength` to determine the range within the content where seek can be performed and thus within which playback may be time-shifted.
 
-The method NXPlayer::getSeekableRange can also be called to determine the range in content where seeking is
+The method `NXPlayer::getSeekableRange` can also be called to determine the range in content where seeking is
 possible.
 
 Please also see `nexPlayer:seekableStateChangedTo:seekBase:seekableLength: (NXPlayerDelegate-p)`, `NXPlayer::getSeekableRange`, and `seekTo: (NXPlayer)` as well as the sample code for more information.
 
-## Contrast and Brightness Adjustment of Video
-
-The contrast and brightness adjustment of video playback is now also supported by NexPlayer with the APIs
-`NXPlayer::contrastAdjustment` and `NXPlayer::brightnessAdjustment`. Please see these properties for more details.
-
-> **Note** Setting value to these properties has no effect when Video Toolbox hardware accelerated decoding service is used.
-
-
 ## iOS Versions and Multitasking
 
-The NexPlayer iOS SDK is compatible with all devices running iOS version 8.0 and later. However, when building your application, you must set **Base SDK** to **iOS 9** or later. If you wish to support older devices, set the **iOS Deployment Target** setting to **iOS 8.0**.
-
-With these build settings set to different values, you may get a warning when you build, but that is normal and can generally be ignored.
-
-The NexPlayer SDK links to certain functions available from iOS 4.x to detect when the application is suspended or sent to the background. In this case, video display is suppressed (attempting to access OpenGL to draw frames while in the background will cause iOS to kill the application).
+The NexPlayer SDK links to certain functions available to detect when the application is suspended or sent to the background. In this case, video display is suppressed (attempting to access OpenGL to draw frames while in the background will cause iOS to kill the application).
 
 NexPlayer is weak-linked to the required functions, so it still runs on older iOS versions without multi-tasking, by simply not calling those functions.
 
@@ -116,16 +98,13 @@ If you want audio to continue playing, you will need to prevent the app from com
 
 ## DRM Descrambling
 
-NexPlayer supports DRM descrambling by allowing the application to assign one or more descramblers to mem-
-bers of NXPlayer.
+NexPlayer supports DRM descrambling by allowing the application to assign one or more descramblers to members of NXPlayer.
 
 A descrambler can be the same as the NXPlayerDelegate, or can be a dedicated descrambling object.
 
-There is an ObjectiveC protocol for each type of descrambler, and a descrambler object must conform to the
-appropriate protocol. For the most part, a descrambling protocol consists only of a single descrambling method.
+There is an ObjectiveC protocol for each type of descrambler, and a descrambler object must conform to the appropriate protocol. For the most part, a descrambling protocol consists only of a single descrambling method.
 
-The descrambling method receives pointers to input and output buffers; it descrambles the data in the input buffer
-and places the descrambled data in the output buffer.
+The descrambling method receives pointers to input and output buffers; it descrambles the data in the input buffer and places the descrambled data in the output buffer.
 
 > **Warning** In many cases, the input and output buffer pointers point to the same location. Your code should be able to handle cases where they point to the same location, and cases when they are different. For example a typical no-op descrambling method that just outputs what it is given as input might be written as follows:
 
@@ -156,34 +135,6 @@ and places the descrambled data in the output buffer.
 
 Different types of descramblers allow access to data at different points in the decoding process. The exact point at which the descrambling must occur differs between the different DRM schemes. In addition, some descramblers have additional methods or additional method parameters that are necessary for a given type of DRM. See the individual protocol descriptions for more information.
 
-**See Also**
-
-* NXDRMDescrambler
-* NXWMDRMDescrambler
-* NXAsfPlayReadyDescrambler
-* NXSmoothStreamFragmentDescrambler
-* NXHLSTSDescrambler
-* NXSmoothStreamPlayReadyDescrambler
-* NXDeceUVDescrambler
-* NXHLSAES128Descrambler
-
 ## Remote File I/O
 
-NexPlayer also provides a remote file I/O interface that allows an application to provide custom open, close, read
-and write implementations. This allows an application to retrieve the file data from another source, or to perform
-DRM descrambling on the data as it is read.
-
-**See Also**
-
-NXRemoteFileIOInterface for details
-
-## Deprecated List
-
-- `Member [NXHTTPCredentialsProvider-p HTTPCredentialHeaders]` 
-
- This only handled the HTTP 401 case; please use HTTPCredentialHeaders for HTTPStatusCode:response-
-Data: instead.
-
-- `Member [NXPlayer logging]`
-
- This has been replaced with logLevel (NXPlayer):. Please use that instead.
+NexPlayer also provides a remote file I/O interface that allows an application to provide custom open, close, read and write implementations. This allows an application to retrieve the file data from another source, or to perform DRM descrambling on the data as it is read. See `NXRemoteFileIOInterface` for details

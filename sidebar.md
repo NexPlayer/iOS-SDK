@@ -2,6 +2,7 @@
 - [Getting Started](/getting-started.md)
 - [Widevine Integration](/widevine_quickstart.md)
 - [Properties](/properties.md) 
+- [Error Codes](/error-codes.md) 
 - [Advanced Usage](/advanced.md)
 - 3rd Party Integrations
    - [AWS Integration](https://nexplayer.github.io/NexPlayer_AWS/)

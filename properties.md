@@ -13,9 +13,6 @@ Properties are identified with an integer identifier from the NXProperty enumera
 
 The value of each property is an unsigned integer. For some properties, it may be necessary to cast this to a different type. See the individual property documentation for details. If no type is specified, it is safe to treat the property as an unsigned integer.
 
-> **Note** Members of the enumeration that have not been documented, as well as values that have not yet been used are subject to change in future versions. Do not access or change undocumented properties, or your code may behave unpredictably and may break in future versions.
-
-
 ## enum NXProperty
 
 Property identifiers.
@@ -42,7 +39,6 @@ Number of milliseconds of media to buffer if additional buffering is required du
  - Type: unsigned int 
  - Default: 0 (automatic) 
  - Units: msec
-
 
 ### NXPropertyTimestampDifferenceVDispWait
 
@@ -125,7 +121,7 @@ Prevents the text (subtitle) track from playing back when set to TRUE (1).
 - Type: boolean 
 - Default: 0
 
-### NXPropertyProxyAdress
+### NXPropertyProxyAddress
 
 Sets the proxy address. :{String} 
 
@@ -153,9 +149,9 @@ Sets the log level.
 
 Controls when video initialization happens. This can be any of the following values:
  
- - **NXPropertyAVInitOption_Partial (0x00000000)** If there is an audio track, wait for audio initialization to complete before initializing video.
+ - **NXPropertyAVInitOption_Partial** If there is an audio track, wait for audio initialization to complete before initializing video.
 
- - **NXPropertyAVInitOption_All (0x00000001)** Begin video initialization as soon as there is any video data, without any relation to the audio track status.
+ - **NXPropertyAVInitOption_All** Begin video initialization as soon as there is any video data, without any relation to the audio track status.
  
 - Default: NXPropertyAVInitOption_All
 
@@ -182,28 +178,19 @@ If more than this number of frames are skipped during rendering, the remaining f
 
 ### NXPropertyApplsLiveViewOption 
 
-Live playback option. 
-
- - Type: unsigned int 
- - Default: NXPropertyHLSLiveViewRecent
- - Values:
+Live HLS playback option. This must be one of the following values:
  
-  - **NXPropertyHLSLiveViewRecent (0x00000000)** Start playback from the most recently received me-
-dia segment (.ts) files of the HLS live playlist. (The player will begin playback at a media segment
-that was loaded four(4) segments earlier than the latest media segment file loaded.) For example,
-if 5.ts is the latest media segment (.ts) file loaded in a sequence of five media segments, playback
-will begin at the beginning of the second media segment, four segments (2.ts, 3.ts, 4.ts, and 5.ts)
-preceding the latest media segment file loaded.
+  - **NXPropertyHLSLiveViewRecent** Start playback from the most recently received media segment (.ts) files of the HLS live playlist. For example, if 5.ts is the latest media segment (.ts), playback will begin at the beginning of that segment.
  
-  - **NXPropertyHLSLiveViewRecentByTargetDuration (0x00000001)** Start playback from the most re-
-cently received media segement (.ts) files, based on the value set for the EXT-X-TARGETDURATION
-tag in the HLS live playlist. (The player will begin playback at the media segment that is immediately precedes the media segment that isthree times (x3) the target durationbefore the latest media segment file loaded.) As a concrete example, if the target duration is set to 12 seconds and the total duration of currently loaded media segments is 48 seconds, playback will begin at the media file that immediately precedes the media segment with the timestamp at 12 (48-36) seconds. If this example HLS playlist includes media segment files 1.ts (duration of 10 seconds), 2.ts (9 sec), 3.ts (11 sec), 4.ts (10 sec), and 5.ts (8 sec), then playback will begin at the first media segment, 1.ts, because it immediate precedes the 2.ts segment (where the timestamp at 12 seconds occurs).
+  - **NXPropertyHLSLiveViewRecentByTargetDuration** Start playback from the most recently received media segement (.ts) files, based on the value set for the `EXT-X-TARGETDURATION` tag in the HLS live playlist. (The player will begin playback at the media segment that immediately precedes the media segment that is three times (x3) the target duration before the latest media segment file loaded). As a concrete example, if the target duration is set to 12 seconds and the total duration of currently loaded media segments is 48 seconds, playback will begin at the media file that immediately precedes the media segment with the timestamp at 12 (48-36) seconds. If this example HLS playlist includes media segment files 1.ts (duration of 10 seconds), 2.ts (9 sec), 3.ts (11 sec), 4.ts (10 sec), and 5.ts (8 sec), then playback will begin at the first media segment, 1.ts, because it immediate precedes the 2.ts segment (where the timestamp at 12 seconds occurs).
 
-  - **NXPropertyHLSLiveViewFirst (0x00000002)** Unconditionally start HLS playback from the first entry in the HLS playlist.
+  - **NXPropertyHLSLiveViewFirst** Unconditionally start HLS playback from the first entry in the HLS playlist.
 
-  - **NXPropertyLiveViewLowLatency (0x00000003)** Playback begins as close to the live edge as pos-
-sible. The first file to load is the last segment in the playlist. (Do not use this option for normal
-playback.)
+  - **NXPropertyLiveViewLowLatency** Playback starts from a position close to real-time and frame skipping may occur during playback to maintain low latency.
+
+**Type:** unsigned integer
+
+**Default:** NXPropertyHLSLiveViewRecent
  
 
 ### NXPropertyUserAgentString 
@@ -228,12 +215,9 @@ Under old versions of the SDK (prior to the addition of this property), the defa
   - 0: Show nothing.
   - 1: Show first video frame.
 
-NXPropertySourceOpenTimeOut 
+### NXPropertySourceOpenTimeOut 
 
-Sets the amount of time to wait for an open request to complete.
-
-This is used when NexPlayer tries to open new media. If there is no response from the server for longer
-than the amount of time specified here, the open request will be stopped and `nexPlayer:completedAsyncCmdOpenWithResult:playbackType:` will be called with the result, namely the error code, NXErrorMediaOpenTimeout.
+Sets the amount of time to wait for an open request to complete. This is used when NexPlayer tries to open new media. If there is no response from the server for longer than the amount of time specified here, the open request will be stopped and `nexPlayer:completedAsyncCmdOpenWithResult:playbackType:` will be called with the result, namely the error code, NXErrorMediaOpenTimeout.
 
 - Type: unsigned integer
 - Unit: msec (1/1000 sec)
@@ -241,8 +225,7 @@ than the amount of time specified here, the open request will be stopped and `ne
 
 ### NXPropertySocketOperationTimeout
 
-The maximum waiting time till an HTTP request/response message
-arrives to NexPlayer. If the reply does not arrive within this time after HTTP request message is sent to the streaming server, it will be regarded as an error.
+The maximum waiting time till an HTTP request/response message arrives to NexPlayer. If the reply does not arrive within this time after HTTP request message is sent to the streaming server, it will be regarded as an error.
 
 - Type: unsigned int 
 - Default: 30,000 (30 seconds
@@ -250,47 +233,38 @@ arrives to NexPlayer. If the reply does not arrive within this time after HTTP r
 
 ### NXPropertyLowLatencyBufferOption 
 
-Set a low latency buffer option. 
+Set a low latency buffer option.  This must be one of the following values:
+ 
+  - **NXPropertyLowLaytencyBufferOptionNone** The latency value is set by INITIAL\_BUFFERING\_DURATION and RE\_BUFFERING\_DURATION of NexProperty. It should set the reliable value depending on the bitrate of content and network environment.
+  - **NXPropertyLowLaytencyBufferOptionAutoBuffer** The latency value is calculated by the player at runtime. During playback, the latency may increase or decrease because it may change depending on the network environment.
+  - **NXPropertyLowLaytencyBufferOptionConstBuffer** The latency value is calculated by the player at the beginning of playback and maintains the value unchanged during playback. The latency increases more than when using Auto Buffer Mode, but the rebuffering will be reduced and will try to maintain constant latency after rebuffering.
 
  - Type: unsigned int
- - Default: NXPropertyLowLaytencyBufferOptionNone
- - Values:
-
-  - **NXPropertyLowLaytencyBufferOptionNone (0x00000000)** The latency value is set by INITIAL_B-
-    UFFERING_DURATION and RE_BUFFERING_DURATION of NexProperty. It should set the reliable
-    value depending on the bitrate of content and network environment.
-  - **NXPropertyLowLaytencyBufferOptionAutoBuffer (0x00000001)** The latency value is calculated
-    by the player at runtime. During playback, the latency may increase or decrease because it may
-    change depending on the network environment.
-  - **NXPropertyLowLaytencyBufferOptionConstBuffer (0x00000002)** The latency value is calculated
-    by the player at the beginning of playback and maintains the value unchanged during playback.
-    The latency increases more than when using Auto Buffer Mode, but the rebuffering will be reduced
-    and try to maintain constant latency after rebuffering.
-    
+ - Default: NXPropertyLowLaytencyBufferOptionNone   
 
 ### NXPropertySeekRangeFromRAPoint 
 
-Sets the range where NexPlayer will seek to a Random Access
-point rather than the exact target position provided in the seekToAdjustedTime API.
+Sets the range where NexPlayer will seek to a Random Access point rather than the exact target position provided in the seekToAdjustedTime API.
 
 > **Warning** This property is only valid when the second parameter, exact, in the seekToAdjustedTime API is true.
 
 Setting this value is a kind of option for the seekToAdjustedTime API and can be used to minimize the time required to seek in content by taking advantage of Random Access points in the content. A Random Access point is a specific position that the parser is allowed to seek to directly.
 
-This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equalsmsec(milliseconds), the first parameter in the seek() API.
-If the exact parameter, the second parameter in the seekToAdjustedTime API, istrueand the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
+This value sets the range where NexPlayer will seek from a Random Access point given by the parser to a target position that equals msec(milliseconds), the first parameter in the seek() API.
+
+If the exact parameter, the second parameter in the seekToAdjustedTime API, is true and the difference between a Random Access point and the target position is within this value, seekToAdjustedTime will find and seek to the exact target position. If the exact parameter is set to true and the difference between a Random Access point and the target position is beyond this range, seek will give up the accurate target point and will instead seek to and play from the Random Access point.
 
 For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and there is a Random Access point at 7000 ms, if this property is set to less than 3000 ms, the player will ignore the exact target value and will instead play from 7000 ms. On the other hand, if this property is set to more than 3000 ms, then NexPlayer will seek exactly to 10000 ms and begin playback.
 
 > **Warning** Please remember that in order to seek to a target position, audio or video frames have to be decoded. If too large of a value is set here, it may cause the seek process to consume an excessive amount of time especially in high resolution video content.
 
-- Type: unsinged int 
+- Type: unsigned int 
 - Units: msec (1/1000 sec) 
 - Default: 10000 (10 seconds)
 
 ### NXPropertySetToSkipBFrame 
 
-If set totrue, unconditionally skips all B-frames without decoding them.
+If set to true, unconditionally skips all B-frames without decoding them.
 
 - Type: boolean 
 - Default: 0
@@ -299,8 +273,7 @@ If set totrue, unconditionally skips all B-frames without decoding them.
 
 However, if the number of audio frames lost represents a span of time larger than the value set for this property, it is assumed that there is a network problem or some other abnormal condition and silence is not inserted.
 
-This prevents, for example, a corruption in the time stamp in an audio frame from causing the system
-to insert an exceptionally long period of silence (which could possibly prevent further audio playback or cause other unusual behavior).
+This prevents, for example, a corruption in the time stamp in an audio frame from causing the system to insert an exceptionally long period of silence (which could possibly prevent further audio playback or cause other unusual behavior).
 
 - Type: unsigned int 
 - Units: msec (1/1000 sec) 
@@ -312,15 +285,6 @@ If set to 1, enables local file playback support.
 
 - Type: boolean
 - Default: 1
-
-### NXPropertySupportRTSP
-
-If set to 1, enables RTSP streaming support.
-
-- Type: boolean 
-- Default: 0
-
-> **Warning** This property is not supported in this API version.
 
 ### NXPropertySupportPD
 
@@ -417,12 +381,11 @@ If set to 1, this enables MS Smooth Streaming support.
  
 ### NXPropertyAVSyncOffset 
 
-Adjusts A/V synchronization by ofsetting video relative to audio. Positive values cause the video to play faster than the audio, while negative values cause the audio to play faster than the video. Under normal operation, this can be set to zero, but in some cases where the synchronization is bad in the original content, this can be used to correct for the error.
+Adjusts A/V synchronization by of setting video relative to audio. Positive values cause the video to play faster than the audio, while negative values cause the audio to play faster than the video. Under normal operation, this can be set to zero, but in some cases where the synchronization is bad in the original content, this can be used to correct for the error.
 
-While A/V synchronization is generally optimized internally by NexPlayer , there may occasionally be devices which need to be offset in order to improve overall A/V synchronization. For examples of how to set AV_SET_OFFSET based on the device in use, please see the Sample Application code as well as the introductory section A/V Synchronization section.
+While A/V synchronization is generally optimized internally by NexPlayer , there may occasionally be devices which need to be offset in order to improve overall A/V synchronization. For examples of how to set AV\_SET\_OFFSET based on the device in use, please see the Sample Application code as well as the introductory section A/V Synchronization section.
 
-Appropriate values for any other problematic devices need to be determined experimentally by testing
-manually.
+Appropriate values for any other problematic devices need to be determined experimentally by testing manually.
 
 - Type: integer
 - Unit: msec (1/1000 sec)
@@ -433,7 +396,7 @@ manually.
 
 Limits the maximum width (in pixels) of the video tracks that can be selected during streaming play. This is used to prevent NexPlayer from attempting to play tracks that are encoded at too high a resolution for the device to handle effectively. NexPlayer will instead select a track with a lower resolution.
 
-> **Note** On iOS ONLY, if this is zero (the default), NexPlayer will automatically set the value based on the device type and type of play (streaming or local). Note that when this is set to zero, getProperty: (NXPlayer) will also return zero. To get the actual value that is in effect during playback, call getEffectiveProperty: (NXPlayer) instead.
+> **Note** On iOS ONLY, if this is zero (the default), NexPlayer will automatically set the value based on the device type and type of play (streaming or local). Note that when this is set to zero, getProperty: (NXPlayer) will also return zero. To get the actual value that is in effect during playback, call `getEffectiveProperty: (NXPlayer)` instead.
 
 - Type: integer
 - Units: pixels
@@ -443,8 +406,7 @@ Limits the maximum width (in pixels) of the video tracks that can be selected du
 
 Limits the maximum height (in pixels) of the video tracks that can be selected during streaming play. This is used to prevent NexPlayer from attempting to play tracks that are encoded at too high a resolution for the device to handle effectively. NexPlayer will instead select a track with a lower resolution.
 
-> **Note** On iOS ONLY , if this is zero (the default), NexPlayer will automatically set the value based on
-the device type and type of play (streaming or local). Note that when this is set to zero, `getProperty: (NXPlayer)` will also return zero. To get the actual value that is in effect during playback, call `getEffectiveProperty: (NXPlayer)` instead.
+> **Note** On iOS ONLY , if this is zero (the default), NexPlayer will automatically set the value based on the device type and type of play (streaming or local). Note that when this is set to zero, `getProperty: (NXPlayer)` will also return zero. To get the actual value that is in effect during playback, call `getEffectiveProperty: (NXPlayer)` instead.
 
 - Type: integer
 - Units: pixels
@@ -454,8 +416,7 @@ the device type and type of play (streaming or local). Note that when this is se
 
 Sets preferred bandwidth when switching tracks during streaming play. Under normal operation (when this property is zero), if the available network bandwidth drops below the minimum needed to play the current track without buffering, the player will immediately switch to a lower bandwidth track, if one is available, to minimize any time spent buffering.
 
-If this property is set, the player will attempt to choose only tracks above the specified bandwidth, even if that causes some buffering. However, if the buffering becomes too severe or lasts for an extended time,
-the player may eventually switch to a lower-bandwidth track anyway.
+If this property is set, the player will attempt to choose only tracks above the specified bandwidth, even if that causes some buffering. However, if the buffering becomes too severe or lasts for an extended time, the player may eventually switch to a lower-bandwidth track anyway.
  
 - Type: unsigned int
 - Units: kbps (kilobits/sec)  
@@ -463,10 +424,6 @@ the player may eventually switch to a lower-bandwidth track anyway.
 - Values:
  - 0: No preferred bandwidth (immediate switching)
  - >0: Preferred bandwidth in kbps
-
-See Also
-
- - NXPropertyPreferAV
 
 ### NXPropertyPreferAV 
 
@@ -480,15 +437,11 @@ If this property is set to 1, the player will attempt to choose only tracks that
  - 0: Normal behavior (immediate switching)
  - 1: Prefer tracks with both audio and video
 
- See Also
- - NXPropertyPreferBandwidth
-
 ### NXPropertyEnableTrackdown 
 
-Allows NexPlayer to switch to a lower bandwidth track if the resolution or bitrate of the current track is too high for the device to play smoothly. Under normal operation, NexPlayer switches tracks based solely on current network conditions. When this property is enabled, NexPlayer will also switch to a lower bandwith track if too many frames are skipped during playback.
+Allows NexPlayer to switch to a lower bandwidth track if the resolution or bitrate of the current track is too high for the device to play smoothly. Under normal operation, NexPlayer switches tracks based solely on current network conditions. When this property is enabled, NexPlayer will also switch to a lower bandwidth track if too many frames are skipped during playback.
 
-This is useful for content that is targeted for a variety of devices, some of which may not be powerful
-enough to handle the higher quality streams.
+This is useful for content that is targeted for a variety of devices, some of which may not be powerful enough to handle the higher quality streams.
 
 The `NXPropertyTrackdownVideoRatio` property controls the threshold at which the track change will occur, if frames are being skipped.
 
@@ -502,7 +455,7 @@ Have to set it before start to play.
  
 ### NXPropertyTrackdownVideoRatio 
 
-Controls the ratio of skipped frames that will be tolerated before a track change is forced, if NXPropertyEnableTrackdown is enabled. The formula used to determined if a track switch is necessary is:
+Controls the ratio of skipped frames that will be tolerated before a track change is forced, if `NXPropertyEnableTrackdown` is enabled. The formula used to determined if a track switch is necessary is:
 
 ```
 (^100) *(RenderedFrames / DecodedFrames) < TrackdownVideoRatio
@@ -518,12 +471,12 @@ A performance-based track switch **permanently** limits the maximum bandwidth of
 
 ### NXPropertyHLSRunmode 
 
-Controls the alogrithm used for bitrate switching when playing an HLS stream.
+Controls the algorithm used for bitrate switching when playing an HLS stream.
 
 - Type: unsigned int
 - Default: 0
 - Values:
- - 0: Uses a more agressive algorithm: Up-switching happens sooner.
+ - 0: Uses a more aggressive algorithm: Up-switching happens sooner.
  - 1: Uses a more conservative algorithm: Up-switching happens only if a significant amount of extra bandwidth is available beyond that required to support the given bitrate. This is similar to the iPhone algorithm.
 
 ### NXPropertyHTTPCredentials 
@@ -533,14 +486,13 @@ Adds additional HTTP headers to use to supply credentials when a 401 response is
  
 ```id: test1\r\npw: 12345\r\n```
 
-
 The particulars of the headers depend on the server and the authentication method being used.
 
 - Type: String
  
 ### NXPropertyMinBufferRate 
 
-The minumum ratio of prefetch buffer to resume filling buffer. If the ratio of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
+The minimum ratio of prefetch buffer to resume filling buffer. If the ratio of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
  
 - Type: unsigned integer
 - Unit: percent
@@ -556,7 +508,7 @@ The maximum ratio of prefetch buffer to pause filling buffer. If the ratio of fi
 
 ### NXPropertyMinBufferDuration 
 
-The minumum duration of prefetch buffer to resume filling buffer. If the duration of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
+The minimum duration of prefetch buffer to resume filling buffer. If the duration of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
 
 - Type: unsigned integer
 - Unit: second
@@ -564,7 +516,7 @@ The minumum duration of prefetch buffer to resume filling buffer. If the duratio
 
 ### NXPropertyMaxBufferDuration 
 
-The minumum ratio of prefetch buffer to resume filling buffer. If filling buffer is less this value, filling buffer will be resumed until buffer status meets only the condition of `MIN_BUFFER_DURATION`. 
+The minimum ratio of prefetch buffer to resume filling buffer. If filling buffer is less this value, filling buffer will be resumed until buffer status meets only the condition of `MIN_BUFFER_DURATION`. 
  
 - Type: unsigned integer
 - Unit: second
@@ -572,11 +524,9 @@ The minumum ratio of prefetch buffer to resume filling buffer. If filling buffer
 
 ### NXPropertyUseSyncTask
 
-Sets whether or not NexPlayer should use SyncTask feature. SyncTask may
-improve decoding performance.
+Sets whether or not NexPlayer should use SyncTask feature. SyncTask may improve decoding performance.
 
-Note
-> This property must be set before initializing NexPlayer or opening and playing content.
+> **Note** This property must be set before initializing NexPlayer or opening and playing content.
 
 - Type: unsigned int
 - Default: 0 
@@ -596,8 +546,7 @@ Controls whether the player honors cookies sent by the server.
 
 ### NXPropertySetLiveBackOff 
 
-Sets the SmoothStreamingLiveBackOff property when playing Smooth
-Streaming content. This property sets the duration of content (closest to live) that cannot yet be accessed or downloaded by the player. It is like setting how long to wait before asking for the latest fragment in a live presentation, and thus basically sets the played "live" point back from the actual live content available on the server.
+Sets the SmoothStreamingLiveBackOff property when playing Smooth Streaming content. This property sets the duration of content (closest to live) that cannot yet be accessed or downloaded by the player. It is like setting how long to wait before asking for the latest fragment in a live presentation, and thus basically sets the played "live" point back from the actual live content available on the server.
 
 The end-to-end latency of the player (what is being played "live" in the player compared to what is available live on the server) is at least the duration ofLiveBackOff added to the duration set for LivePlaybackOffset with NXPropertySetLiveBackOffset.
 
@@ -661,26 +610,6 @@ This property can thus reduce the time needed to open and start playing a media 
 - Type: unsigned integer
 - Unit: msec (1/1000 s)
 - Default: 0xFFFFFFFF
-
-### NXPropertyRequestRadioMetadataMode 
-
-Allows NexPlayer to add an explicit request for metadata in internet radio stream content.
-
-> **Warning** This is currently only supported in SHOUTcast and IceCast HLS content.
-
-If an explicit request for metadata is not made, a server may or may not send internet radio stream
-metadata even if it exists.
-
-Setting this property to 1 means an explicit request for internet radio stream metadata will be included with every content request sent to a server. If this property is set to 2, NexPlayer will only add an explicit request for metadata after initially receiving content and identifying it as a SHOUTcast or Icecast stream.
-
-Values:
-
- - **0 : DEFAULT :** Default mode. Does not add an additional explicit request for internet radio stream metadata.
- - **1 : INSERT_HEADER :** Always inserts a header with a request for internet radio stream metadata
-    (with every content request).
- - **2 : INSERT_HEADER_AFTER_TRIAL :** If NexPlayer determines content is a SHOUTcast or Ice-
-    cast stream, a header with an explicit request for metadata will be added to subsequent server
-    requests.
     
 ### NXPropertyMinBW 
 
@@ -711,11 +640,7 @@ display to the user.
 
 Sets whether or not to display WebVTT text tracks automatically when they are included in content. In the case when both CEA 708 closed captions and WebVTT text tracks are included in content, this property can be used to set whether to display the WebVTT text tracks or the closed captions automatically.
 
-By default, this property is set to 1 to enable WebVTT text tracks automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that CEA 708 closed captions be displayed instead of the WebVTT text tracks, this property should be set to 0 with by with setProperty: 
- 
-```
-mNexPlayer.setProperty(NexProperty.ENABLE_WEBVTT, 0);
-```
+By default, this property is set to 1 to enable WebVTT text tracks automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that CEA 708 closed captions be displayed instead of the WebVTT text tracks, this property should be set to 0 with by with setProperty.
 
 This property should only be called once, immediately after calling `init` but before calling `open`.
 
@@ -732,7 +657,7 @@ Sets whether or not to begin playback after a part of the TS file is downloaded.
 By default, this property is set to 0 to download the first TS file completely to play content.
 
 - Type: boolean
-- Default: 0, 
+- Default: 0
 - Values:
  - 0 : Partial prefetch ignored; playback will begin after downloading the first TS file completely.
  - 1 : Partial prefetch enabled; playback will begin after a part of the TS file is downloaded.
@@ -741,7 +666,7 @@ By default, this property is set to 0 to download the first TS file completely t
 
 Allows custom ID3 tags added to timed metadata in content to be recognized and handled by NexPlayer. When customized ID3 tags with additional information have been added to the timed metadata in content, this property can be used to help NexPlayer recognize and pass those ID3 tags and the extra information they contain to an application.
 
-This property must be setbeforeopenis called.
+This property must be set before `open` is called.
 
 - Type: String
 - Values: a list of the customized ID3 tag names separated by semicolons (;)
@@ -753,7 +678,7 @@ Sets whether or not to display TTML text tracks in ID3 tag automatically when th
 
 By default, this property is set to 0 to disable TTML text tracks in ID3 tag automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that
 
-TTML captions in ID3 tag to be displayed instead of the CEA closed captions text tracks, this property should be set to 1 usingsetProperty:This property should only be called once, immediately after calling `init` but before calling `open`.
+TTML captions in ID3 tag to be displayed instead of the CEA closed captions text tracks, this property should be set to 1 using `setProperty` This property should only be called once, immediately after calling `init` but before calling `open`.
 
 - Type: boolean
 - Default: 0
@@ -765,10 +690,9 @@ TTML captions in ID3 tag to be displayed instead of the CEA closed captions text
 
 Sets the language of both audio and text played in multi-stream content. It can be used to set the preferred language of audio and text streams to be displayed in content, before NexPlayer begins playing content.
 
-This property should be set by calling setProperty:toValue: (NXPlayer) after init and before open is
-called, as demonstrated in the following sample code:
+This property should be set by calling setProperty:toValue: (NXPlayer) after init and before open is called, as demonstrated in the following sample code:
 
-```
+```objc
 [nxPlayer setProperty:NXPropertyPreferLanguage toValue:"eng"];
 ```
 
@@ -782,8 +706,7 @@ called, as demonstrated in the following sample code:
 
 Sets the language to use for audio in multi-stream content, before content is played. This property can be used to set the preferred language of audio streams to be used in content, before NexPlayer begins playing content.
 
-This property should be set by callingsetProperty:after init and before open: (NXPlayer)
-is called.
+This property should be set by calling `setProperty` after init and before `open` is called.
 
 To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
 
@@ -791,7 +714,7 @@ To set the preferred language for both audio and text streams to the same langua
  - Default: null
  - Values: Accurate language labels as Strings. For example, "eng" for English.
 
-> **Warning** To change any media streamwhilecontent is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead.
+> **Warning** To change any media stream while content is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead.
 
 > **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
 
@@ -809,8 +732,7 @@ is called.
  - Default: null
  - Values: Accurate language labels asStrings. For example, "eng" for English.
 
-> **Warning** To change any media streamwhilecontent is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead. To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
-
+> **Warning** To change any media stream while content is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead. To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
 
 > **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
 
@@ -820,7 +742,7 @@ Avoids waiting for the first WebVTT segment to download when starting to play co
 
 However, if this property is disabled (set to 0), the player will start playing content as soon as possible (instead of waiting until the first WebVTT segment is fully downloaded). This may be preferred if content should start playing as quickly as possible (although initial WebVTT text may be missed).
 
-This property should be called once, immediately after callinginitbut before callingopen.
+This property should be called once, immediately after calling init but before calling open.
 
 - Type: boolean
 - Default: 1
@@ -834,8 +756,7 @@ Sets a target bandwidth (before playing HLS content) when selecting which track 
 
 When this property is set, NexPlayer selects and starts playing the track in content that has the bandwidth closest to the set bandwidth value, initially ignoring other factors.
 
-Note that as playback continues, the track played may change as NexPlayer judges all factors that
-influence streaming playback and chooses the best option.
+Note that as playback continues, the track played may change as NexPlayer judges all factors that influence streaming playback and chooses the best option.
 
 This property should be called after init but before calling open.
 
@@ -880,14 +801,13 @@ Sets whether or not to trust a content segment’s timestamp when playback start
 
 ### NXPropertySuggestedPresentationDelayTime 
 
-For DASH, use suggestedPresentationDelay to synchronize end users. For HLS, use the #EXT-X-PROGRAM-DATE-TIME tag to sync end users. 
+This property overrides the suggestedPresentationDelay value of the DASH manifest.
 
 > This property should be called after init but before calling open.
 
 - Type: unsigned integer
 - Unit: msec (1/1000 sec)
 - Default: 2000 (2 sec)
-
 
 ### NXPropertyEnableSpdSyncToGlobalTime 
 
@@ -903,7 +823,7 @@ Enables synchronization to UTC time(SPD).
 
 ### NXPropertySpdSyncDiffTime 
 
-If the current playback is not more synchronized than this value, the player will speed up playback and make sync. 
+If the current playback is not more synchronized than this value, the player will speed up playback and make sync.
 
 > This property should be called after init but before calling open.
 
@@ -923,16 +843,13 @@ If playback is out of sync than this value, the player will jump to synchronize 
 
 ### NXPropertySetHWdecoderPixelFormat 
 
-Sets iOS HW decoder pixel foramt of output property (kCVPixel-
-BufferPixelFormatTypeKey). This property is to set a pixel format for decoded video format. Have to set it before start to play.
-
-> **Warning** Don’t use general play if you use this property for general play. If you don’t use it properly, the video will not display normally.
+Sets iOS HW decoder pixel format of output property `kCVPixelBufferPixelFormatTypeKey`. This property is to set a pixel format for decoded video format. Have to set it before start to play.
 
 - Type: int
 - Default: 0 (kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
 - Values:
- - **0:** If you want to develop iOS application, you should use this. (kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
- - **1:** If you want to develop Unity application, you should use this. kCVPixelFormatType_32BGRA
+ - **0:** If you want to develop iOS application, you should use this.`kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange`
+ - **1:** If you want to develop Unity application, you should use this. `kCVPixelFormatType_32BGRA`
 
 ### NXPropertySetMaxCaptionLength 
 
@@ -948,6 +865,7 @@ Set it to extend max caption length.
 Controls the maximum number of pages the player can allocate for the remote file cache. The remote file cache stores data that has been read from disk or received over the network (this includes local, streaming, and progressive content). In general, this value should not be changed, as an incorrect setting can adversely affect performance, particularly when seeking. 
 
 In order to play multiplexed content, at least one audio chunk and one video chunk must fit inside a single RFC buffer page. For certain formats (PIFF, for example) at very high bitrates, the chunks may be too big to fit in a single page, in which case the RFC buffer page size will need to be increased. 
+
 If the system has limited memory resources, it may be necessary to decrease the buffer count when increasing the page size. 
 
 Increasing the page size can increase seek times, especially for data received over the network (progressive download and streaming cases), so this value should not be changed unless there are issues playing specific content that cannot be solved in another way.
@@ -1033,7 +951,7 @@ This property sets whether CEA 608 closed captions should be rendered in caption
  This key gets the data from extra tags in metadata if available.
 
 
-### Types
+## Types
 
 ### Classes 
 
@@ -1045,7 +963,7 @@ This property sets whether CEA 608 closed captions should be rendered in caption
  
  This data structure contains information of YUV420 planar video planes (three planes including Y, U and V), pixel resolution and line stride.
 
-- struct NEXPLAYERRemoteFileIOInterface_
+- struct NEXPLAYERRemoteFileIOInterface
     
  A structure holding function pointers to all of the functions that comprise the Remote File I/O interface.
 
@@ -1061,15 +979,15 @@ This property sets whether CEA 608 closed captions should be rendered in caption
 
 \#define NXDuration_Unknown (0xFFFFFFFFU)
 
-For live streams where duration of content cannot be determined, this type can be passed in place ofNXDuration.
+For live streams where duration of content cannot be determined, this type can be passed in place of NXDuration.
 
 ### Typedefs
 
 - typedef struct NexAudioPostProcessingParams NexAudioPostProcessingParams
 
- The characteristics of audio samples to be provided by NexAudioPostProcessingAdapter to the audio post-processor, which implements the NexAudioPostProcessingAdapterDelegate protocol.
+ The characteristics of audio samples to be provided by `NexAudioPostProcessingAdapter` to the audio post-processor, which implements the `NexAudioPostProcessingAdapterDelegate` protocol.
 
-- typedef void(∧UpdatedTextureBlock )(NexVideoTexture∗texture)
+- typedef void(∧UpdatedTextureBlock) (NexVideoTexture ∗texture)
  
  This method is called when a new video texture is available to be rendered from the caller.
 
@@ -1081,7 +999,7 @@ For live streams where duration of content cannot be determined, this type can b
  
  Type of data being passed for DRM descrambling.
 
-- typedef void∗NEXFileHandle
+- typedef void ∗NEXFileHandle
  
  File handle used in Remote File I/O callbacks.
 
@@ -1101,7 +1019,7 @@ For live streams where duration of content cannot be determined, this type can b
  
  Represents the duration of the content as a span of time in milliseconds.
 
-- typedef void∗NXFileHandle
+- typedef void ∗NXFileHandle
 
  Opaque file handle.
 
@@ -1143,11 +1061,9 @@ enum NXBufferInfoMediaType {
 }
 ```
 
-
 ### NXBufferingState
 
 This enumeration defines the possible buffering state for NXBufferingState.
-
 
 ```
 enum NXBufferingState { 
@@ -1180,114 +1096,6 @@ enum NXDRMDataType_ {
 }
 ```
     
-### NXError 
-
-NexPlayer error codes.
-
-```
-enum NXError {
-    NXErrorNone = 0x00000000, 
-    NXErrorHasNoEffect, 
-    NXErrorInvalidParameter, 
-    NXErrorInvalidInfo,
-    NXErrorInvalidState, 
-    NXErrorMemoryOperation, 
-    NXErrorFileOperation, 
-    NXErrorFileInvalidSyntax,
-    NXErrorNotSupportPVXFile
-    NXErrorNotSupportAudioCodec, 
-    NXErrorNotSupportVideoCodec,
-    NXErrorNotSupportVideoResolution,
-    NXErrorNotSupportMedia, 
-    NXErrorInvalidCodec, 
-    NXErrorCodec, 
-    NXErrorPartialSuccess,
-    NXErrorAlreadyCreateAsyncProc, 
-    NXErrorInvalidAsyncCmd, 
-    NXErrorAsyncOthercmdPrcessing, 
-    NXErrorRTCPByeReceived,
-    NXErrorUserTerminated, 
-    NXErrorSystemFail, 
-    NXErrorNoDataInBuffer, 
-    NXErrorUnknown,
-    NXErrorNotSupportToSeek, 
-    NXErrorNotSupportAVCodec, 
-    NXErrorMediaOpenTimeout = 0x00000023,
-    NXErrorDataInactivityTimeout = 0x00000026,
-    NXErrorNetworkProtocol = 0x00000029, 
-    NXErrorMediaNotFound = 0x0000002A, 
-    NXErrorDrmDecryptFailed = 0x00000022, 
-    NXErrorDrmInitFailed = 0x0000002C,
-    NXErrorNotSupportFeature = 0x00000FFF, 
-    NXErrorProtocolInvalidURL = 0x00010001, 
-    NXErrorProtocolInvalidResponse = 0x00010002, 
-    NXErrorProtocolContentInfoParsingFail = 0x00010003,
-    NXErrorProtocolNoProtocol = 0x00010004, 
-    NXErrorProtocolNoMedia = 0x00010005, 
-    NXErrorProtocolNetOpenFail = 0x00010006, 
-    NXErrorProtocolNetConnectFail = 0x00010007,
-    NXErrorProtocolNetBindFail = 0x00010008, 
-    NXErrorProtocolNetDNSFail = 0x00010009, 
-    NXErrorProtocolNetConnectionClosed = 0x0001000A, 
-    NXErrorProtocolNetSendFail = 0x0001000B,
-    NXErrorProtocolNetRecvFail = 0x0001000C, 
-    NXErrorProtocolNetRequestTimeout = 0x0001000D, 
-    NXErrorProtocolNotSupportAESEncryption = 0x0001000E, 
-    NXErrorProtocolNetSSLCertFail = 0x0001000F,
-    NXErrorProtocolDisabledMedia = 0x00010010, 
-    NXErrorHTTPStatusCode = 0x00020000, 
-    NXErrorInternalBase = 0x00030000, 
-    NXErrorExternalBase = 0x00040000,
-    NXErrorExternalDescrambleTimeout = 0x01000001, 
-    NXErrorDownloaderInvalidParameter = 0x00050000,
-    NXErrorDownloaderInvalidState, 
-    NXErrorDownloaderMemoryOperation,
-    NXErrorDownloaderFileOperation, 
-    NXErrorDownloaderConnectionFail, 
-    NXErrorDownloaderConnectionClosed, 
-    NXErrorDownloaderPVXdownFail,
-    NXErrorDownloaderPVXparsingFail, 
-    NXErrorDownloaderNotMultiparts, 
-    NXErrorDownloaderHTTPparsingFail, 
-    NXErrorTimeshiftBase = 0x00060000,
-    NXErrorTimeshiftWrite = 0x00060001, 
-    NXErrorTimeshiftRead = 0x00060002, 
-    NXErrorTimeshiftFindIframe = 0x00060003, 
-    NXErrorDivXDRMBase = 0x00070000,
-    NXErrorDivXDRMNotAuthorized, 
-    NXErrorDivXDRMNotRegistered, 
-    NXErrorDivXDRMRentalExpired,
-    NXErrorDivXDRMGeneralError,
-    NXErrorDivXDRMNeverRegistered, 
-    NXErrorThumbnailBase = 0x00080000, 
-    NXErrorThumbnailCreateFail, 
-    NXErrorThumbnailProcessFail,
-    NXErrorThumbnailDRMContents, 
-    NXErrorRecordBase = 0x00090000, 
-    NXErrorAddframeSizeFull, 
-    NXErrorAddframeTimeFull,
-    NXErrorAddframeMemFull, 
-    NXErrorAddframeError, 
-    NXErrorAPIBase = 0x00900000, 
-    NXErrorAPICannotCreateDownloader,
-    NXErrorAPIInvalidInfo, 
-    NXErrorCommandResult, 
-    NXErrorCreateRFC, 
-    NXErrorRTSPCommandTimeout,
-    NXErrorPauseSupervisionTimeout, 
-    NXErrorNoValidFrameFound, 
-    NXErrorOperationNotValidInCurrentState, 
-    NXErrorDownloadFailure,
-    NXErrorUnsupportedEncryption, 
-    NXErrorNotSupportedContentInAirPlay, 
-    NXErrorInvalidSDKBase =0x80000000, 
-    NXErrorInvalidSDK = 0x8000000D,
-    NXErrorNotActivatedAppID = 0x80000012, 
-    NXErrorTimeLocked = 0x800000A0, 
-    NXErrorInvalidLicense = 0x800000C0 
-}
-
-```
 
 ### NexHLSTSDescrambleResult
 
@@ -1393,7 +1201,6 @@ enum NXTransportType {
 
 Possible states of the player (paused, stopped, etc.).
 
-
 ```
 enum NXPlayerState {
     NXPlayerStateNone = 0, 
@@ -1403,7 +1210,6 @@ enum NXPlayerState {
     NXPlayerStatePause = 4 
 }
 ```
-
 
 ### NXRTSPMethod
 
@@ -1426,7 +1232,6 @@ enum NXRTSPMethod {
     NXRTSPMethodAll = 0x0000FFFF 
 }
 ```
-
 
 ### NXCodecID
 
@@ -1767,7 +1572,6 @@ enum NexDynamicThumbnailOption {
 }
 ```
 
-
 ### Typedef Documentation
 
 ### NexAudioPostProcessingParams 
@@ -1796,8 +1600,8 @@ This is passed by NexPlayer in calls to the `NEXPLAYERRemoteFile_OpenFt` callbac
 
 This is a bitfield, so the constants can be combined with the bitwise-or operator.
 
-- NEX_FILE_WRITE | NEX_FILE_CREATE *Open file for writing; create if it doesn’t exist*
-- NEX_FILE_READ | NEX_FILE_WRITE *Same as NEX\_FILE\_READWRITE*
+- NEX\_FILE\_WRITE | NEX\_FILE\_CREATE Open file for writing; create if it doesn’t exist
+- NEX\_FILE\_READ | NEX\_FILE\_WRITE Same as NEX\_FILE\_READWRITE
 
 ```
 typedef enum_NEXFileMode NEXFileMode
@@ -1845,7 +1649,6 @@ typedef struct NEXPLAYERRemoteFileIOInterface_ NEXPLAYERRemoteFileIOInterface
 
 This data structure contains information of YUV420 planar video planes (three planes including Y, U and V), pixel resolution and line stride.
 
-
 ```
 typedef structNexVideoRawBits NexVideoRawBits
 ```
@@ -1860,16 +1663,9 @@ The NXDRMDescrambler protocol handles both audio and video data; this enumeratio
 typedef enum NXDRMDataType_ NXDRMDataType
 ```
 
-**See Also**
-
--  NXDRMDescrambler for more details.
-
-
 ### NXDRMType
 
-DRM types.
-
-These are returned by DRM descramblers to indicate at what stage the descrambling takes place. Not all DRM descrambling protocols support all types; see the individual descrambler protocol documentation for details.
+ DRM types that are returned by DRM descramblers to indicate at what stage the descrambling takes place. Not all DRM descrambling protocols support all types; see the individual descrambler protocol documentation for details.
 
 ```
 typedef enum NXDRMType_ NXDRMType
@@ -1877,9 +1673,7 @@ typedef enum NXDRMType_ NXDRMType
 
 ### NXFileFormat
 
-File formats.
-
-These are possible file format values that can be used forNXContentInfo::fileFormat.
+Possible file format values that can be used for `NXContentInfo::fileFormat`.
 
 ```
 typedef enum NXFileFormat_ NXFileFormat
@@ -1887,12 +1681,10 @@ typedef enum NXFileFormat_ NXFileFormat
 
 ### NXFileHandle
 
-Opaque file handle.
-
-This is an arbitrary value used to identify files in calls to NXRemoteFileIOInterfacemethods. The meaning of this is unique to a given implementation of NXRemoteFileIOInterface, and return values from different implementations should not be mixed.
+Opaque file handle. This is an arbitrary value used to identify files in calls to NXRemoteFileIOInterfacemethods. The meaning of this is unique to a given implementation of NXRemoteFileIOInterface, and return values from different implementations should not be mixed.
 
 ```
-typedef void ∗ NXFileHandle
+typedef void ∗NXFileHandle
 ```
 
 **See Also**
@@ -1901,9 +1693,7 @@ typedef void ∗ NXFileHandle
 
 ### NXFileMode
 
-Mode for opening a file.
-
-Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
+Mode for opening a file. Identifies different methods for opening or creating a file. This is is passed to implementations of the `NXRemoteFileIOInterface` protocol to indicate how a file should be opened.
 
 ```
 typedef enum NXFileMode_ NXFileMode
@@ -1915,9 +1705,7 @@ typedef enum NXFileMode_ NXFileMode
 
 ### NXFileSeekOrigin
 
-Origin when seeking within a file.
-
-Identifies different origins for seeking within a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
+Origin when seeking within a file. Identifies different origins for seeking within a file. This is is passed to implementations of the NXRemoteFileIOInterface protocol to indicate where to measure the seek offset from.
 
 ```
 typedef enum NXFileSeekOrigin_ NXFileSeekOrigin
@@ -1927,12 +1715,9 @@ typedef enum NXFileSeekOrigin_ NXFileSeekOrigin
 
 - NXRemoteFileIOInterfacefor more details.
 
-
 ### NXKeepAliveSendMode
 
-Keep alive send modes.
-
-These are possible values for the `property::NXPropertyKeepAliveSendMode`
+Keep alive send modes. These are possible values for the `property::NXPropertyKeepAliveSendMode`
 
 See that property for details.
 
@@ -1942,9 +1727,7 @@ typedef enum NXKeepAliveSendMode_ NXKeepAliveSendMode**
 
 ### NXRTSPOptions
 
-RTSP options.
-
-These are possible values for the `::NXPropertyRTSPOptionsSendMode` property.
+RTSP options. These are possible values for the `::NXPropertyRTSPOptionsSendMode` property.
 
 ```
 typedef enum NXRTSPOptions_ NXRTSPOptions
@@ -1962,14 +1745,11 @@ Parameters
 
 - texture: The new video texture available for rendering.
 
-
 ### Enumeration Type Documentation
 
 ### enum _NEXFileMode
 
-File open mode. 
-
-This is passed by NexPlayer in calls to the `NEXPLAYERRemoteFile_OpenFt` callback.
+File open mode.  This is passed by NexPlayer in calls to the `NEXPLAYERRemoteFile_OpenFt` callback.
 
 This is a bit field, so the constants can be combined with the bitwise-or operator.
 
@@ -1977,11 +1757,9 @@ This is a bit field, so the constants can be combined with the bitwise-or operat
 // Open file for writing; create if it doesn’t exist
 NEX_FILE_WRITE | NEX_FILE_CREATE 
 
-// Same as NEX_FILE_READWRITE
+// Same as NEX\_FILE\_READWRITE
 NEX_FILE_READ | NEX_FILE_WRITE 
 ```
-
-**Enumerator**
 
 - `NEX_FILE_READ` Open for reading
 - `NEX_FILE_WRITE` Open for writing
@@ -1992,19 +1770,9 @@ NEX_FILE_READ | NEX_FILE_WRITE
 
 Origin for Remove File I/O callback seek operations.
 
-**See Also**
-
-- NEXPLAYERRemoteFile_SeekFt
-- NEXPLAYERRemoteFile_Seek64Ft
-- NEX\_SEEK\_BEGIN Beginning of file
-- NEX\_SEEK\_CUR Current position
-- NEX\_SEEK\_END End of file
-
 ### enum NexAvailableBitrate
 
 This enumeration defines the possible options for the setVideoBitrates:len:withOption: (NXPlayer).
-
-**Enumerator**
 
 - `NexAvailableBitrateNone` No restriction on subtracks other than the bitrates selected inbitrates.
 - `NexAvailableBitrateMatch` Only use subtracks which have exact same bitrate as the selected bitrates passed inbitrates.
@@ -2017,8 +1785,6 @@ This enumeration defines the possible options for the setVideoBitrates:len:withO
 
 This enumeration defines the possible options for the `NXPlayerABRController::setTargetBandwidth:withSegmentOption:withTargetOption:`. One of the following NexBandwidthSegmentOptionvalues, indicating how to handle the buffered content when the track switches:
 
-**Enumerator**
-
 - `NexBandwidthSegmentOptionDefault` Default. NexPlayer will decide between NexBandwidthSegmentOptionQuickMix (switching tracks quickly) and NexBandwidthSegmentOptionLateMix (playing buffered content and changing tracks more slowly).
 - `NexBandwidthSegmentOptionQuickMix` NexPlayer will clear the buffer as much as possible and will start to download a new track so the user can switch faster.
 - `NexBandwidthSegmentOptionLateMix` NexPlayer will preserve and play the content segments already
@@ -2027,8 +1793,6 @@ buffered, and will download a new track.
 ### enum NexBandwidthTargetOption
 
 This enumeration defines the possible options for the NXPlayerABRController:: setTargetBandwidth:withSegmentOption:withTargetOption:. This can be a guide on how to use the target bandwidth value set. One of the following NexBandwidthTargetOptionoptions:
-
-**Enumerator**
 
 - `NexBandwidthTargetOptionDefault` Default target option (NexBandwidthTargetOptionBelow).
 - `NexBandwidthTargetOptionBelow` Select a track with a bandwidth below the target bandwidth.
@@ -2047,18 +1811,12 @@ This enumeration defines the possible return values from a NXHLSTSDescrambler me
 
 This enumeration defines the possible events for NXPlayer::didReceiveInformativeEvent:details:.
 
-**Enumerator**
-
-NexInformativeEventDownloadBegan Download of a URL began. Parameter keys in details: kNexInformativeEventURL.
-
-NexInformativeEventDownloadFinished Download of a URL finished. Parameter keys in details: kNex-
-InformativeEventURL, and kNexInformativeEventResult.
+* NexInformativeEventDownloadBegan Download of a URL began. Parameter keys in details: kNexInformativeEventURL.
+* NexInformativeEventDownloadFinished Download of a URL finished. Parameter keys in details: kNexInformativeEventURL, and kNexInformativeEventResult.
 
 ### enum NXBufferInfoMediaType
 
 This enumeration defines the possible stream type forNXBufferInfoMediaType.
-
-**Enumerator**
 
 - `NXBufferInfoMediaTypeVideo` Video stream type.
 - `NXBufferInfoMediaTypeAudio` Audio stream type.
@@ -2074,8 +1832,6 @@ CEA 608 Channel IDs. These are possible values for `NXPlayer::selectedCEA608Chan
 
 They set the channel from which CEA 608 closed captions will be received. While there are four channels to receive caption information from the NTSC line 21 fields, as channels 1 and 2 share field 1 and channels 3 and 4 share field 2, the most common channels used to receive captions are channels 1 and 3. These channels can represent the same information in different languages and are often intended to be selected by the user from the application.
 
-**Enumerator**
-
 - `NXCEA608Channel_None` No CEA 608 captions (disable)
 - `NXCEA608Channel_Ch1` NTSC line 21 field 1 closed captions (first channel); CEA 608 Caption Channel 1.
 - `NXCEA608Channel_Ch2` NTSC line 21 field 1 closed captions (second channel); CEA 608 Caption Channel 2.
@@ -2085,8 +1841,6 @@ They set the channel from which CEA 608 closed captions will be received. While 
 ### enum NXCEA608Charset
 
 CEA 608 Character Set IDs. These are used to choose the character set to display CEA 608 closed caption information.
-
-**Enumerator**
 
 - `NXCEA608Charset_Unicode` Unicode character set.
 - `NXCEA608Charset_Private1` For use with a private, non-standard character set. May be ignored.
@@ -2098,37 +1852,13 @@ CEA 608 Character Set IDs. These are used to choose the character set to display
 
 CEA 608 Colors. These are used to indicate the foreground and background colors associated with CEA 608 closed captions. Note that only the semi-transparent options will be used for background color of captions.
 
-**Enumerator**
-
-- `NXCEA608Color_White` white
-- `NXCEA608Color_White_Semitrans` semi-transparent white
-- `NXCEA608Color_Green` green
-- `NXCEA608Color_Green_Semitrans` semi-transparent green
-- `NXCEA608Color_Blue` blue
-- `NXCEA608Color_Blue_Semitrans` semi-transparent blue
-- `NXCEA608Color_Cyan` cyan
-- `NXCEA608Color_Cyan_Semitrans` semi-transparent cyan
-- `NXCEA608Color_Red` red
-- `NXCEA608Color_Red_Semitrans` semi-transparent red
-- `NXCEA608Color_Yellow` yellow
-- `NXCEA608Color_Yellow_Semitrans` semi-transparent yellow
-- `NXCEA608Color_Magenta` magenta
-- `NXCEA608Color_Magenta_Semitrans` semi-transparent magenta
-- `NXCEA608Color_Black` black
-- `NXCEA608Color_Black_Semitrans` semi-transparent black
-- `NXCEA608Color_Transparent` transparent (only used for background color)
-- `NXCEA608Color_Default` This value is only used when overriding font attribute.
-- `NXCEA608Color_Last` This value marks the maximum possible color value.
-
 ### enum NXCodecID
 
-Codec type identifiers. These are used with NXContentInformation::audioCodec, NXContentInformation::videoCodecandNXContentInformation::captionType.
+Codec type identifiers. These are used with NXContentInformation::audioCodec, NXContentInformation::videoCodec and NXContentInformation::captionType.
 
 ### enum NXDebugMsgCat
 
-Debugging Messages to include. These are possible values fornexPlayer:debugMessage:category: (NXPlayerDelegate-p) and set the debugging messages to be provided.
-
-**Enumerator**
+Debugging Messages to include. These are possible values forn exPlayer:debugMessage:category: (NXPlayerDelegate-p) and set the debugging messages to be provided.
 
 - `NXDebugMsgCat_RTSP` Debugging information related to the RTSP connection status.
 - `NXDebugMsgCat_RTP_RECV` Debugging information associated with the start of an RTP packet receipt.
@@ -2148,8 +1878,6 @@ Debugging Messages to include. These are possible values fornexPlayer:debugMessa
 
 NexPlayer connection types.
 
-**Enumerator**
-
 - `NXDeviceInfoConnectionTypeUnknown` Unknown connection type.
 - `NXDeviceInfoConnectionTypeNone` Not connected.
 - `NXDeviceInfoConnectionTypeWWAN` Cellular connection.
@@ -2157,57 +1885,19 @@ NexPlayer connection types.
 
 ### enum NXDRMDataType_
 
-Type of data being passed for DRM descrambling.
-The NXDRMDescrambler protocol handles both audio and video data; this enumeration is used to distinguish between the two when data is passed to the descrambling method.
-
-**See Also**
-
-- NXDRMDescrambler for more details.
+Type of data being passed for DRM descrambling. The NXDRMDescrambler protocol handles both audio and video data; this enumeration is used to distinguish between the two when data is passed to the descrambling method.
 
 ### enum NXDRMType_
 
 DRM types. These are returned by DRM descramblers to indicate at what stage the descrambling takes place. Not all DRM descrambling protocols support all types; see the individual descrambler protocol documentation for details.
 
-**Enumerator**
-
 - `NXDRMTypePayload` Descrambling is done at the payload level.
 - `NXDRMTypePacket` Descrambling is done at the packet level.
 - `NXDRMTypeFrame` Descrambling is done individually for each frame.
 
-### enum NXError
-
-NexPlayer error codes. There are many error codes defined in this enum, but only the error codes documented here are used.
-
-**Enumerator**
-
-- `NXErrorNone` No error.
-- `NXErrorHasNoEffect` Already in the requested state or non-valid command (Ex: seek for live-streaming).
-- `NXErrorInvalidParameter` One or more of the parameters passed in is invalid.
-- `NXErrorInvalidInfo` One or more of the information passed in is invalid.
-- `NXErrorInvalidState` The command is not valid at the current state. (Ex. NexPlayerSWPPause function is called when the current state is NEXPLAYERSTATEPAUSE)
-- `NXErrorMemoryOperation` The memory operation failed. (Ex. heap memory allocation)
-- `NXErrorFileOperation` The file operation failed. (Ex. file seek, file open)
-- `NXErrorNotSupportAudioCodec` The content included unregistered audio codec type.
-- `NXErrorNotSupportVideoCodec` The content included unregistered video codec type.
-- `NXErrorInvalidCodec` The content includes unknown audio or video codec type.
-- `NXErrorCodec` An error occurred at audio or video decoding.
-- `NXErrorAsyncOthercmdPrcessing` The command queue for processing invoked Async functions was full.
-- `NXErrorRTCPByeReceived` An error occurred in receiving RTCP BYE message from streaming server.
-- `NXErrorUserTerminated` Terminated by the user.
-- `NXErrorDataInactivityTimeout` An unhandled nexPlayerDataInactivityTimeout: (NXPlayerDelegate-p)event occurred.
-- `NXErrorNetworkProtocol` Network or protocol error.
-- `NXErrorMediaNotFound` Media not found at the URL.
-- `NXErrorDrmDecryptFailed` DRM decryption failure.
-- `NXErrorDrmInitFailed` DRM init failure.
-- `NXErrorRTSPCommandTimeout` An unhandled nexPlayerRTSPCommandTimeout: (NXPlayerDelegate-p) event occurred.
-- `NXErrorPauseSupervisionTimeout` An unhandled nexPlayerPauseSupervisionTimeout: (NXPlayer-
-Delegate-p) event occurred.
-
 ### enum NXFileFormat_
 
-File formats. These are possible file format values that can be used forNXContentInfo::fileFormat.
-
-**Enumerator**
+File formats. These are possible file format values that can be used for NXContentInfo::fileFormat.
 
 - `NXFileFormatMP4` MP4.
 - `NXFileFormatAMRNB` AMR-NB.
@@ -2233,13 +1923,7 @@ File formats. These are possible file format values that can be used forNXConten
 
 ### enum NXFileMode_
 
-Mode for opening a file. Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterfaceprotocol to indicate how a file should be opened.
-
-**See Also**
-
-NXRemoteFileIOInterface for more details.
-
-**Enumerator**
+Mode for opening a file. Identifies different methods for opening or creating a file. This is is passed to implementations of the NXRemoteFileIOInterface protocol to indicate how a file should be opened.
 
 - `NXFileModeRead` Read
 - `NXFileModeWrite` Write
@@ -2248,13 +1932,7 @@ NXRemoteFileIOInterface for more details.
 
 ### enum NXFileSeekOrigin_
 
-Origin when seeking within a file. Identifies different origins for seeking within a file. This is is passed to implementations of theNXRemoteFileIOInterfaceprotocol to indicate where to measure the seek offset from.
-
-**See Also**
-
-- NXRemoteFileIOInterfacefor more details.
-
-**Enumerator**
+Origin when seeking within a file. Identifies different origins for seeking within a file. This is is passed to implementations of the NXRemoteFileIOInterface protocol to indicate where to measure the seek offset from.
 
 - `NXFileSeekOriginBeginning` Beginning of file
 - `NXFileSeekOriginCurrent` Current position
@@ -2263,10 +1941,6 @@ Origin when seeking within a file. Identifies different origins for seeking with
 ### enum NXKeepAliveSendMode_
 
 Keep alive send modes. These are possible values for the  property::NXPropertyKeepAliveSendMode
-See that property for details.
-
-
-**Enumerator**
 
 - `NXKeepAliveSendMode_None` None.
 - `NXKeepAliveSendMode_PauseState` Pause only.
@@ -2289,8 +1963,6 @@ The higher the log level, the more logs will be enabled. The following are the l
 
 > **Note** NXLogLevelDisabled disables the log.
 
-**Enumerator**
-
 * `NXLogLevelError` Enables error level log only.
 * `NXLogLevelWarning` Enables warning level log and below.
 * `NXLogLevelDisabled` Log disabled.
@@ -2304,23 +1976,15 @@ The higher the log level, the more logs will be enabled. The following are the l
 
 Media types. These are used with NXMediaStreamInfo::typeto indicate the type of the stream (audio or video) described by `NXMediaStreamInfo`.
 
-**Enumerator**
-
 * `NXMediaTypeUnknown` Unknown media type.
 * `NXMediaTypeAudio` Audio only stream.
 * `NXMediaTypeVideo` Video only stream.
 * `NXMediaTypeText` Text stream.
 * `NXMediaTypeAV` A/V stream.
 
-### enum NXOnOffDefault
-
-Deprecated This has been deprecated since version 5.16. Do not use.
-
 ### enum NXOpenMode
 
 Open modes. These are possible argument values for mode parameter in open: (NXPlayer).
-
-**Enumerator**
 
 - `NXOpenModeAuto` Select streaming play for "http:", "https:", "rtsp:" and "mms:" addresses, local play for everything else.
 - `NXOpenModeLocal` Plays a local file, given a local path or a URL starting with "file://".
@@ -2333,16 +1997,12 @@ Open modes. These are possible argument values for mode parameter in open: (NXPl
 
 Playback types.
 
-**Enumerator**
-
 - `NXPlaybackTypeLocal` Content is local (local path or "file://" URL)
 - `NXPlaybackTypeStreaming` Content is streaming (including on-demand, progressive download or live)
 
 ### enum NXPlayerState
 
 Possible states of the player (paused, stopped, etc.). The current player state is available through `NXPlayer::state`.
-
-**Enumerator**
 
 - `NXPlayerStateNone` No current valid state (for example API not initialized)
 - `NXPlayerStateClose` Content is currently closed.
@@ -2353,8 +2013,6 @@ Possible states of the player (paused, stopped, etc.). The current player state 
 ### enum NXRTSPMethod
 
 RTSP method identifiers. These are used withaddRTSPHeaderField:forMethods: (NXPlayer)
-
-**Enumerator**
 
 - `NXRTSPMethodNone` No RTSP method.
 - `NXRTSPMethodDescribe` RTSP DESCRIBE method (request presentation description, generally SDP)
@@ -2374,8 +2032,6 @@ RTSP method identifiers. These are used withaddRTSPHeaderField:forMethods: (NXPl
 
 RTSP options. These are possible values for the::NXPropertyRTSPOptionsSendModeproperty.
 
-**Enumerator**
-
 * `NXRTSPOptionsSendModeNone` No send-mode options specified.
 * `NXRTSPOptionsDescribe` Send RTSP OPTIONS before RTSP DESCRIBE.
 * `NXRTSPOptionsFirstSetup` Send RTSP OPTIONS before the first RTSP SETUP Request.
@@ -2391,8 +2047,6 @@ RTSP options. These are possible values for the::NXPropertyRTSPOptionsSendModepr
 
 Video image scaling modes. These are various possible automatic video scaling modes that can be set for NXPlayerView::autoScaling.
 
-**Enumerator**
-
 * `NXScale_None` No automatic scaling.
 * `NXScale_OriginalSize` Original video size.
 * `NXScale_FitInView` Fit video to container (as large as possible without cropping; maintain aspect ratio)
@@ -2403,17 +2057,5 @@ Video image scaling modes. These are various possible automatic video scaling mo
 
 Transport layers (TCP and UDP) for RTP and RTCP packets.
 
-**Enumerator**
-
 - `NXTransportTypeTCP` RTP/RTCP over TCP.
 - `NXTransportTypeUDP` RTP/RTCP over UDP.
-
-### Function Documentation
-
-#### typedef NS_OPTIONS ( NSUInteger, NXHttpStateInfoMediaType )
-
-Possible types of media which can be played by NexPlayer during playback. The primary use of `NXHttpStateInfoMediaType` is for representing a media type of `NXHttpStateInfoFileTypeSegment`.
-
-**See Also**
-
-- NXHttpStateInfoDownStart for more details.

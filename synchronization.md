@@ -3,6 +3,7 @@
 ## What is Nexplayer’s synchronization feature?
 
 NexPlayer synchronization feature technology allows you to synchronise the video arrival and stream video synchronously across different devices using the DASH SPD value. This is also possible for HLS streams by controlling the SPD value from the client-side.
+
 ## How to enable synchronization feature in the sample application
 
 To get started we need an apk and at least two devices. 
@@ -33,6 +34,7 @@ Synchronization feature is highly dependent on the internet speed and the config
 - Setting a very low SPD value for the stream might affect smooth playback experience as it won’t allow the player to create enough buffer.
 
 ## How to enable synchronization feature from the code
+
 NexPlayer synchronization can be enabled by setting the following property:
 
 `player.setProperty(NXPropertyEnableSpdSyncToGlobalTime, value: 1 as NSObject);`
@@ -47,8 +49,7 @@ Note that if the value of `SuggestedPresentationDelayTime` is too large or too s
 
 You can control the synchronization behaviour further by adjusting the below properties.
  
- 
-## NXPropertyEnableSpdSyncToDeviceTime
+### NXPropertyEnableSpdSyncToDeviceTime
 
 Enables synchronization to device UTC for more accurate behaviour.
 
@@ -62,7 +63,7 @@ This property should be called after init but before calling open.
   - 0: SPD disabled.
   - 1: SPD enabled.
 
-## NXPropertySpdSyncDiffTime
+### NXPropertySpdSyncDiffTime
 
 If the current playback desynchronizes from this value, the player will speed up or slow down the playback in order to re-synchronize.
 
@@ -74,7 +75,7 @@ This property should be called after init but before calling open.
 - Unit: msec (1/1000 sec)
 - Default: 300 (300 msec)
  
-## NXPropertySpdTooMuchDiffTime
+### NXPropertySpdTooMuchDiffTime
 If playback is out of sync than this value, the player will jump to synchronize the video rather than make it by speeding up.
 
 `player.setProperty(NXPropertySpdTooMuchDiffTime, value: tooMuchDiffTime as NSObject)`

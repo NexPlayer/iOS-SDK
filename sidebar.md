@@ -1,9 +1,11 @@
-- [NexPlayer™ SDK for iOS](/introduction.md) 
+- [NexPlayer SDK for iOS](/introduction.md) 
 - [Getting Started](/getting-started.md)
-- [Widevine Integration](/widevine_quickstart.md)
 - [Properties](/properties.md) 
-- [Error Codes](/error-codes.md) 
-- [Advanced Usage](/advanced.md)
+- Advanced Usage
+  - [Widevine Integration](/widevine_quickstart.md)
+  - [Synchronization Feature](/synchronization.md)
+  - [Error Codes](/error-codes.md) 
+  - [API Documentation](/advanced.md)
 - 3rd Party Integrations
    - [AWS Integration](https://nexplayer.github.io/NexPlayer_AWS/)
 - [Releases](/releases.md) 

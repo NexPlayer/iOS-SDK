@@ -1,4 +1,5 @@
 # Enabling Video Synchronization Feature
+
 ## What is Nexplayer’s synchronization feature?
 
 NexPlayer synchronization feature technology allows you to synchronise the video arrival and stream video synchronously across different devices using the DASH SPD value. This is also possible for HLS streams by controlling the SPD value from the client-side.
@@ -17,12 +18,7 @@ Here we have several fields that depending on our needs we will have to configur
 - **“Too"** much Sync: value”: Value between 2000.0and 10,000.0 ms (default 5000.0ms).
 - **“Sync"** to Device time”: Enable or disable. This field takes as reference the UTC time (disabled by default).
 
-
-![](https://github.com/NexPlayer/iOS-SDK/blob/master/asset/image1.JPG)
-
-
-
-
+![](asset/image1.JPG)
 
 Once we have configured what we need, we will play the content with SPD in the section.
 

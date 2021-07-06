@@ -1,5 +1,13 @@
 # NexPlayer™ SDK for iOS Release Notes
 
+### Version 5.40.1.5155
+- [Add] Added new functionality to get content information
+- [Add] Added EMSG events for HLS/fMP4
+- [Fix] Fixed an issue with SET_PRESENTATION_DELAY property
+
+### Version 5.40.1.5154
+- [Add] Added new functionality to get content information
+
 ### Version 5.40.1.5152
 - [Fix] Fixed an issue with the pssh key for Widevine
 

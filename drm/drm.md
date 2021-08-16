@@ -1,192 +1,8 @@
-# NexPlayer SDK Quick Start with Widevine
+# DRM Integration
 
-This tutorial demonstrates how to handle NexPlayer SDK in iOS applications with Widevine. In this tutorial, a sample player will be implemented in **Swift**.
+This tutorial demonstrates how to handle NexPlayer SDK in iOS applications with Widevine. First of all, for the following of this tutorial, we have to implement a sample player following the [Setup Guide](/basic/setup-guide.md) in **Swift**.
 
-First thing you have to keep in mind before implementing NexPlayer SDK is that most of player methods behave __asynchronously__. There are numerous methods available in `NexPlayerDelegate.h` which listen to what is happening in NexPlayer. Asynchronous approach is strongly recommended in NexPlayer SDK.
-
-## Create a new project
-
-1. Open Xcode.
-2. Click “Create a new Xcode project” (or select File > New > Project).
-3. Select iOS at the top of the dialog. Then select App.
-4. Set the name og your app and choose additional options for your project.
-5. Click Next.
-6. Choose a location to save your project and click Create.
-
-## Import required frameworks
-
-1. Copy NexPlayerSDK.framework to your Xcode project folder.
-2. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > General > Frameworks, Libraries and Embedded Content, click on (**+**) to add frameworks and libraries to the list.
-3. To import NexPlayerSDK, click the (**+**) in Frameworks, Libraries and Embedded Content > Add Other... > Add Files... > Select NexPlayerSDK.framework in your Xcode folder. Please ensure that you are using the following Frameworks and Libraries:  
- 
- - AVKit  
- - AVFoundation  
- - VideoToolbox  
- - AudioToolbox  
- - CoreAudio  
- - CoreMedia  
- - SystemConfiguration  
- - NexPlayerSDK  
-
-4. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > PROJECT > Build Settings > All | Combined > Search **Other Linker Flags** > Add **-lc++** in **Other Linker Flags** 
-5. In order to import the required methods from NexPlayerSDK, we will need to create a Bridging Header, which will export all the Objective-C functions to Swift. Go to Navigation Area in Xcode > XCODE PROJECT FILE (indicated by blue icon) > TARGETS > Build Settings > All | Combined > Search **Objective-C Bridging Header** and set the value to: `<Root folder of your folder>/BridgingHeader.h`
-
-####  BridgingHeader.h
-
-```
-#import <NexPlayerSDK/NexPlayerSDK.h>
-#import <NexPlayerSDK/NXPlayerABRController.h>
-#import <NexPlayerSDK/NXPlayerDelegate.h>
-#import <NexPlayerSDK/NXClosedCaption.h>
-```
-
-## Setup PlayerView
-
-#### MainViewUI.swift
-
-```swift
-import Foundation
-  
-public class MainViewUI: NSObject{
-    lazy var mainPlayerView:UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    public func layout(viewController: UIViewController) {
-        viewController.view.addSubview(mainPlayerView)
-
-        mainPlayerView.center = viewController.view.center
-        
-        mainPlayerView.translatesAutoresizingMaskIntoConstraints = false
-        mainPlayerView.topAnchor.constraint(equalTo: viewController.view.topAnchor).isActive = true
-        mainPlayerView.leftAnchor.constraint(equalTo: viewController.view.leftAnchor).isActive = true
-        mainPlayerView.rightAnchor.constraint(equalTo: viewController.view.rightAnchor).isActive = true
-        mainPlayerView.bottomAnchor.constraint(equalTo: viewController.view.bottomAnchor).isActive = true
-    }
-}
-```
-
-#### MainViewController.swift
-
-```swift
-import UIKit
-
-class MainViewController: UIViewController {    
-    
-    private let ui = MainViewUI()
-
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        ui.layout(viewController: self)
-    }
-}
-```
-
-## Setup NexVideoPlayer and Open Stream
-
-#### NexVideoPlayer.swift
-
-```swift
-import Foundation
-
-public class NexVideoPlayer: NSObject {
-    lazy var container:UIView = {
-        let view = UIView()
-        return view
-    }()
-    
-    lazy var playerView:NXPlayerView = {
-        let playerView = NXPlayerView()
-        playerView.tag = 1
-        playerView.autoScaling = NXScale.fitInView
-        playerView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight];
-        return playerView
-    }()
-    
-    public var player:NXPlayer { return playerView.player }
-    private var abrController:NXPlayerABRController!
-    private weak var playerDelegate:NXPlayerDelegate?
-
-    public init(delegate: NXPlayerDelegate) {
-        self.playerDelegate = delegate
-    }
-    
-    public func layout(parent: UIView) {
-        parent.addSubview(container)
-        container.translatesAutoresizingMaskIntoConstraints = false
-        container.bounds = parent.bounds
-        container.leftAnchor.constraint(equalTo: parent.leftAnchor).isActive = true
-        container.rightAnchor.constraint(equalTo: parent.rightAnchor).isActive = true
-        container.topAnchor.constraint(equalTo: parent.topAnchor).isActive = true
-        container.bottomAnchor.constraint(equalTo: parent.bottomAnchor).isActive = true
-        
-        container.addSubview(playerView)
-        playerView.translatesAutoresizingMaskIntoConstraints = false
-        playerView.bounds = parent.bounds
-        
-        playerView.leftAnchor.constraint(equalTo: container.leftAnchor).isActive = true
-        playerView.rightAnchor.constraint(equalTo: container.rightAnchor).isActive = true
-        playerView.topAnchor.constraint(equalTo: container.topAnchor).isActive = true
-        playerView.bottomAnchor.constraint(equalTo: container.bottomAnchor).isActive = true
- 
-        player.delegate = playerDelegate
-    }
-}
-```
-
-> Now we are going to implement NXPlayerDelegate, whose methods will be called asynchronously
- 
-#### MainViewUI.swift
-
-```swift
-import Foundation
-  
-public class MainViewUI: NSObject{
-
-    ...
-    
-    private var players = [NexVideoPlayer]()
-    private var playerContainers = [UIView]()
-    
-    public func layout(viewController: UIViewController) {
-        
-		...
-        
-        let mainPlayer = NexVideoPlayer(delegate: self)
-        mainPlayer.layout(parent: mainPlayerView)
-        
-        mainPlayer.player.open(<Insert your stream here>)
-        
-        players.append(mainPlayer)
-        playerContainers.append(mainPlayerView)
-    }
-}
-
-extension MainViewUI: NXPlayerDelegate {
-    public func nexPlayer(_ nxplayer: NXPlayer!, completedAsyncCmdOpenWithResult result: NXError, playbackType type: NXPlaybackType) {
-        if (result == NXError.none) {
-            nxplayer.start()
-        }
-        else {
-            print("Failed to open  \(result.hashValue)");
-        }
-    }
-    
-    public func nexPlayer(_ nxplayer: NXPlayer!, completedAsyncCmdStopWithResult result: NXError) {
-        if (result == NXError.none) {
-            nxplayer.close()
-        }
-        else {
-            print("Failed to open  \(result.hashValue)");
-        }
-    }
-}
-```
-
----
-
-## Widevine
+## Widevine DRM
 
 Now it is time to set up the Widevine. The first thing that you have to be aware of Widevine frameworks is that there are three types of Widevine Frameworks (develop, simulator, and release). In this tutorial, `widevine_cdm_secured_ios.framework` (develop) will be used to implement Widevine DRM with NexPlayer.
 
@@ -194,7 +10,7 @@ Now it is time to set up the Widevine. The first thing that you have to be aware
 
 1. Copy `WidevineIntegration.framework` and `widevine_cdm_secured_ios.framework` to your Xcode project folder.
 
-2. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > General > Frameworks, Libraries and Embedded Content, click on (**+**) > Add `WidevineIntegration.framework` and `widevine_cdm_secured_ios.framework` in your Xcode project directory.
+2. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > General > Frameworks, Libraries and Embedded Content, click on (**+**) > Add files > Add `WidevineIntegration.framework` and `widevine_cdm_secured_ios.framework` in your Xcode project directory.
 3. Go to Navigation Area in Xcode > XCODE PROJECT FILE(indicated by blue icon) > TARGETS > Build Phases > Link Binary With Libraries. Check the order of frameworks. **Order is extremely important** like below:
  
  - AVKit
@@ -230,23 +46,32 @@ Now it is time to set up the Widevine. The first thing that you have to be aware
 
 ### Setup Widevine
 
+Now we will setup widevine in the simple "PlayerController" class we made in the set-up guide.  
 `WidevineIntegration.start()` should be set just before `open()`
 
-#### MainViewUI.swift
+#### PlayerController.swift
 
 ```swift
-public class MainViewUI: NSObject{
+public class PlayerController: UIViewController {
     ...
     
     private var widevine = WidevineIntegration()
     
-    public func layout(viewController: UIViewController) {
+    override func viewDidLoad() {
         ...
         
-        let mainPlayer = NexVideoPlayer(delegate: self)
-        mainPlayer.layout(parent: mainPlayerView, index: 0)
+	    let playerView = NXPlayerView()
+	    playerView.autoScaling = .fitInView
+	    playerView.captionRenderController.captionHidden = true
+	    playerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        let mainPlayer = playerView.player
+        self.view.addSubview(playerView)
+        //mainPlayer.delegate = self
+	    playerView.player.delegate = self
         
-        widevine = WidevineIntegration.init(nxPlayer: mainPlayer.player, clientInfo: ClientInfo())
+        widevine = WidevineIntegration.init(nxPlayer: mainPlayer, 
+                                            clientInfo: ClientInfo())
         widevine.nexWVdelegate = self
         widevine.licenseServerUrl = (<Insert the license here>)
         widevine.start()
@@ -257,7 +82,7 @@ public class MainViewUI: NSObject{
     }
 }
 
-extension MainViewUI: NXPlayerDelegate {
+extension PlayerController: NXPlayerDelegate {
     ...
     
     public func nexPlayer(_ nxplayer: NXPlayer!, completedAsyncCmdStopWithResult result: NXError) {
@@ -274,7 +99,7 @@ extension MainViewUI: NXPlayerDelegate {
     }
 }
 
-extension MainViewUI: NexWidevineDelegate {
+extension PlayerController: NexWidevineDelegate {
     
     public func process(afterLicenseServer receivedData: Data!) -> Data! {
         return receivedData
@@ -290,7 +115,9 @@ Client information is needed to initialize Widevine object. Before start API of 
  
 Keep in mind that start API of WidevineIntegration should be called before open API of NexPlayerSDK, and stop API of WidevineIntegration should be called before close API of NexPlayerSDK.
 
-### NexPlayer with Widevine project
+## NexPlayer with Widevine project
+
+Now lets see a more advance project of NexPlayer with the Widevine DRM integration.
 
 #### MainViewUI.swift
 
@@ -361,7 +188,7 @@ public class MainViewUI: NSObject{
 }
 
 extension MainViewUI: NXPlayerDelegate {
-    public func nexPlayer(_ nxplayer: NXPlayer!, completedAsyncCmdOpenWithResult result: NXError, playbackType type: NXPlaybackType) {
+    public func nexPlayer(_ nxplayer: NXPlayer!, completedAsyncCmdOpenWithResult result: NXError, playbackType Type: NXPlaybackType) {
         if (result == NXError.none) {
             activityIndicator.stopAnimating()
             nxplayer.start()

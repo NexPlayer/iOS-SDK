@@ -57,9 +57,9 @@ Enables synchronization to device UTC for more accurate behaviour.
 
 This property should be called after init but before calling open.
 
-- Type: int
-- Default: 0
-- Values:
+- **Type:** int
+- **Default:** 0
+- **Values:**
   - 0: SPD disabled.
   - 1: SPD enabled.
 
@@ -71,9 +71,9 @@ If the current playback desynchronizes from this value, the player will speed up
 
 This property should be called after init but before calling open.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 300 (300 msec)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 300 (300 msec)
  
 ### NXPropertySpdTooMuchDiffTime
 If playback is out of sync than this value, the player will jump to synchronize the video rather than make it by speeding up.
@@ -82,6 +82,6 @@ If playback is out of sync than this value, the player will jump to synchronize 
 
 This property should be called after init but before calling open.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 5000 (5 seconds)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 5000 (5 seconds)

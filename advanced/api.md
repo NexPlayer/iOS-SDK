@@ -862,26 +862,6 @@ This method instantiates a NexVideoTextureReceiver instance and requests for the
 
 The latest video texture received from the NXPlayer instance.
 
-### NXABRDelegate Protocol Reference
-
-This protocol defines a delegate protocol for the application to receive an ABR Track switch event from NexPlayer.
-
-NexPlayer will call the methods provided in this interface automatically during playback to notify the application when an ABR Track switch event has occurred.
-
-In most cases, the handling of this event is optional; NexPlayer will continue to play content normally without the application doing anything special in response to the event received.
-
-#### - (NSUInteger) - nexPlayer:willChangeABRTrackWithParams:
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| nxplayer | The NXPlayer instance that this delegate has been assigned to.|
-| params | The NXPlayerABRControllerTrackChangeParams structure which consists of bandwidth information.|
-
-**Returns**
-
-The exact track bandwidth that the user wants to set to forcibly.
 
 ### NXAsfPlayReadyDescrambler Protocol Reference
 
@@ -2625,7 +2605,7 @@ For more information about the SAR information included in H.264 content, please
 |---|---|
 | strSAR | Returns the sample aspect ratio, as a string. |
 
-#### - (void) getSeekableRange: (int32_t ∗ )startTimeendTime:(int32_t ∗ )endTime
+#### - (void) getSeekable**Range:** (int32_t ∗ )startTimeendTime:(int32_t ∗ )endTime
 
 This method returns the range of the current content that is seekable.
 
@@ -3177,7 +3157,7 @@ Only the tracks with the bitrates passed on this method with the parameter bitra
 | Name  | Description  | 
 |---|---|
 | bitrates | The bitrates of the HLS content subtracks to play, as an integer array. |
-| option | How HLS subtracks should be played based on the bitrates selected in bitrates. This will be one of: <br> - **NexAvailableBitrateNone:** No restriction on subtracks other than the bitrates selected in bitrates. <br> - **NexAvailableBitrateMatch** Only use subtracks which have exact same bitrate as the selected bitrates passed in bitrates. <br> - **NexAvailableBitrateNearest:** Only use subtracks which have the nearest bitrates to the target bitrates described in the list passed in bitrates. For example, if the target bitrates passed are [300K, 600K] and the HLS playlist includes 100K, 200K, 500K, 700K tracks, only the 200K (close to 300K) and 500K (close to 600K) tracks will be used. <br> - **NexAvailableBitrateHigh:** Only use subtracks which have bitrates equal to or higher than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateLow:** Only use subtracks which have bitrates equal to or lower than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateInsideRange:** Only use subtracks which have bitrates inside the range defined by the bitrates passed in bitrates. The first bitrate in the list is taken as the lower boundary, the second as the upper boundary, and the rest of the list will be ignored. Subtracks with bitrates between the lower and upper boundaries will be used.
+| option | How HLS subtracks should be played based on the bitrates selected in bitrates. This will be one of: <br> - **NexAvailableBitrateNone:** No restriction on subtracks other than the bitrates selected in bitrates. <br> - **NexAvailableBitrateMatch** Only use subtracks which have exact same bitrate as the selected bitrates passed in bitrates. <br> - **NexAvailableBitrateNearest:** Only use subtracks which have the nearest bitrates to the target bitrates described in the list passed in bitrates. For example, if the target bitrates passed are [300K, 600K] and the HLS playlist includes 100K, 200K, 500K, 700K tracks, only the 200K (close to 300K) and 500K (close to 600K) tracks will be used. <br> - **NexAvailableBitrateHigh:** Only use subtracks which have bitrates equal to or higher than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateLow:** Only use subtracks which have bitrates equal to or lower than the target bitrate. The first bitrate in the list passed in bitrates is the target bitrate, the rest will be ignored. <br> - **NexAvailableBitrateInside**Range:** Only use subtracks which have bitrates inside the range defined by the bitrates passed in bitrates. The first bitrate in the list is taken as the lower boundary, the second as the upper boundary, and the rest of the list will be ignored. Subtracks with bitrates between the lower and upper boundaries will be used.
 
 **Returns**
 
@@ -3796,140 +3776,6 @@ If there is an object assigned to this property, the player will call methods of
 * `NXRemoteFileIOInterface`
 * `NXAsfPlayReadyDescrambler`
 
-### NXPlayerABRController Class Reference
-
-This interface must be implemented in order for the application to set a minimum or maximum allowable bandwidth, or both, for playing streaming content.
-
-#### - (NXError) changeBandwidthMin: (NSUInteger)minMax:(NSUInteger)max
-
-This method sets the minimum and maximum bandwidth for streaming content in NexPlayer, dynamically during
-playback.
-
-**Warning**
-
-To dynamically change the minimum and maximum bandwidth in the middle of playback, please use this
-method. To take effect, this method should be called after calling open. Note that the minimum, and maximum bandwith can also be set before play begins by setting the properties, NXPropertyMinBW, with changeMinBandwidth. and NXPropertyMaxBW, with changeMaxBandwidth.
-
-This applies in cases where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the minimum, and over the maximum bandwidth when determining whether a track change is appropriate, even if it detects less, and more bandwidth available.
-
-Note that to remove a minimum and maximum that has been set with this method (so that NexPlayer will again consider all tracks regardless of bandwidth), set both of min, and max to 0x00000000.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| min | Minimum bandwidth in kbps (kilobits per second). To reset to no minimum bandwidth,min = 0x00000000.  |
-| max | Maximum bandwidth in kbps (kilobits per second). To reset to no maximum bandwidth,max = 0x00000000. |
-
-**Returns**
-
-NXErrorNone for success, or a non-zero NexPlayer error code in the event of a failure.
-
-#### - (NXError) changeMaxBandwidth: (NSUInteger)max
-
-This method sets the maximum bandwidth for streaming content in NexPlayer, dynamically during playback.
-
-> **Warning** To dynamically change the maximum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after calling open. Note that the maximum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMaxBW`, with `changeMaxBandwidth`.
-
-This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track over the maximum bandwidth when determining whether a track change is appropriate, even if it detects more bandwidth available.
-
-Note that to remove a maximum that has been set with this method (so that NexPlayer will again consider all tracks regardless of bandwidth), set max to 0x00000000.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| max | Maximum bandwidth in kbps (kilo bits per second). To reset to no maximum bandwidth, set max= 0x00000000. |
-
-**Returns**
-
-NXErrorNone for success, or a non-zero NexPlayer error code in the event of a failure.
-
-####  - (NXError) changeMinBandwidth: (NSUInteger)min
-
-This method sets the minimum bandwidth for streaming content in NexPlayer, dynamically during playback.
-
-**Warning**
-
-To dynamically change the minimum bandwidth in the middle of playback, please use this method. To take effect, this method should be called after callin gopen. Note that the minimum bandwith can also be set before play begins by setting the `NXProperty,NXPropertyMinBW`, with `changeMinBandwidth`.
-
-This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the minimum bandwidth when determining whether a track change is appropriate, even if it detects less bandwidth available.
-
-Note that to remove a minimum that has been set with this method (so that NexPlayer will again consider all tracks regardless of bandwidth), set min to0x00000000.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| min | Minimum bandwidth in kbps (kilo bits per second). To reset to no minimum bandwidth, set min= 0x00000000.|
-
-**Returns**
-
-NXErrorNone if successful, otherwise nil if there was an error.
-
-#### - (NXError) setABREnabled: (BOOL)enabled
-
-This method sets whether or not ABR methods should be used.
-
-In general, NexPlayer plays streaming content, including content with multiple tracks at different bandwidths such as HLS, by choosing the optimal track according to network conditions and device performance. This is the default behavior of NexPlayer and this occurs when ABR is enabled (or calling `NXPlayerABRController::setABREnabled` with the parameter enabled set to YES).
-
-However, there may be instances when an application may want to set limits on which tracks should be selected and played by NexPlayer in order to provide a specific user experience, and to force NexPlayer to stay on a particular bandwidth track, regardless of network conditions. In cases like this, in order to keep playing a track at a target bandwidth (set with `NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption:`) this method must be called to disable NexPlayer’s ABR behavior (with the parameter enabled set to NO).
-
-> **Warning** This method must be called with enabled set to NO before calling NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption: if the application should continue playing the target bandwidth regardless of network conditions.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| enabled |- **YES** : ABR enabled. NexPlayer will handle track changes automatically. <br>- **NO** : ABR disabled. NexPlayer will continue playing the target bandwidth track set, regardless of network conditions.
-
-**Returns**
-
-NXErrorNone if successful, otherwise non-zero if there was an error.
-
-**See Also**
-
-`NXPlayerABRController::setTargetBandWidth:withSegmentOption:withTargetOption:`
-
-
-#### - (NXError) setTargetBandwidth: (NSUInteger)targetBwBpssegmentOption:(NexBandwidthSegmentOption)segOptiontargetOption:(NexBandwidthTargetOption)targetOption
-
-This method sets the target bandwidth for streaming playback dynamically during playback.
-
-This applies in cases with content where there are multiple tracks at different bandwidths (such as in the case of HLS). The player will not consider any track under the target bandwidth and over the target bandwidth when determining whether a track change is appropriate, even if it detects less and more bandwidth available.
-
-**Parameters**
-
-| Name  | Description  | 
-|---|---|
-| targetBwBps | Target bandwidth in bps (bits per second). |
-| segOption | One of the following NexBandwidthSegmentOption values, indicating how to handle buffered content when the track changes: <br> - **NexBandwidthSegmentOptionDefault = 0** : Default (NexPlayer will decide between NexBandwidthSegmentOptionQuickMix (changing tracks quickly) and NexBandwidthSegmentOptionLateMix (playing buffered content and changing tracks more slowly)). <br> -**NexBandwidthSegmentOptionQuickMix = 1** : NexPlayer will clear the buffer as much as possible and will start to download new track so user can see a new track faster. <br>- **NexBandwidthSegmentOptionLateMix = 2** : NexPlayer will preserve and play the content segments already buffered and will download a new track.
-| targetOption | How to use the target bandwidth value set. One of the following NexBandwidthTargetOption options: <br>- **NexBandwidthTargetOptionDefault = 0** : Default target option (NexBandwidthTargetOptionBelow). <br>- **NexBandwidthTargetOptionBelow = 1** : Select a track with a bandwidth below the target bandwidth. <br>- **NexBandwidthTargetOptionAbove = 2** : Select a track with a bandwidth above the target bandwidth. <br>- **NexBandwidthTargetOptionMatch = 3** : Select the track that has a bandwidth that matches the target set; otherwise send an error and no new target bandwidth is selected.
-
-> **Warning** This method should be called after open: (NXPlayer).
-
-**Returns**
-
-NXErrorNone if successful, otherwise non-zero if there was an error.
-
-**See Also**
-
-- `setABREnabled:`
-
-### NXPlayerABRControllerTrackChangeParams Struct Reference
-
-Bandwidth information for ABRControl.
-
-This structure is used by `NXABRDelegate` protocol to control ABR track switch and it includes bandwidth information.
-
-**Public Attributes**
-
-- NSUInteger `netBW`
-    The current network bandwidth.
-- NSUInteger `curTrackBW`
-    The current track bandwidth.
-- NSUInteger `nextTrackBW`
-    The target track bandwidth.
 
 
 ### NXPlayerCallbackDelegate Protocol Reference
@@ -5011,7 +4857,7 @@ The video is also rescaled to the appropriate size as soon as this value is chan
 
 Changes to the scale can be animated using the usual UIView animation technqiues (begin and commit).
 
-Possible values:
+Possible **Values:**
 
 - `NXScale_None` The video size will not be changed; the size and location can be set by assigning values to the video Rect property.
 - `NXScale_OriginalSize` The video will be displayed at its original size, centered in the view. The original video dimensions are calculated using regular (normal resolution) pixels in order to maintain consistency between normal and retina displays.

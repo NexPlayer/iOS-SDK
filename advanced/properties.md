@@ -22,61 +22,21 @@ These identify properties that can be set and retrieved with:
 - getProperty:value: (NXPlayer)
 - getProperty: (NXPlayer)
 
-### NXPropertyInitialBufferingDuration 
-
-Number of milliseconds of media to buffer initially before beginning streaming playback (HLS, RTSP, etc.). This is the initial amount of audio and video that NexPlayer buffers when it begins playback. If further buffering is required later in the playback process, the value of the property **NXPropertyReBufferingDuration** will be used instead.
-
-If this is set to zero, NexPlayer will automatically select the recommended buffering time based on the content type (longer for HLS, shorter for other streaming types).
-
--  Type: unsigned int 
--  Default: 0 (automatic) 
--  Units: msec
-
-### NXPropertyReBufferingDuration 
-
-Number of milliseconds of media to buffer if additional buffering is required during streaming playback (HLS, RTSP, etc.). This is the amount of audio and video that NexPlayer buffers when the buffer becomes empty during playback (requiring additional buffering). For the initial buffering, the value of the property NXPropertyInitialBufferingDuration is used instead. If this is set to zero, NexPlayer will automatically select the recommended buffering time based on the content type (longer for HLS, shorter for other streaming types).
- 
- - Type: unsigned int 
- - Default: 0 (automatic) 
- - Units: msec
-
 ### NXPropertyTimestampDifferenceVDispWait
 
 The number of milliseconds (as a negative number) that video is allowed to run ahead of audio before the player waits for audio to catch up. For example, -20 means that if the current video time is more than 20msec ahead of the audio time, the current video frame will not be displayed until the audio catches up to the same time stamp. This is used to adjust video and audio synchronization.
 
-- Type: int(should be negative) 
-- Default: -20 (20msec) 
-- Units: msec
+- **Type:** int(should be negative) 
+- **Default:** -20 (20msec) 
+- **Units:** msec
 
 ### NXPropertyTimestampDifferenceVDispSkip
 
  The number of milliseconds that video is allowed to run behind audio before the system begins skipping frames to maintain synchronization. For example, 200 means that if the current video time is more than 200msec behind the audio time, the current video frame will be skipped. This is used to adjust video and audio synchronization.
 
- - Type: unsigned int 
- - Units: msec 
- - Default: 200 (0.2 sec)
-
-### NXPropertyPrefetchBufferSize 
-
-The size of the prefetch buffer to prepare for playback. If the buffer status satisfies either limit set by MAX_BUFFER_RATE or MAX_BUFFER_DURATION, the filling of the prefetch buffer will be stopped even though there may be spare space still available in the prefetch buffer.
-
-If this value is set to 20MB, 1/4 (5MB) is allocated to the past (content already played) and 3/4(15MB) is allocated to the future (content yet to be played).
- 
-- Type: unsigned int 
-- Units: bytes 
-- Default: 50x1024x1024 (50MB)
-
-> **Warning** Setting too large of a value here may lead to a large consumption of data packets under 3G or LTE network conditions.
-
- ### NXPropertyDataInactivityTimeout 
- 
- Amount of time to wait for a server response before generating an error event. If there is no response from the server for longer than the amount of time specified here, an error event will be generated and playback will stop.
-
- Set this to zero to disable timeout (NexPlayer will wait indefinitely for a response).
-
-- Type: unsigned int
-- Default: 60,000 (60 seconds) 
-- Units: msec
+ - **Type:** unsigned int 
+ - **Units:** msec 
+ - **Default:** 200 (0.2 sec)
 
 ### NXPropertySocketConnectionTimeout
 
@@ -84,123 +44,72 @@ Amount of time to wait before timing out when establishing a connection to the s
 
 Set this to zero to disable timeout (NexPlayer will wait indefinitely for a connection).
 
-- Type: unsigned int 
-- Default: 0 (infinite) 
-- Units: msec (0 for infinite)
+- **Type:** unsigned int 
+- **Default:** 0 (infinite) 
+- **Units:** msec (0 for infinite)
 
 ### NXPropertyRTPPortMin 
 
 The minimum port number to be used when receiving RTP data. This sets the minimum possible port number to be used for the RTP port that is created when performing RTSP streaming over UDP.
 
-- Default: 12000
+- **Default:** 12000
 
 ### NXPropertyRTPPortMax
 
 The maximum port number to be used when receiving RTP data. The maximum possible port number to be used for the RTP port that is created when performing RTSP streaming over UDP.
 
-- Default: 30000
-
-### NXPropertyNotOpenPlayAudio 
-
-Prevents the audio track from playing back when set to TRUE (1).
-
-- Type: boolean 
-- Default: 0
-
-### NXPropertyNotOpenPlayVideo
-
-Prevents the video track from playing back when set to TRUE (1).
-
-- Type: boolean 
-- Default: 0
-
-### NXPropertyNotOpenPlayText 
-
-Prevents the text (subtitle) track from playing back when set to TRUE (1).
-
-- Type: boolean 
-- Default: 0
+- **Default:** 30000
 
 ### NXPropertyProxyAddress
 
 Sets the proxy address. :{String} 
 
-- Default: null
- 
+- **Default:** null
+
 ### NXPropertyProxyPort
 
 Sets the proxy port number. 
 
-- Type: integer 
-- Default: 0
-
-### NXPropertyLogLevel 
-
-Sets the log level. 
- 
- Values:
- 
- - NXPropertyLogLevel_Debug
- - NXPropertyLogLevel_RTP
- - NXPropertyLogLevel_RTCP
- - NXPropertyLogLevel_Frame
+- **Type:** integer 
+- **Default:** 0
  
 ### NXPropertyAVInitOption 
 
-Controls when video initialization happens. This can be any of the following values:
+Controls when video initialization happens. This can be any of the following **Values:**
  
  - **NXPropertyAVInitOption_Partial** If there is an audio track, wait for audio initialization to complete before initializing video.
 
  - **NXPropertyAVInitOption_All** Begin video initialization as soon as there is any video data, without any relation to the audio track status.
  
-- Default: NXPropertyAVInitOption_All
+- **Default:** NXPropertyAVInitOption_All
 
 ### NXPropertyPlayableForNotSupportAudioCodec
 
 If set to 1, allows media playback even if the audio codec is not supported. The default behavior (if this is 0) is to return an error or generate an error event if the audio codec is not supported.
 
-- Type: unsigned int 
-- Default: 0
+- **Type:** unsigned int 
+- **Default:** 0
 
 ### NXPropertyPlayableForNotSupportVideoCodec
 
 If set to 1, allows media playback even if the video codec is not supported. The default behavior (if this is 0) is to return an error or generate an error event if the audio codec is not supported.
 
-- Type: unsigned int
-- Default: 0
+- **Type:** unsigned int
+- **Default:** 0
 
 ### NXPropertyUseEyePleaser
 
 If more than this number of frames are skipped during rendering, the remaining frames up to the next keyframe are forcibly discarded and playback resumes from the next keyframe.
 
-- Type: unsigned int 
-- Default: 0xFFFFFFFF
-
-### NXPropertyApplsLiveViewOption 
-
-Live HLS playback option. This must be one of the following values:
- 
-  - **NXPropertyHLSLiveViewRecent** Starts playback from the 3rd segment from the last. For example, if manifest have 1.ts, 2.ts, 3.ts, 4.ts, 5.ts then playback will start from the beginning of 3.ts. 
- 
-  - **NXPropertyHLSLiveViewRecentByTargetDuration** Start playback from the most recently received media segement (.ts) files, based on the value set for the `EXT-X-TARGETDURATION` tag in the HLS live playlist. (The player will begin playback at the media segment that immediately precedes the media segment that is three times (x3) the target duration before the latest media segment file loaded). As a concrete example, if the target duration is set to 12 seconds and the total duration of currently loaded media segments is 48 seconds, playback will begin at the media file that immediately precedes the media segment with the timestamp at 12 (48-36) seconds. If this example HLS playlist includes media segment files 1.ts (duration of 10 seconds), 2.ts (9 sec), 3.ts (11 sec), 4.ts (10 sec), and 5.ts (8 sec), then playback will begin at the first media segment, 1.ts, because it immediate precedes the 2.ts segment (where the timestamp at 12 seconds occurs).
-
-  - **NXPropertyHLSLiveViewFirst** Unconditionally start HLS playback from the first entry in the HLS playlist.
-
-  - **NXPropertyLiveViewLowLatency** Playback starts from a position close to real-time and frame skipping may occur during playback to maintain low latency.
-
-> Note: When `EXT-X-PROGRAM-DATE-TIME` exists, playback will start from the first segment that is matching with the current time. 
-
-
-**Type:** unsigned integer
-
-**Default:** NXPropertyHLSLiveViewRecent
+- **Type:** unsigned int 
+- **Default:** 0xFFFFFFFF
  
 
 ### NXPropertyUserAgentString 
 
 RTSP/HTTP User Agent value. 
 
--  Type: String
+-  **Type:** String
 
 ### NXPropertyFirstDisplayVideoFrame
 
@@ -212,38 +121,27 @@ Once audio has started, the behavior for both settings is the same; this only af
 
 Under old versions of the SDK (prior to the addition of this property), the default behavior was as though this property were set to zero.
 
- - Type: boolean 
- - Default: 1
- - Values:
-  - 0: Show nothing.
-  - 1: Show first video frame.
+ - **Type:** boolean 
+ - **Default:** 1
+ - **Values:**
+	- **0:** Show nothing.
+	- **1:** Show first video frame.
 
 ### NXPropertySourceOpenTimeOut 
 
 Sets the amount of time to wait for an open request to complete. This is used when NexPlayer tries to open new media. If there is no response from the server for longer than the amount of time specified here, the open request will be stopped and `nexPlayer:completedAsyncCmdOpenWithResult:playbackType:` will be called with the result, namely the error code, NXErrorMediaOpenTimeout.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 300000 (300 seconds)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 300000 (300 seconds)
 
 ### NXPropertySocketOperationTimeout
 
 The maximum waiting time till an HTTP request/response message arrives to NexPlayer. If the reply does not arrive within this time after HTTP request message is sent to the streaming server, it will be regarded as an error.
 
-- Type: unsigned int 
-- Default: 30,000 (30 seconds
-- Units: msec (0 for infinite)
-
-### NXPropertyLowLatencyBufferOption 
-
-Set a low latency buffer option.  This must be one of the following values:
- 
-  - **NXPropertyLowLaytencyBufferOptionNone** The latency value is set by INITIAL\_BUFFERING\_DURATION and RE\_BUFFERING\_DURATION of NexProperty. It should set the reliable value depending on the bitrate of content and network environment.
-  - **NXPropertyLowLaytencyBufferOptionAutoBuffer** The latency value is calculated by the player at runtime. During playback, the latency may increase or decrease because it may change depending on the network environment.
-  - **NXPropertyLowLaytencyBufferOptionConstBuffer** The latency value is calculated by the player at the beginning of playback and maintains the value unchanged during playback. The latency increases more than when using Auto Buffer Mode, but the rebuffering will be reduced and will try to maintain constant latency after rebuffering.
-
- - Type: unsigned int
- - Default: NXPropertyLowLaytencyBufferOptionNone   
+- **Type:** unsigned int 
+- **Default:** 30,000 (30 seconds
+- **Units:** msec (0 for infinite)  
 
 ### NXPropertySeekRangeFromRAPoint 
 
@@ -261,16 +159,16 @@ For example, if NexPlayer is seeking to 10000 ms exactly (exact = true) and ther
 
 > **Warning** Please remember that in order to seek to a target position, audio or video frames have to be decoded. If too large of a value is set here, it may cause the seek process to consume an excessive amount of time especially in high resolution video content.
 
-- Type: unsigned int 
-- Units: msec (1/1000 sec) 
-- Default: 10000 (10 seconds)
+- **Type:** unsigned int 
+- **Units:** msec (1/1000 sec) 
+- **Default:** 10000 (10 seconds)
 
 ### NXPropertySetToSkipBFrame 
 
 If set to true, unconditionally skips all B-frames without decoding them.
 
-- Type: boolean 
-- Default: 0
+- **Type:** boolean 
+- **Default:** 0
 
 **NXPropertyTooMuchLostFrameDuration** Maximum amount of silence to insert to make up for lost audio frames. Under normal operation, if audio frames are lost (if there is a time gap in received audio frames), silence will be inserted automatically to make up the gap.
 
@@ -278,91 +176,67 @@ However, if the number of audio frames lost represents a span of time larger tha
 
 This prevents, for example, a corruption in the time stamp in an audio frame from causing the system to insert an exceptionally long period of silence (which could possibly prevent further audio playback or cause other unusual behavior).
 
-- Type: unsigned int 
-- Units: msec (1/1000 sec) 
-- Default: 20000 (20 seconds)
+- **Type:** unsigned int 
+- **Units:** msec (1/1000 sec) 
+- **Default:** 20000 (20 seconds)
 
 ### NXPropertySupportLocal
 
 If set to 1, enables local file playback support.
 
-- Type: boolean
-- Default: 1
+- **Type:** boolean
+- **Default:** 1
 
 ### NXPropertySupportPD
 
 If set to 1, enables progressive download support.
 
-- Type: boolean
-- Default: 1
- 
+- **Type:** boolean
+- **Default:** 1
+
 ### NXPropertySupportWMS 
 
 If set to 1, enables Microsoft Windows Media Streaming support.
 
-- Type: boolean
-- Default: 0
- 
+- **Type:** boolean
+- **Default:** 0
+
 ### NXPropertySupportRDT 
 
 If set to 1, enables Real Media Streaming support.
 
-- Type: boolean
-- Default: 0
+- **Type:** boolean
+- **Default:** 0
 
 ### NXPropertySupportAppleHTTP
 
 If set to 1, enables Apple HTTP Live Streaming (HLS) support.
  
-- Type: boolean
-- Default: 1
- 
-### NXPropertySupportABR 
-
-If set to 1, enables HLS Adaptive Bit Rate (ABR) support.
-
-- Type: boolean
-- Default: 1
+- **Type:** boolean
+- **Default:** 1
 
 ### NXPropertySupportDash 
 
 If set to 1, enables DASH support.
 
-- Type: boolean
-- Default: 1
- 
-### NXPropertyMaxBW 
+- **Type:** boolean
+- **Default:** 1
 
-When streaming with multiple tracks, this sets the maximum allowable bandwidth. Any track over this bandwidth will not be selected for playback. Set to zero for no maximum.
-
-- Type: unsigned int
-- Units: bps (bits per second)
-- Default: 0 (no maximum)
- 
 ### NXPropertyH264Profile
 
 Limits the H.264 profile that can be selected from an HLS playlist. Under normal operation, the track with the highest supported H.264 profile is selected from an HLS playlist. If this property is set, no track with a profile higher than this value will be selected. This should be set to zero for no limit.
 
-- Type: unsigned integer
-- Default: 0 (use any profile),
+- **Type:** unsigned integer
+- **Default:** 0 (use any profile),
 
 ### NXPropertyIgnoreAudioLostFrame 
 
 Suppresses automatic silence insertion for lost audio frames. During normal RTSP streaming operation, if an audio frame is lost (for example, due to a bad connection), the NexPlayer engine inserts a frame of silence into the audio stream to maintain synchronization. Enabling this setting suppresses that function. This may improve performance in some cases where the RTSP server doesn’t send an audio stream. This should be used with caution as it can cause the audio and video streams to lose synchronization.
 
-- Default: 0 (disabled)
-- Values:
- - 0: disabled
- - 1: enabled
- 
-### NXPropertyAlwaysBuffering 
-
-Controls whether audio buffering is independent of the video state. In the case of an empty audio frame, if this property is enabled, buffering will always start regardless of the state of the video buffer.
- 
-- Default: 0 (disable)
-- Values:
- - 0: disable
- - 1: enable
+- **Default:** 0 (disabled)
+- **Values:**
+	- **0:** disabled
+	- **1:** enabled
 
 ### NXPropertyIgnoreAVSync
 
@@ -370,117 +244,17 @@ Bypasses AV synchronization. When this property is enabled, AV synchronization i
 
 > **Warning** This will almost certainly cause the audio and video to lose synchronization, and video playback speed will be unpredictable and vary depending on the speed of the connection and the speed by which the local system can decode frames. This may be useful for playing back a live video feed where frames are sent by the server at the correct intervals for playback.
  
-- Default: 0 (disabled)
-- Values:
- - 0: disabled
- - 1: enabled
-  
+- **Default:** 0 (disabled)
+- **Values:**
+	- **0:** disabled
+	- **1:** enabled
+
 ### NXPropertySupportMSSmoothStreaming 
 
 If set to 1, this enables MS Smooth Streaming support.
 
- - Type: boolean
- - Default: 1
- 
-### NXPropertyAVSyncOffset 
-
-Adjusts A/V synchronization by of setting video relative to audio. Positive values cause the video to play faster than the audio, while negative values cause the audio to play faster than the video. Under normal operation, this can be set to zero, but in some cases where the synchronization is bad in the original content, this can be used to correct for the error.
-
-While A/V synchronization is generally optimized internally by NexPlayer , there may occasionally be devices which need to be offset in order to improve overall A/V synchronization. For examples of how to set AV\_SET\_OFFSET based on the device in use, please see the Sample Application code as well as the introductory section A/V Synchronization section.
-
-Appropriate values for any other problematic devices need to be determined experimentally by testing manually.
-
-- Type: integer
-- Unit: msec (1/1000 sec)
-- Range: -2000∼+2000
-- Default: 0
-
-### NXPropertyMaxWidth 
-
-Limits the maximum width (in pixels) of the video tracks that can be selected during streaming play. This is used to prevent NexPlayer from attempting to play tracks that are encoded at too high a resolution for the device to handle effectively. NexPlayer will instead select a track with a lower resolution.
-
-> **Note** On iOS ONLY, if this is zero (the default), NexPlayer will automatically set the value based on the device type and type of play (streaming or local). Note that when this is set to zero, getProperty: (NXPlayer) will also return zero. To get the actual value that is in effect during playback, call `getEffectiveProperty: (NXPlayer)` instead.
-
-- Type: integer
-- Units: pixels
-- Default: NXPropertyMaxWidthMaxValue
-
-### NXPropertyMaxHeight 
-
-Limits the maximum height (in pixels) of the video tracks that can be selected during streaming play. This is used to prevent NexPlayer from attempting to play tracks that are encoded at too high a resolution for the device to handle effectively. NexPlayer will instead select a track with a lower resolution.
-
-> **Note** On iOS ONLY , if this is zero (the default), NexPlayer will automatically set the value based on the device type and type of play (streaming or local). Note that when this is set to zero, `getProperty: (NXPlayer)` will also return zero. To get the actual value that is in effect during playback, call `getEffectiveProperty: (NXPlayer)` instead.
-
-- Type: integer
-- Units: pixels
-- Default: NXPropertyMaxHeightMaxValue
-
-### NXPropertyPreferBandwidth 
-
-Sets preferred bandwidth when switching tracks during streaming play. Under normal operation (when this property is zero), if the available network bandwidth drops below the minimum needed to play the current track without buffering, the player will immediately switch to a lower bandwidth track, if one is available, to minimize any time spent buffering.
-
-If this property is set, the player will attempt to choose only tracks above the specified bandwidth, even if that causes some buffering. However, if the buffering becomes too severe or lasts for an extended time, the player may eventually switch to a lower-bandwidth track anyway.
- 
-- Type: unsigned int
-- Units: kbps (kilobits/sec)  
-- Default: 0 (immediate switching)
-- Values:
- - 0: No preferred bandwidth (immediate switching)
- - >0: Preferred bandwidth in kbps
-
-### NXPropertyPreferAV 
-
-Controls whether NexPlayer prefers tracks with both audio and video content. Under normal operation (when this property is set to 0), if the available network bandwidth drops below the minimum needed to play the current track without buffering, the player will immediately switch to a lower bandwidth track, if one is available, to minimize any time spent buffering.
-
-If this property is set to 1, the player will attempt to choose only tracks that include both audio and video content, even if that causes some buffering. However, if the buffering becomes too severe or lasts for an extended time, the player may eventually switch to an audio-only track anyway.
-
-- Type: unsigned int
-- Default: 0 (immediate switching)
-- Values:
- - 0: Normal behavior (immediate switching)
- - 1: Prefer tracks with both audio and video
-
-### NXPropertyEnableTrackdown 
-
-Allows NexPlayer to switch to a lower bandwidth track if the resolution or bitrate of the current track is too high for the device to play smoothly. Under normal operation, NexPlayer switches tracks based solely on current network conditions. When this property is enabled, NexPlayer will also switch to a lower bandwidth track if too many frames are skipped during playback.
-
-This is useful for content that is targeted for a variety of devices, some of which may not be powerful enough to handle the higher quality streams.
-
-The `NXPropertyTrackdownVideoRatio` property controls the threshold at which the track change will occur, if frames are being skipped.
-
-Have to set it before start to play.
- 
-- Type: boolean
-- Default: 0 
-- Values:
- - 0: Normal behavior (switch based on network conditions only)
- - 1: Switch based on network conditions and device performance
- 
-### NXPropertyTrackdownVideoRatio 
-
-Controls the ratio of skipped frames that will be tolerated before a track change is forced, if `NXPropertyEnableTrackdown` is enabled. The formula used to determined if a track switch is necessary is:
-
-```
-(^100) *(RenderedFrames / DecodedFrames) < TrackdownVideoRatio
-```
- 
-In other words, if this property is set to 70, and NXPropertyEnableTrackdown is set to 1, NexPlayer will require that at least 70% of the decoded frames be displayed. If less than 70% can be displayed (greater than 30% skipped frames), then the next lower bandwidth track will be selected.
-
-A performance-based track switch **permanently** limits the maximum bandwidth of tracks that are eligible for playback, until the content is closed. For this reason, setting this ratio higher than the default value of 70 is strongly discouraged. (This differs from the bandwidth-based algorithm, which continuously adapts to current network bandwidth).
-
-- Type: integer
-- Range: 0 to 100
-- Default: 70, 
-
-### NXPropertyHLSRunmode 
-
-Controls the algorithm used for bitrate switching when playing an HLS stream.
-
-- Type: unsigned int
-- Default: 0
-- Values:
- - 0: Uses a more aggressive algorithm: Up-switching happens sooner.
- - 1: Uses a more conservative algorithm: Up-switching happens only if a significant amount of extra bandwidth is available beyond that required to support the given bitrate. This is similar to the iPhone algorithm.
+ - **Type:** boolean
+ - **Default:** 1
 
 ### NXPropertyHTTPCredentials 
 
@@ -491,39 +265,8 @@ Adds additional HTTP headers to use to supply credentials when a 401 response is
 
 The particulars of the headers depend on the server and the authentication method being used.
 
-- Type: String
+- **Type:** String
  
-### NXPropertyMinBufferRate 
-
-The minimum ratio of prefetch buffer to resume filling buffer. If the ratio of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
- 
-- Type: unsigned integer
-- Unit: percent
-- Default: 70 (70%)
-
-### NXPropertyMaxBufferRate
-
-The maximum ratio of prefetch buffer to pause filling buffer. If the ratio of filling buffer is more than this value, filling buffer will be paused until buffer status meets only the condition of `MIN_BUFFER_RATE`. 
-
-- Type: unsigned integer
-- Unit: percent
-- Default: 90 (90%)
-
-### NXPropertyMinBufferDuration 
-
-The minimum duration of prefetch buffer to resume filling buffer. If the duration of filling buffer is less than this value, filling buffer will be resumed until buffer status meets the condition of `MAX_BUFFER_RATE` or `MAX_BUFFER_DURATION`. 
-
-- Type: unsigned integer
-- Unit: second
-- Default: 30 (30s)
-
-### NXPropertyMaxBufferDuration 
-
-The minimum ratio of prefetch buffer to resume filling buffer. If filling buffer is less this value, filling buffer will be resumed until buffer status meets only the condition of `MIN_BUFFER_DURATION`. 
- 
-- Type: unsigned integer
-- Unit: second
-- Default: 60 (60s)
 
 ### NXPropertyUseSyncTask
 
@@ -531,21 +274,21 @@ Sets whether or not NexPlayer should use SyncTask feature. SyncTask may improve 
 
 > **Note** This property must be set before initializing NexPlayer or opening and playing content.
 
-- Type: unsigned int
-- Default: 0 
+- **Type:** unsigned int
+- **Default:** 0 
 - Values :
- - 0: Do not use SyncTask.
- - 1: Use SyncTask.
+	- **0:** Do not use SyncTask.
+	- **1:** Use SyncTask.
 
 ### NXPropertySetCookie 
 
 Controls whether the player honors cookies sent by the server.
  
-- Type: unsigned int
-- Default: 1
-- Values:
- - 0: Ignore HTTP cookie headers sent by the server.
- - 1: Cookie headers received from a streaming server along with the initial manifest or playlist are included with further HTTP requests during the session.
+- **Type:** unsigned int
+- **Default:** 1
+- **Values:**
+	- **0:** Ignore HTTP cookie headers sent by the server.
+	- **1:** Cookie headers received from a streaming server along with the initial manifest or playlist are included with further HTTP requests during the session.
 
 ### NXPropertySetLiveBackOff 
 
@@ -553,9 +296,9 @@ Sets the SmoothStreamingLiveBackOff property when playing Smooth Streaming conte
 
 The end-to-end latency of the player (what is being played "live" in the player compared to what is available live on the server) is at least the duration ofLiveBackOff added to the duration set for LivePlaybackOffset with NXPropertySetLiveBackOffset.
 
-- Type: unsigned int
-- Units:msec
-- Default: 6000
+- **Type:** unsigned int
+- **Units:**msec
+- **Default:** 6000
 
 ### NXPropertySetLiveBackOffset 
 
@@ -565,34 +308,25 @@ As a result, live content will be played behind the actual live position by a du
 
 Setting this property enables faster startup because it allows a buffer to be built up as fast as bandwidth will support (potentially faster than real time), which creates a buffer against network jitter. It does however also increase end-to-end latency, which means what is played "live" in the player is farther behind the actual live playing point of the content.
 
-- Type: unsigned int 
-- Units: msec
-- Default: 7000
-
-### NXPropertyStartWithAV 
-
-Starts video together with or separately from audio. This property starts to play audio and video together when starting, if the video timestamp is slower than audio’s timestamp.
-
-If it is 1, it forces the video and audio to start at the same time. If it is 0, it lets the video and audio to start separately.
-
-- Type: boolean
-- Default: 0 (video and audio will start separately, based on the timestamps)
+- **Type:** unsigned int 
+- **Units:** msec
+- **Default:** 7000
 
 ### NXPropertyIgnoreAbnormalSegmentTimestamp 
 
 Ignores abnormal segment timestamps. If it is 1 or enabled, NexPlayer will ignore abnormal segment timestamps. If it is 0 or disabled, NexPlayer will not ignore any abnormal segment timestamps.
 
- - Type: boolean
+ - **Type:** boolean
  
 > **Warning** This property is not supported in this API version.
- 
+
 ### NXPropertyEnableModifyHTTPRequest 
 
 Allows the application to modify the content of an HTTP Request that NexPlayer is about to send to a remote HTTP server. When this property is set equal to 1 (enabled), NexPlayer invokes `nexPlayer:onModifyHttpRequest:` with the HTTP Request as an argument. The application can return the modified version of the HTTP Request that will actually be sent.
 
-- Values:
- - 0 : Disabled. Don’t deliver any HTTP Request.
- - 1 : Enabled. Deliver HTTP Request to modify on the application side.
+- **Values:**
+	- **0:** Disabled. Don’t deliver any HTTP Request.
+	- **1:** Enabled. Deliver HTTP Request to modify on the application side.
 
 > **See Also** `NXPlayerDelegate.h::NXPlayerDelegate:nexPlayer:onModifyHTTPRequest:` for more information.
 
@@ -610,134 +344,10 @@ This property can thus reduce the time needed to open and start playing a media 
 
 > **Note** This property must be set before NexPlayer.open is called.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 s)
-- Default: 0xFFFFFFFF
-    
-### NXPropertyMinBW 
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 s)
+- **Default:** 0xFFFFFFFF
 
-When using HLS ABR, this is the minimum allowable bandwidth. Any track with a bandwidth smaller than this value will not be played back.
-
-> **Note** To dynamically set a minimum bandwidth allowed while content is playing, please call the method `NexABRController::changeMinBandWidth()` instead. This property should be set to zero for no minimum.
- 
-- Type: unsigned integer
-- Unit: bps (bits per second)
-- Default: 0 (no minimum)
-
-### NXPropertyEnableCEA708 
-
-Enables rendering and display of CEA 708 closed captions in content when available. While CEA 608 closed captions are always enabled, it is necessary to set this property to 1 in order for NexPlayer to support CEA 708 closed captions.
- 
-In the case where content contains both CEA 608 and CEA 708 closed captions and this property enables
-
-CEA 708 closed captions, the application will have to handle choosing which captions to render and
-display to the user.
-
-- Type: boolean
-- Default: 0
-- Values:
- - **0:** CEA 708 closed captions disabled.
- - **1:** CEA 708 closed captions enabled.
-
-### NXPropertyEnableWebVTT 
-
-Sets whether or not to display WebVTT text tracks automatically when they are included in content. In the case when both CEA 708 closed captions and WebVTT text tracks are included in content, this property can be used to set whether to display the WebVTT text tracks or the closed captions automatically.
-
-By default, this property is set to 1 to enable WebVTT text tracks automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that CEA 708 closed captions be displayed instead of the WebVTT text tracks, this property should be set to 0 with by with setProperty.
-
-This property should only be called once, immediately after calling `init` but before calling `open`.
-
-- Type: boolean
-- Default: 1 (WebVTT text tracks enabled)
-- Values:
- - 0 : WebVTT text tracks ignored; CEA 708 closed captions enabled
- - 1 : WebVTT text tracks enabled; CEA 708 closed captions ignored
-
-### NXPropertyPartialPrefetch 
-
-Sets whether or not to begin playback after a part of the TS file is downloaded.
-
-By default, this property is set to 0 to download the first TS file completely to play content.
-
-- Type: boolean
-- Default: 0
-- Values:
- - 0 : Partial prefetch ignored; playback will begin after downloading the first TS file completely.
- - 1 : Partial prefetch enabled; playback will begin after a part of the TS file is downloaded.
-
-### NXPropertyTimedID3MetaKey 
-
-Allows custom ID3 tags added to timed metadata in content to be recognized and handled by NexPlayer. When customized ID3 tags with additional information have been added to the timed metadata in content, this property can be used to help NexPlayer recognize and pass those ID3 tags and the extra information they contain to an application.
-
-This property must be set before `open` is called.
-
-- Type: String
-- Values: a list of the customized ID3 tag names separated by semicolons (;)
-- Default: nothing
-
-### NXPropertyEnableID3TTML 
-
-Sets whether or not to display TTML text tracks in ID3 tag automatically when they are included in content. In the case when both CEA closed captions and TTML text tracks in ID3 tag are included in content, this property can be used to set whether to display the TTML text tracks in ID3 tag or the closed captions automatically.
-
-By default, this property is set to 0 to disable TTML text tracks in ID3 tag automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that
-
-TTML captions in ID3 tag to be displayed instead of the CEA closed captions text tracks, this property should be set to 1 using `setProperty` This property should only be called once, immediately after calling `init` but before calling `open`.
-
-- Type: boolean
-- Default: 0
-- Values:
- - 0 : TTML text tracks in ID3 tag ignored; CEA closed captions enabled
- - 1 : TTML text tracks in ID3 tag enabled; CEA closed captions ignored
- 
-### NXPropertyPreferLanguage 
-
-Sets the language of both audio and text played in multi-stream content. It can be used to set the preferred language of audio and text streams to be displayed in content, before NexPlayer begins playing content.
-
-This property should be set by calling setProperty:toValue: (NXPlayer) after init and before open is called, as demonstrated in the following sample code:
-
-```objc
-[nxPlayer setProperty:NXPropertyPreferLanguage toValue:"eng"];
-```
-
- - Type: String
- - Default: null
- - Values: Accurate language labels as Strings. For example, "eng" for English.
-
-> **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
-
-### NXPropertyPreferLanguageAudio 
-
-Sets the language to use for audio in multi-stream content, before content is played. This property can be used to set the preferred language of audio streams to be used in content, before NexPlayer begins playing content.
-
-This property should be set by calling `setProperty` after init and before `open` is called.
-
-To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
-
- - Type: String
- - Default: null
- - Values: Accurate language labels as Strings. For example, "eng" for English.
-
-> **Warning** To change any media stream while content is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead.
-
-> **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
-
-
-### NXPropertyPreferLanguageText 
-
-Sets the language to use for text in multi-stream content, before content is played.
-
-This property can be used to set the preferred language of text streams to be displayed in content,before NexPlayer begins playing content.
- 
-This property should be set by calling `setProperty:` after `init` and before `open`
-is called.
-
- - Type: String
- - Default: null
- - Values: Accurate language labels asStrings. For example, "eng" for English.
-
-> **Warning** To change any media stream while content is playing, the method `setVideoStream:audioStream:textStream:trackAttributes:` should be called instead. To set the preferred language for both audio and text streams to the same language, use the `NXPropertyPreferLanguage` instead.
-
-> **Note** Accurate language labels (not the name of a text stream) should be used for the values of this property.
 
 ### NXPropertyWebVTTWaitOpen 
 
@@ -747,48 +357,12 @@ However, if this property is disabled (set to 0), the player will start playing 
 
 This property should be called once, immediately after calling init but before calling open.
 
-- Type: boolean
-- Default: 1
-- Values:
- - **0:** Content starts playing before first WebVTT segment is downloaded.
- - **1:** Content starts playing after first WebVTT segment is downloaded.
+- **Type:** boolean
+- **Default:** 1
+- **Values:**
+	- **0:** Content starts playing before first WebVTT segment is downloaded.
+	- **1:** Content starts playing after first WebVTT segment is downloaded.
 
-### NXPropertyStartNearestBW 
-
-Sets a target bandwidth (before playing HLS content) when selecting which track to play as playback starts. While NexPlayer automatically chooses an ideal track to play based on several factors including device capability and network conditions, there may be situations in which starting playback from a track with a bandwidth near a particular bandwidth is desired.
-
-When this property is set, NexPlayer selects and starts playing the track in content that has the bandwidth closest to the set bandwidth value, initially ignoring other factors.
-
-Note that as playback continues, the track played may change as NexPlayer judges all factors that influence streaming playback and chooses the best option.
-
-This property should be called after init but before calling open.
-
-- Type: int
-- Unit: bps (bits per second)
-- Default: null
-- Values: The target bandwidth value, in bits per second (bps). Note that if `NXPropertyStartNearestBW` is set to 0, NexPlayer will play normally, as if this property has not been set.
-
-### NXPropertyAudioOnlyTrack 
-
-Sets whether to enable or disable the Audio Only track in HLS content. This property should be called after init but before calling open.
-
-- Type: int
-- Default: 1
-- Values:
- - **0:** Audio Only track disabled.
- - **1:** Audio Only track enabled.
-
-### NXPropertyContinueDownloadAtPause 
-
-Sets whether or not to continue downloading data in pause state when playing content. When this property is set, content data will continue to be downloaded even when NexPlayer is paused.
-
-> This property should be called after init and before calling open.
-
-- Type: NSUInteger
-- Default: 0
-- Values:
- - **0:** Stop downloading in pause state.
- - **1:** Continue downloading in pause state.
 
 ### NXPropertySegmentTSReliable 
 
@@ -796,11 +370,11 @@ Sets whether or not to trust a content segment’s timestamp when playback start
 
 > This property should be called after init but before calling open.
 
-- Type: int
-- Default: 1
-- Values:
- - **0:** Adjust the timestamp during playback.
- - **1:** Trust the timestamp during playback.
+- **Type:** int
+- **Default:** 1
+- **Values:**
+	- **0:** Adjust the timestamp during playback.
+	- **1:** Trust the timestamp during playback.
 
 ### NXPropertySuggestedPresentationDelayTime 
 
@@ -808,9 +382,9 @@ This property overrides the suggestedPresentationDelay value of the DASH manifes
 
 > This property should be called after init but before calling open.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 2000 (2 sec)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 2000 (2 sec)
 
 ### NXPropertyEnableSpdSyncToGlobalTime 
 
@@ -818,11 +392,11 @@ Enables synchronization to UTC time(SPD).
 
 > This property should be called after init but before calling open.
 
-- Type: int
-- Default: 0
-- Values:
- - **0:** SPD disabled.
- - **1:** SPD enabled.
+- **Type:** int
+- **Default:** 0
+- **Values:**
+	- **0:** SPD disabled.
+	- **1:** SPD enabled.
 
 ### NXPropertySpdSyncDiffTime 
 
@@ -830,9 +404,9 @@ If the current playback is not more synchronized than this value, the player wil
 
 > This property should be called after init but before calling open.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 300 (300 msec)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 300 (300 msec)
 
 ### NXPropertySpdTooMuchDiffTime 
 
@@ -840,19 +414,19 @@ If playback is out of sync than this value, the player will jump to synchronize 
 
 > This property should be called after init but before calling open.
 
-- Type: unsigned integer
-- Unit: msec (1/1000 sec)
-- Default: 5000 (5 seconds)
+- **Type:** unsigned integer
+- **Unit:** msec (1/1000 sec)
+- **Default:** 5000 (5 seconds)
 
 ### NXPropertySetHWdecoderPixelFormat 
 
 Sets iOS HW decoder pixel format of output property `kCVPixelBufferPixelFormatTypeKey`. This property is to set a pixel format for decoded video format. Have to set it before start to play.
 
-- Type: int
-- Default: 0 (kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
-- Values:
- - **0:** If you want to develop iOS application, you should use this.`kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange`
- - **1:** If you want to develop Unity application, you should use this. `kCVPixelFormatType_32BGRA`
+- **Type:** int
+- **Default:** 0 (kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange)
+- **Values:**
+	- **0:** If you want to develop iOS application, you should use this.`kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange`
+	- **1:** If you want to develop Unity application, you should use this. `kCVPixelFormatType_32BGRA`
 
 ### NXPropertySetMaxCaptionLength 
 
@@ -860,22 +434,8 @@ Set it to extend max caption length.
 
 > This property should be called after init but before calling open.
 
-- Type: int
-- Default: 8192
-
-### NXPropertyRFCBufferCount
-
-Controls the maximum number of pages the player can allocate for the remote file cache. The remote file cache stores data that has been read from disk or received over the network (this includes local, streaming, and progressive content). In general, this value should not be changed, as an incorrect setting can adversely affect performance, particularly when seeking. 
-
-In order to play multiplexed content, at least one audio chunk and one video chunk must fit inside a single RFC buffer page. For certain formats (PIFF, for example) at very high bitrates, the chunks may be too big to fit in a single page, in which case the RFC buffer page size will need to be increased. 
-
-If the system has limited memory resources, it may be necessary to decrease the buffer count when increasing the page size. 
-
-Increasing the page size can increase seek times, especially for data received over the network (progressive download and streaming cases), so this value should not be changed unless there are issues playing specific content that cannot be solved in another way.
-
-- Type: unsigned int 
-- Units: number of buffers 
-- Default: 20
+- **Type:** int
+- **Default:** 8192
 
 ### NXPropertyRFCBufferPageSize 
 
@@ -883,76 +443,19 @@ Controls the size of each page in the remote file cache. Use caution when adjust
 
 See NXPropertyRFCBufferCount for a detailed description.
 
-- Type: unsigned int
-- Units: kilobytes
-- Default: 512
+- **Type:** unsigned int
+- **Units:** kilobytes
+- **Default:** 512
 
 ### NXPropertyCEA608TextMode 
 
 This property sets whether CEA 608 closed captions should be rendered in caption mode or text mode. 
 
-- Type: boolean
-- Default: 0
-- Values:
- - **0:** Render CEA 608 closed captions in caption mode.
- - **1:** Render CEA 608 closed captions in text mode.
-
-### Timed Metadata Keys
-
-**Variables**
-
-- static NSString ∗kNXTimedMetaKeySessionInfo = @"@"SessionInfo"
-
- ID3 tags which are stored in the NS Dictionary and can be retrieved using their c\ keys. This key gets the content session information if available.
-
-- static NSString ∗kNXTimedMetaKeyTitle = @"@"Title"
-
- This key gets the content title if available.
-
-- static NSString ∗kNXTimedMetaKeyArtist = @"@"Artist"
-
- This key gets the content artist, if available.
-
-- static NSString ∗kNXTimedMetaKeyAlbum = @"@"Album"
-
- This key gets content album information, if available.
-
-- static NSString ∗kNXTimedMetaKeyGenre = @"@"Genre"
-
- This key gets the content genre if available.
-
-- static NSString ∗kNXTimedMetaKeyYear = @"@"Year"
-
- This key gets the year of content, if available.
-
-- static NSString ∗kNXTimedMetaKeyLyrics = @"@"Lyrics"
-
- This key gets content lyrics, if available.
-
-- static NSString ∗kNXTimedMetaKeyTrackNum = @"@"TrackNumber"
-
- This key gets the track number, if available.
-
-- static NSString ∗kNXTimedMetaKeyImage = @"@"Picture"
-
- This key gets the image associated with the content, if available.
-
-- static NSString ∗kNXTimedMetaKeyComment = @"@"Comment"
-
- This key gets a comment associated with the content, if available.
-
-- static NSString ∗kNXTimedMetaKeyText = @"@"Text"
-
- This key gets text associated with the content, if available.
-
-- static NSString ∗kNXTimedMetaKeyPrivateFrame = @"@"PrivateFrame"
-
- This key gets the data from extra tags in metadata if available.
-
-- static NSString ∗kNXTimedMetaKeyExtraData = @"@"extraTagData"
-
- This key gets the data from extra tags in metadata if available.
-
+- **Type:** boolean
+- **Default:** 0
+- **Values:**
+	- **0:** Render CEA 608 closed captions in caption mode.
+	- **1:** Render CEA 608 closed captions in text mode.
 
 ## Types
 

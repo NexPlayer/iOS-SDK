@@ -1,93 +1,26 @@
-<a href="https://nexplayersdk.com/html5-player/"><img text src="./asset/logo5.png" alt="Nexplayer"></a>
+# NexPlayer SDK for iOS
 
-***
+NexPlayer is the market leader player SDK for premium video apps. NexPlayer ensures the best video streaming quality across all devices with the most advanced features and 24/7 customer support. 
 
-# NexPlayer SDK for iOS Documentation
-
-### Capabilities and Limitations
+## Capabilities
 
 #### Operating Systems
 
 - iOS 11 and above
 
-#### Basic Functionalities
-- Start (from beginning or anywhere) Pause/Resume
-- Seek
-- Select Media Stream (Multi-Audio/Video/Subtitle) Turn on/off Media Stream
-- Generate playback statistics information 
+#### Video Delivery Formats
 
-#### Functionalities
-
-- Basic video controls: start, seek, stop
-- H.264 aspect-ratio
-- ID3 Tags (including Private Frame Data)
-- EMSG Events
-- Set Video Output Position
-- Adjust Audio Output Volume
-- Set subtitle display property
-- Generate playback statistics information 
-- Multiple Instance
-- Select Media Stream (Multi-Audio/Video/Subtitle) Turn on/off Media Stream
-
-#### Streaming Protocols
-
-- HTTP Live Streaming
-- MPEG-DASH
-- HLSv06
-- VoD
-- Live
-- fMP4
-- Rate Adaptation
-- CEA-608 Subtitle
-- CES-708 Subtitle
-- WebVTT Subtitle
-- AES-128 Decryption Multi-Video/Audio Track (HLSv04) 
-- I-Frame only Track (HLSv04)
-- Fast Play using I-Frame only Track 
-- Offline Playback
-- Offline Store without Playback 
-- Timed Meta
-- Server-Side TimeShift 
-- Client-Side TimeShift
-- Specify Start Track
-- Restrict maximum bandwidth 
-- Restrict minimum bandwidth 
-- External ABR Control 
-- Dynamic Thumbnail
-- Dolby Passthrough
-- Dolby SW Codecs
-- HTTP redirection
-- HTTP digest authentication 
-- HTTP/2 
-- Cookie Manipulation 
-- GZip
-- Generate Streaming Statistics Information 
-- Proxy
-- PSSH version 1
+- HLS
+- DASH
+- Microsoft Smooth Streaming
 - Progressive Download
-- Streaming Mode
-- Download (Store) and Play mode 
-- Chunked Transfer Encoding (CTE)
-- HTTP Redirection
-- Cookie Manipulation 
-- GZip
 - Local Playback
-- MP4/PIFF/3GPP/3GP2 AVI
-- AMR
-- ACC
-- MPEG-TS 
-- MKV
-- CFF
-- Low Latency
-- DASH SPD (Suggested Presentation Delay) 
-	- Allow setting offset for SPD Device Time
-	- Setting SPD value from client-side
 
 #### Video Codecs
 
-- H.264
-- HEVC (H.265) 
 - H.263
+- H.264 (AVC)
+- H.265 (HEVC)
 - MPEG-4 
 - MPEG-2
 - VP9
@@ -97,43 +30,68 @@
 - AAC-LC
 - HE AAC (ACC LC+SBR)
 - HE AAC v2 (AAC-LC+SBR+PS)
-- AC3/ EC3/ AC4/ Atmos/ Passthrough
-- MP3/ MP4
+- MP3
+- Dolby AC3
+- Dolby EC3
+- Dolby AC4
+- Dolby Atmos
+- Dolby AC3 (SW)
+- Dolby AC4 (SW)
 
 #### Subtitles
 
-- External Subtitles (smi, srt, sub, dfxp) 
-- 3gpp Timed Text (3GPP file format)
-- TTML
-- Image based closed caption at TTML 
-- DXFP
 - CEA-608
 - CEA-708
 - WebVTT
-- Support Remote subtitle file
-- Replace external subtitle while playback
+- TTML
+- DXFP
+- Image based closed caption at TTML 
+- External subtitles (smi, srt, sub, dfxp) 
+- 3gpp Timed Text (3GPP file format)
 
-#### Optional Modules 
+#### Content Protection
 
-- Widevine SW DRM
+- Widevine SW DRM (L3)
 - Verimatrix
+- Custom HTTP Headers
 
-#### Other Products from NexPlayer
+#### Metadata
 
-- NexPlayer SDK for Android
-- NexPlayer SDK for Web
-- NexPlayer STB SDK (to be customized for each for Android Set-Top Box/Android TV) 
-- NexPlayer Unity Plugin
-- NexPlayer Nintendo Plugin
+- ID3 Tags (including Private Frame Data)
+- EMSG Events
+- SCTE-35
 
-***
+#### Features
 
-### Legal Notices
+- Low Latency
+- Ultra Low Latency
+- Offline Playback
+- Dynamic Thumbnails
+- ABR Control
+- TimeShifting 
+- DVR Live Streaming
+- Multiview
+- Syncronization of Video Arrival
+- Multiple audio/video tracks
+- Advanced Playback Control
+- Advanced Statistics APIs
+- Advanced Logging Features
+- Controlling video/audio decoder
+- HTTP/2 Support
+- Cookie Manipulation 
+- Proxy Protection
+
+#### Integrations
+_Subject to additional and/or 3rd party licenses_
+
+- Ad Insertion 
+	- VAST
+
+## Legal Notices
 
 **Disclaimer for Intellectual Property**
 
-This product is designed for general purpose, and accordingly the customer is responsible for all or any of
-intellectual property licenses required for actual application. NexStreaming. does not provide any indemnification for any intellectual properties owned by third party.
+This product is designed for general purpose, and accordingly the customer is responsible for all or any of intellectual property licenses required for actual application. NexStreaming. does not provide any indemnification for any intellectual properties owned by third party.
 
 **Copyright**
 

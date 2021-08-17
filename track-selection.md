@@ -2,15 +2,15 @@
 
 Certain streaming protocols provide multiple audio and video streams of the same content which are intended to be selected bu the user. NexPlayer provides the `setVideoStream()` API to allow these streams to be selected from the User Interface while content is being played.
 
-The full list of available streams (if any) for particular content can be found in the **NXContentInfo::streams** array. The current selected audio and video can be founf in **NXContentInfo::currentVideoStream** and **NXContentInfo::currentAudioStream**, respectively.
+The full list of available streams (if any) for particular content can be found in the **NXContentInfo::streams** array. The current selected audio and video can be found in **NXContentInfo::currentVideoStream** and **NXContentInfo::currentAudioStream**, respectively.
 
 There are three possible use cases available:
 
-1. **A variant playlist with alternative audio**: Audio and video are delivered separate streams or groups of tracks. In this case, video and audio can be selected independently. For example, there could be two different audio tracks (different languages) for a video stream a, which includes multiple tracks to be selected internally by the player by adaptive bitrate streaming. The audio tracks should be selected by the user while the player display the appropriate video track based on network conditions and the device.
+1. **A variant playlist with alternative audio**: Audio and video are delivered in separate streams or groups of tracks. In this case, video and audio can be selected independently. For example, there could be two different audio tracks (different languages) for a video stream a, which includes multiple tracks to be selected internally by the player by adaptive bitrate streaming. The audio tracks should be selected by the user while the player displays the appropriate video track based on network conditions and the device.
 
 2. **A variant playlist with alternative video**: Each track contains both audio and video, but alternative video streams are available (for example different camera angles or views of the same content). In this case, the same audio is included in each track, and the user chooses which video stream to display. Tracks within a stream are selected internally based on network conditions and the device but the user can change video streams from the UI.
 
-3. **A combination of a variant playlist with alternative video and audio**: This use case is a combination of cases 1 and 2, where a main video stream provides video tracks at different bitrates but INCLUDING the same audio, and separate audio tracks are available for optional language selection. To play the alternative audio tracks, the user selects them from the UI.
+3. **A combination of a variant playlist with alternative video and audio**: This use case is a combination of cases 1 and 2, where the main video stream provides video tracks at different bitrates but INCLUDING the same audio, and separate audio tracks are available for optional language selection. To play the alternative audio tracks, the user selects them from the UI.
 
 The information for getting the streams (included in the content) and the tracks (related to each stream) is presented in the following format:
 
@@ -45,7 +45,7 @@ The different params you can use in method *NXPlayerABRController::setTargetBand
 * **targetBwBps** - the target bandwidth in bps (bits per second)
 * **NexBandwidthSegmentOption** - This option will indicate how to handle buffered content when the track changes:
 	* **default**: NexPlayer will decide between Quickmix (changing tracks quickly) and LateMix (playing buffered content and changing tracks more slowly).
-	* **quickmix**: NexPlayer will clear the buffer as much as possible and will start to download new rtack so user can see a new track faster.
+	* **quickmix**: NexPlayer will clear the buffer as much as possible and will start to download new track so the user can see a new track faster.
 	* **latemix**: NexPlayer will preserve and play the content segments already buffered and will download a new track.
 * **NexBandwidthTargetOption**:
 	* **default**: Default target option (BELOW).
@@ -68,7 +68,7 @@ The full list of available streams (if any) can be found in the `NXContentInfo::
 
 Each stream listed in the array in content information is either an audio stream or a video stream. One stream of each type may be selected for presentation to the user.
 
-There can be multiple tracks associated with each stream, providing different levels of quality. The player switches among these strings as necessary to provide the best possibly quality for the available bandwidth.  
+There can be multiple tracks associated with each stream, providing different levels of quality. The player switches among these strings as necessary to provide the best possible quality for the available bandwidth.  
 Convenience function for setting audio and video streams.  
 This is a convenience function, and is equivalent to calling *setVideoStream:audioStream:textStream:trackAttributes:* with text Stream specified as nil.
 
@@ -126,7 +126,7 @@ The string includes all of the details included in NXContentInfo, as well as det
 The string should be displayed in a fixed-pitch font for best results.
 
 	*Returns*  
-The content information formatted as astring.
+The content information is formatted as a string.
 
 * **streamsOfType(NXMediaType)**  
 Returns a filtered list of streams containing only streams of a single specific type.
@@ -192,14 +192,14 @@ This allows UI components to alert the user of the problem.
 
 * **metaData**  
 	Additional metadata associated with the content.  
-The exact contents of this dictionary depend on the content and may change from version to version. ID3 tag values are an example of one kind of metadata that may be associated with content.
+The exact contents of this dictionary depend on the content and may change from version to version. ID3 tag values are an example of one kind of metadata that may be associated with the content.
 
 * **pitch**  
 	Pitch of the original video frames, in pixels.  
 The pitch is the actual pixel width of the video frame, including any hidden margin required by the decoder, and any padding needed to byte-align each row. Since NexPlayer handles the display of the video image automatically on iOS, this value is really only useful for diagnostic purposes.
 
 * **streams**  
-	An array of all audio, video and text streams associated with the content.  
+	An array of all audio, video, and text streams associated with the content.  
 Most content has only one video stream and one audio stream, but some file formats and some streaming formats support multiple streams of the same type (for example, to provide audio tracks in multiple languages).  
 In addition, it is possible for some content that this array may be empty, even though there is audio and video associated with the content. In this case, there is no additional information available about the audio or video beyond the basic information in NXContentInfo, and it is not possible to switch to other tracks.  
 Each element in this array is an NXMediaStreamInfo object.  
@@ -207,7 +207,7 @@ To get a list of only one type of media, call streamsOfType: instead of using th
 
 * **totalPlayTime**  
 	Total playing time of the media, if applicable.  
-For some streaming formats (in particular, live streams) there may not be a duration available. In this case, the total play time will be `NXDuration_Unknown`.
+For some streaming formats (in particular, live streams) there may not be a duration available. In this case, the total play-time will be `NXDuration_Unknown`.
 
 * **videoCodec**  
 	The video codec in use for decoding the content.  
@@ -249,7 +249,7 @@ These are internal identifiers and their use is discouraged except for debugging
 
 * **inStreamID**
 
-	This is the INSTREAM-ID TAG of the media stream. sIt is an arbitrary value set by the author, and is intended for user display (to allow users to select among different alternative streams).
+	This is the INSTREAM-ID TAG of the media stream. It is an arbitrary value set by the author and is intended for user display (to allow users to select among different alternative streams).
 
 * **internalId**
 
@@ -297,7 +297,7 @@ Any given stream may have multiple tracks containing the same content encoded at
 * **codecID**  
 	This indicates the codec used for the given track.  
 
-!> Do not trust this value in HLS, DASH and MS Smooth Streaming mode, as invalid values are sometimes provided.
+!> Do not trust this value in HLS, DASH, and MS Smooth Streaming mode, as invalid values are sometimes provided.
 
 * **internalId**  
 

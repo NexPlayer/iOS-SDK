@@ -70,7 +70,7 @@ nexPlayer.setProperty(NXPropertyLowLatencyBufferOption,
 
 #### Buffering option 3
 
-Constant Buffer Mode. The latency value is calculated by the player at the beginning of playback and maintains the value unchanged during playback. The latency increases more than when using Auto Buffer Mode, but the rebuffering will be reduced and try to maintain constant latency after rebuffering.
+Constant Buffer Mode. The latency value is calculated by the player at the beginning of playback and maintains the value unchanged during playback. The latency increases more than when using Auto Buffer Mode, but the rebuffering will be reduced, and try to maintain constant latency after rebuffering.
 
 Example :
 

@@ -23,7 +23,7 @@ For subtitles, the path of the subtitle file or the URL to load the subtitle fil
 * *NXCEA608CellInfo*:  
     CEA-608 caption cell information. This structure is used by to store CEA 608 closed caption cell information and is passed to **NXCEA608CaptionView** to be displayed.
 * *NXCEA608CaptionView*:  
-    This view receives and displays CEA 608 closed captions. This interface must be implemented in order for CEA 608 closed captions to be displayed.
+    This view receives and displays CEA 608 closed captions. This interface must be implemented for CEA 608 closed captions to be displayed.
 * *NXPlayerCEA608CaptionUpdateReceiver*:  
     Specifies a receiver to be notified of changes to the current CEA 608 closed caption information.
 
@@ -52,7 +52,7 @@ extension NexVideoPlayer: NXPlayerCEA608CaptionUpdateReceiver {
     2. Visibility of captions.
     3. Clear the captions.  
 
-This classes allow you to make your own caption style modifiying the properties of the captions.
+These classes allow you to make your own caption style modifying the properties of the captions.
 
 ## Properties
 
@@ -60,7 +60,7 @@ This classes allow you to make your own caption style modifiying the properties 
 
 Enables rendering and display of CEA 708 closed captions in content when available.
 
-While CEA 608 closed captions are always enabled, it is necessary to set this property to 1 in order for NexPlayer to support CEA 708 closed captions.  
+While CEA 608 closed captions are always enabled, it is necessary to set this property to 1 for NexPlayer to support CEA 708 closed captions.  
 In the case where content contains both CEA 608 and CEA 708 closed captions and this property enables CEA 708 closed captions, the application will have to handle choosing which captions to render and display to the user.
 
 ```swift

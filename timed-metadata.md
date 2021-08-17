@@ -1,6 +1,6 @@
 # Timed Metadata
 
-You can listen to Timed Metadata events with NexPlayer iOS SDK. ID3, EMSG DATA and SCTE35 formats are supported.
+You can listen to Timed Metadata events with NexPlayer iOS SDK. ID3, EMSG DATA, and SCTE35 formats are supported.
 
 ## Setting Up The Listener
 
@@ -93,9 +93,9 @@ This property must be set before NexPlayer.open is called.
 
 ### NXPropertyEnableID3TTML (522)
 
-Sets whether or not to display TTML text tracks in ID3 tags automatically when they are included in content.
+Sets whether or not to display TTML text tracks in ID3 tags automatically when they are included in the content.
 
-In the case, when both CEA closed captions and TTML text tracks in ID3 tags are included in content, this property can be used to set whether to display the TTML text tracks in ID3 tags or the closed captions automatically.
+In this case, when both CEA closed captions and TTML text tracks in ID3 tags are included in the content, this property can be used to set whether to display the TTML text tracks in ID3 tags or the closed captions automatically.
 
 By default, this property is set to 0 to disable TTML text tracks in ID3 tags automatically if they exist in content (as was the behavior of NexPlayer previously). If for some reason it would be preferable that TTML captions in ID3 tag be displayed instead of the CEA closed captions text tracks, this property should be set to 1 using setProperty. This property should only be called once, immediately after calling init but before calling open.
 

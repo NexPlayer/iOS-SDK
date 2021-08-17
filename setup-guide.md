@@ -12,7 +12,7 @@ From the NexPlayer iOS SDK package get the NexPlayerSDK.framework and include it
 
 Now you can search for the location of the *NexPlayerSDK.framework* and select it. Make sure it is on embed mode: *Do not Embed*.  
 
-![](../asset/setup1.jpg)
+![](asset/setup1.jpg)
 
 You will also need to add some other frameworks, listed below, in order for the NexPlayerSDK to work properly:  
 
@@ -40,9 +40,18 @@ You are almost done, go to your project and create a new **header** file. Name i
 #endif
 ```
 
-Finally, you need to reference this header file into your project. Go to your Project Settings > Build Settings > Search for *Objective-C Bridging Header* and point to the header file you just created.
+Finally, we need to modify some settings on the Build settings from the proyect.
 
-![](../asset/setup2.jpg)
+First you need to reference the header file into your project. Go to Project Settings > Build Settings > Search for *Objective-C Bridging Header* and point to the header file you just created.
+
+![](asset/setup2.jpg)
+
+Lastly we need to setup a couple of more options, in order to get the SDK working. All of this are located in the Build Settings of the proyect.
+
+* *Bitcode*:  
+	Set 'Enable Bitcode' to NO.
+* *Other Linker Flags*:  
+	On the field 'Other Linker Flags' add `-lc++`.
 
 Now you have the project already setup to use NexPlayer iOS SDK.
 

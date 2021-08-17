@@ -26,15 +26,15 @@ The video codec is not supported. NexPlayer does not support the video codec of 
 
 * `NXErrorNotSupportVideoResolution`
 
-The video resolution is not supported. The resolution of the content is too high to play back. E.g. The device has a resolution limit of 1080P but the content is 4K.
+The video resolution is not supported. The resolution of the content is too high to playback. E.g. The device has a resolution limit of 1080P but the content is 4K.
 
 * `NXErrorNotSupportMedia`
 
-The content format is not supported or is not playable A/V track. The format of the content is not supported. The content has unavailable protocol(HLS,DASH, etc) or no playable A/V track which has audio or video codecs that are not supported.
+The content format is not supported or is not playable A/V track. The format of the content is not supported. The content has unavailable protocol(HLS, DASH, etc) or no playable A/V track which has audio or video codecs that are not supported.
 
 * `NXErrorCodec`
 
-The codec reported an error. Audio or video decoding error. E.g. NexPlayer get a failure during parsing the content for playback or during decoding the audio or video bitstreams.
+The codec reported an error. Audio or video decoding error. E.g. NexPlayer gets a failure during parsing the content for playback or during decoding the audio or video bitstreams.
 
 * `NXErrorUnknown`
 
@@ -42,7 +42,7 @@ Unknown error. This error is a kind of internal error such as “system failure�
 
 * `NXErrorNotSupportToSeek`
 
-The media source does not support seeking. The only Iframe content(Content is composed of I, B, and P frames), chunked mode based PD content, or live content with an wide interval between each Iframe cannot be seeked.
+The media source does not support seeking. The only Iframe content(Content is composed of I, B, and P frames), chunked mode based PD content, or live content with a wide interval between each Iframe cannot be seeked.
 
 * `NXErrorNotSupportPVXFile`
 
@@ -94,7 +94,7 @@ Response is not arrived until timeout.
 
 * `NXErrorHTTPStatusCode`
 
-The HTTP response data recevied from the Server is error. It’s not 200 in HTTP response. Ex. 500, 503 etc
+The HTTP response data received from the Server is error. It’s not 200 in HTTP response. Ex. 500, 503 etc
 
 * `NXErrorProtocolDisabledMedia`
 

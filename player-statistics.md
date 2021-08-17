@@ -131,19 +131,19 @@ The total size of all the audio frames, in bytes.
 
 #### totalDecodedVideoFrames
 
-The total number of video frames decoded to play a video content.
+The total number of video frames decoded to play video content.
 
 #### totalDroppedVideoFrames
 
-The total number of video frames skipped while playing a video content.
+The total number of video frames skipped while playing video content.
 
 #### totalRenderedVideoFrames
 
-The total number of video frames displayed during playing a video content.
+The total number of video frames displayed during playing video content.
 
 #### totalVideoFrameBytes
 
-The total size of all the video frames of a video content, inbytes.
+The total size of all the video frames of a video, in bytes.
 
 #### totalVideoFrames
 
@@ -173,7 +173,7 @@ An instance of NXStatisticsAPI class.
 
 #### bufferInfo
 
-Instance of NXBufferInfo class to access buffer information related methods such asNSUInteger.
+Instance of NXBufferInfo class to access buffer information-related methods such asNSUInteger.
 
 **See Also**
 
@@ -181,7 +181,7 @@ NXBufferInfo
 
 #### deviceInfo
 
-The information about the current device streaming a HLS content.
+The information about the current device streaming HLS content.
 
 **See Also**
 
@@ -270,7 +270,7 @@ This event occurs when NexPlayer encountered an error during download.
 
 #### bytesReceived
 
-The current number of bytes received, as aninteger.
+The current number of bytes received, as an integer.
 
 #### totalSize
 
@@ -280,7 +280,7 @@ The total bytes of the content to be downloaded. -1 represents unknown.
 
 #### bytesReceived
 
-The current number of bytes received, as aninteger.
+The current number of bytes received, as an integer.
 
 ### NXHttpStateInfoDownStart Class
 
@@ -405,7 +405,7 @@ The number of requested segments from the server by the player.
 
 #### numOfSegmentTimeout
 
-The number of segments that resulting a timeout.
+The number of segments that results in a timeout.
 
 #### numOfTrackSwitchDown
 
@@ -423,7 +423,7 @@ The description of an initially selected profile.
 
 This class retrieves the specified buffer information.
 
-?> **Note** Do not create instance of this class directly. Instead, use the NXStatisticsAPI::bufferInfo property.
+?> **Note** Do not create an instance of this class directly. Instead, use the NXStatisticsAPI::bufferInfo property.
  
 **See Also**
 

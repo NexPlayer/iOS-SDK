@@ -2,7 +2,7 @@
 
 Through this guide you will be introduced to the basic steps for setting up the playback with NexPlayer iOS SDK.
 
-First thing you have to keep in mind before implementing NexPlayer SDK is that most of player methods behave __asynchronously__. There are numerous methods available in `NexPlayerDelegate.h` which listen to what is happening in NexPlayer. Asynchronous approach is strongly recommended in NexPlayer SDK.
+The first thing you have to keep in mind before implementing NexPlayer SDK is that most of the player methods behave __asynchronously__. There are numerous methods available in `NexPlayerDelegate.h` which listen to what is happening in NexPlayer. Asynchronous approach is strongly recommended in NexPlayer SDK.
 
 ## Importing SDK
 
@@ -40,26 +40,26 @@ You are almost done, go to your project and create a new **header** file. Name i
 #endif
 ```
 
-Finally, we need to modify some settings on the Build settings from the proyect.
+Finally, we need to modify some settings on the Build settings from the project.
 
 First you need to reference the header file into your project. Go to Project Settings > Build Settings > Search for *Objective-C Bridging Header* and point to the header file you just created.
 
 ![](asset/setup2.jpg)
 
-Lastly we need to setup a couple of more options, in order to get the SDK working. All of this are located in the Build Settings of the proyect.
+Lastly, we need to set up a couple of more options, in order to get the SDK working. All of this is located in the Build Settings of the project.
 
 * *Bitcode*:  
 	Set 'Enable Bitcode' to NO.
 * *Other Linker Flags*:  
 	On the field 'Other Linker Flags' add `-lc++`.
 
-Now you have the project already setup to use NexPlayer iOS SDK.
+Now you have the project already set up to use NexPlayer iOS SDK.
 
 ## Integrating NexPlayerView
 
 `NexPlayerView` is the recommended and easiest way to render a video with *NexPlayer*. It includes a `NXPlayer` instance for controlling the playback within the view.
 
-For a quick start to your first application, create a `UIViewController` subclass that implements the `NXPlayerDelegate` protocol. In this example the class will be called 'PlayerController'.
+For a quick start to your first application, create a `UIViewController` subclass that implements the `NXPlayerDelegate` protocol. In this example, the class will be called 'PlayerController'.
 
 ```swift
 class PlayerController: UIViewController, NXPlayerDelegate {
@@ -100,9 +100,9 @@ Finally just create an instance of your 'PlayerController' when your app starts,
 
 ## Listening to the Player Events
 
-NexPlayer generates various events to notify the application of changes in the player’s status in real time. This allows the application to update the user interface in an appropriate manner, detect the end of the content, and respond to errors. All methods are optional, you should implement the methods for events which you wish to handle.
+NexPlayer generates various events to notify the application of changes in the player’s status in real-time. This allows the application to update the user interface in an appropriate manner, detect the end of the content, and respond to errors. All methods are optional, you should implement the methods for events that you wish to handle.
 
-In the *PlayerController* class you have created, you can implement the optional delegate methods to listen those events. 
+In the *PlayerController* class you have created, you can implement the optional delegate methods to listen to those events. 
 
 With the below implementation of NXPlayerDelegate we are making the player to start automatically, with `nxplayer.start()`, once open is done with `completedAsyncCmdOpenWithResult`. Also if any errors happen, we print them for tracking:
 
@@ -129,7 +129,7 @@ class PlayerController: UIViewController, NXPlayerDelegate {
 
 ## Controlling the Playback
 
-Playback is controlled through the NexPlayer class, which handles acquisition and decoding of the media data.
+Playback is controlled through the NexPlayer class, which handles the acquisition and decoding of the media data.
 
 The application creates an instance of this class and issues commands to it by calling instance methods. NexPlayer carries out these commands asynchronously and notifies the application of changes in status.
 
@@ -162,7 +162,7 @@ This is an asynchronous operation that completes in the background.  When it is 
 We can call the start method in 3 different ways.
 
 * `nexPlayer.start()` will start content from the beggining
-* `nexPlayer.start(fromTime: UInt)` will begin playback of the content from the specified time (miliseconds)
+* `nexPlayer.start(fromTime: UInt)` will begin playback of the content from the specified time (milliseconds)
 * `nexPlayer.start(fromTime: UInt, pauseAfterReady: Bool)` this start method will begin the playback of the content from the specified time and will play automatically when ready depending on the parameter.
 
 This is an asynchronous operation that completes in the background. When it is finished, the `NXPlayerDelegate::nexPlayer:completedAsyncCmdStartWithResult:playbackType:` method of the delegate will be called.

@@ -74,14 +74,17 @@ Now add the following code in the `viewDidLoad` method.
 ```swift
 override func viewDidLoad() {
 	super.viewDidLoad()
-	        
+
 	let playerView = NXPlayerView()
-	playerView.autoScaling = .fitInView
-	playerView.captionRenderController.captionHidden = true
-	playerView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-	
-	self.view.addSubview(playerView)
-	playerView.player.delegate = self
+    playerView.autoScaling = .fitInView
+    playerView.captionRenderController.captionHidden = true
+    
+    view.addSubview(playerView)
+    playerView.translatesAutoresizingMaskIntoConstraints = false
+    playerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+    playerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    
+    playerView.player.delegate = self
 	playerView.player.open("https://your.media.com/index.m3u8")
 }
 ```

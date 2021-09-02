@@ -1,8 +1,8 @@
 # NexPlayer™ SDK for iOS Release Notes
 
 ### Version 5.40.1.5156
-  -[Improve] Improve setTargetBandwidth API with QUICK_MIX option for faster track changes
-  -[Improve] Improve multiple player instance stability
+- [Improve] Improve setTargetBandwidth API with QUICK_MIX option for faster track changes
+- [Improve] Improve multiple player instance stability
 
 ### Version 5.40.1.5155
 - [Add] Added new functionality to get content information

@@ -1,8 +1,8 @@
 # NexPlayer™ SDK for iOS Release Notes
 
 ### Version 5.40.1.5157
--[Improve] Update sample project
--[Improve] Setting log levels per instance
+- [Improve] Update sample project
+- [Improve] Setting log levels per instance
 
 ### Version 5.40.1.5156
 - [Improve] Improve setTargetBandwidth API with QUICK_MIX option for faster track changes

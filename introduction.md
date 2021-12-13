@@ -67,6 +67,7 @@ NexPlayer is the market leader player SDK for premium video apps. NexPlayer ensu
 - Ultra Low Latency
 - Offline Playback
 - Dynamic Thumbnails
+- Trick Play
 - ABR Control
 - TimeShifting 
 - DVR Live Streaming

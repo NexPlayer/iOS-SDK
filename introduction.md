@@ -87,6 +87,7 @@ _Subject to additional and/or 3rd party licenses_
 
 - Ad Insertion 
 	- VAST
+	- VPAID
 
 ## Legal Notices
 

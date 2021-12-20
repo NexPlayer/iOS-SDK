@@ -6,7 +6,7 @@ NexPlayer is the market leader player SDK for premium video apps. NexPlayer ensu
 
 #### Operating Systems
 
-- iOS 11 and above
+- iOS 9 and above
 
 #### Video Delivery Formats
 

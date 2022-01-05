@@ -17,6 +17,7 @@
 	- [Synchronization Feature](/advanced/synchronization.md)    
 	- [Modifying Requests](/advanced/request-modification.md)
 	- [Client TimeShift](/advanced/client-timeshift.md)
+	- [Dolby Audio Settings](/advanced/dolby.md) 
 	- [Properties](/advanced/properties.md) 
 - [3rd Party Integrations](/3rd-party.md) 
 	- [AWS Integration<img src="./asset/external.svg" class="icon"/>](https://nexplayer.github.io/NexPlayer_AWS/)

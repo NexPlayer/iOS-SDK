@@ -1,4 +1,4 @@
-## NexPlayer Dolby Audio Settings
+## Dolby Audio Settings
 
 NexPlayer provides various Dolby Audio settings that can be controlled using NexPlayer APIs. Please refer to `DolbyPlugin` class for the implementation.
 

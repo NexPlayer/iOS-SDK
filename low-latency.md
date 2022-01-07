@@ -22,7 +22,7 @@ Manual Mode the latency value is set by `NXPropertyInitialBufferingDuration` and
 
 ```swift
 nexPlayer.setProperty(NXPropertyLowLatencyBufferOption, 
-                value: NXPropertyLowLaytencyBufferOptionNone as NSObject)
+                value: NXPropertyLowLatencyBufferOptionNone as NSObject)
 ```
 
 * Case 1.  
@@ -65,7 +65,7 @@ Example :
 
 ```swift
 nexPlayer.setProperty(NXPropertyLowLatencyBufferOption, 
-                value: NXPropertyLowLaytencyBufferOptionAutoBuffer as NSObject)
+                value: NXPropertyLowLatencyBufferOptionAutoBuffer as NSObject)
 ```
 
 #### Buffering option 3
@@ -76,5 +76,5 @@ Example :
 
 ```swift
 nexPlayer.setProperty(NXPropertyLowLatencyBufferOption, 
-                value: NXPropertyLowLaytencyBufferOptionConstBuffer as NSObject)
+                value: NXPropertyLowLatencyBufferOptionConstBuffer as NSObject)
 ```

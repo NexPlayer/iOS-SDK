@@ -1,5 +1,12 @@
 # NexPlayer™ SDK for iOS Release Notes
 
+### Version 5.40.1.5159
+- [Fix] Offline Playback with Widevine
+- [Add] NexSound features
+- [Add] Browse file functionality for the Sample app
+- [Add] Browse file functionality for the Sample app
+- [Update] Update Verimatrix module to v4.3.9.0
+
 ### Version 5.40.1.5157
 - [Improve] Update sample project
 - [Improve] Setting log levels per instance

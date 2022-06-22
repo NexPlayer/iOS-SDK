@@ -1,9 +1,9 @@
 # NexPlayer™ SDK for iOS Release Notes
 
 ### Version 5.40.1.5160
--[Fix] Fixed Offline Playback with Verimatrix
--[Fix] Fixed an issue with the render system
--[Add] Added new SPD property to set a reference utc server time
+- [Fix] Fixed Offline Playback with Verimatrix
+- [Fix] Fixed an issue with the render system
+- [Add] Added new SPD property to set a reference utc server time
 
 ### Version 5.40.1.5159
 - [Fix] Offline Playback with Widevine

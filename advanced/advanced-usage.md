@@ -11,4 +11,5 @@ NexPlayer SDK for Android helps you the play any content you have with the advan
 - [Synchronization Feature](/advanced/synchronization.md)
 - [Modifying Requests](/advanced/request-modification.md)
 - [Client TimeShift](/advanced/client-timeshift.md)
+- [NexSound](/advanced/nexsound.md)
 - [Properties](/advanced/properties.md)

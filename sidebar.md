@@ -18,6 +18,7 @@
 	- [Synchronization Feature](/advanced/synchronization.md)    
 	- [Modifying Requests](/advanced/request-modification.md)
 	- [Client TimeShift](/advanced/client-timeshift.md)
+	- [NexSound](/advanced/nexsound.md)
 	- [Dolby Audio Settings](/advanced/dolby.md) 
 	- [Properties](/advanced/properties.md) 
 - [3rd Party Integrations](/3rd-party.md) 
